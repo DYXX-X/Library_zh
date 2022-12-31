@@ -25,7 +25,7 @@
     ESP32        
         源文件来源：platformio IDE 
         IDF版本：4.4.2
-        （来源和版本号不对，请酌情使用）
+        （来源和版本号不对，请酌情使用） 
     使用方法
         ESP32的替换路径 等于 ESP32IDF 路径下components文件夹，存储库中ESP32_API_zh文件夹即components文件夹，
         components文件夹内几乎所有头文件 .h 类型，存储库中ESP32_API_zh文件夹都有，对应查找即可！
