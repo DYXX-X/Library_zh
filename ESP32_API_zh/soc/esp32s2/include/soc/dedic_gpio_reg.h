@@ -1,0 +1,491 @@
+/** 版权所有2020 Espressif Systems（上海）私人有限公司
+ *
+ *  根据Apache许可证2.0版（“许可证”）获得许可；除非符合许可证，否则不得使用此文件。您可以在以下地址获取许可证副本：
+ *
+ *  http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *  除非适用法律要求或书面同意，否则根据许可证分发的软件是按“原样”分发的，无任何明示或暗示的担保或条件。有关许可证下权限和限制的具体语言，请参阅许可证。
+ */
+
+#pragma once
+
+#include <stdint.h>
+#include "soc/soc.h"
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+/**配置寄存器*/
+
+/** DEDIC_GPIO_OUT_DRT_REG寄存器专用GPIO指令输出寄存器
+ */
+#define DEDIC_GPIO_OUT_DRT_REG (DR_REG_DEDICATED_GPIO_BASE + 0x0)
+/* DEDIC_GPIO_OUT_DRT_VLAUE:WO；位位置：[8:0]；默认值：0；该寄存器用于配置8通道专用gpio的指令输出值。
+ */
+#define DEDIC_GPIO_OUT_DRT_VLAUE    0x000000FF
+#define DEDIC_GPIO_OUT_DRT_VLAUE_M  (DEDIC_GPIO_OUT_DRT_VLAUE_V << DEDIC_GPIO_OUT_DRT_VLAUE_S)
+#define DEDIC_GPIO_OUT_DRT_VLAUE_V  0x000000FF
+#define DEDIC_GPIO_OUT_DRT_VLAUE_S  0
+
+/** DEDIC_GPIO_OUT_MSK_REG寄存器专用GPIO掩码输出寄存器
+ */
+#define DEDIC_GPIO_OUT_MSK_REG (DR_REG_DEDICATED_GPIO_BASE + 0x4)
+/* DEDIC_GPIO_OUT_VALUE:WO；位位置：[8:0]；默认值：0；该寄存器用于配置8通道专用gpio的屏蔽输出值。
+ */
+#define DEDIC_GPIO_OUT_VALUE    0x000000FF
+#define DEDIC_GPIO_OUT_VALUE_M  (DEDIC_GPIO_OUT_VALUE_V << DEDIC_GPIO_OUT_VALUE_S)
+#define DEDIC_GPIO_OUT_VALUE_V  0x000000FF
+#define DEDIC_GPIO_OUT_VALUE_S  0
+/* DEDIC_GPIO_OUT_MSK:WO；比特位置：[16:8]；默认值：0；此寄存器用于配置将被屏蔽的通道。1： 相应信道的输出将被屏蔽。
+ */
+#define DEDIC_GPIO_OUT_MSK    0x000000FF
+#define DEDIC_GPIO_OUT_MSK_M  (DEDIC_GPIO_OUT_MSK_V << DEDIC_GPIO_OUT_MSK_S)
+#define DEDIC_GPIO_OUT_MSK_V  0x000000FF
+#define DEDIC_GPIO_OUT_MSK_S  8
+
+/** DEDIC_GPIO_OUT_IDV_REG寄存器专用GPIO单个输出寄存器
+ */
+#define DEDIC_GPIO_OUT_IDV_REG (DR_REG_DEDICATED_GPIO_BASE + 0x8)
+/* DEDIC_GPIO_OUT_IDV_CH0:WO；位位置：[2:0]；默认值：0；配置通道0输出值。0：保持输出值；1： 设定输出值；2： 明确输出值；3： 反向输出值。
+ */
+#define DEDIC_GPIO_OUT_IDV_CH0    0x00000003
+#define DEDIC_GPIO_OUT_IDV_CH0_M  (DEDIC_GPIO_OUT_IDV_CH0_V << DEDIC_GPIO_OUT_IDV_CH0_S)
+#define DEDIC_GPIO_OUT_IDV_CH0_V  0x00000003
+#define DEDIC_GPIO_OUT_IDV_CH0_S  0
+/* DEDIC_GPIO_OUT_IDV_CH1:WO；位位置：[4:2]；默认值：0；配置通道1输出值。0：保持输出值；1： 设定输出值；2： 明确输出值；3： 反向输出值。
+ */
+#define DEDIC_GPIO_OUT_IDV_CH1    0x00000003
+#define DEDIC_GPIO_OUT_IDV_CH1_M  (DEDIC_GPIO_OUT_IDV_CH1_V << DEDIC_GPIO_OUT_IDV_CH1_S)
+#define DEDIC_GPIO_OUT_IDV_CH1_V  0x00000003
+#define DEDIC_GPIO_OUT_IDV_CH1_S  2
+/* DEDIC_GPIO_OUT_IDV_CH2:WO；比特位置：[6:4]；默认值：0；配置通道2输出值。0：保持输出值；1： 设定输出值；2： 明确输出值；3： 反向输出值。
+ */
+#define DEDIC_GPIO_OUT_IDV_CH2    0x00000003
+#define DEDIC_GPIO_OUT_IDV_CH2_M  (DEDIC_GPIO_OUT_IDV_CH2_V << DEDIC_GPIO_OUT_IDV_CH2_S)
+#define DEDIC_GPIO_OUT_IDV_CH2_V  0x00000003
+#define DEDIC_GPIO_OUT_IDV_CH2_S  4
+/* DEDIC_GPIO_OUT_IDV_CH3:WO；位位置：[8:6]；默认值：0；配置通道3输出值。0：保持输出值；1： 设定输出值；2： 明确输出值；3： 反向输出值。
+ */
+#define DEDIC_GPIO_OUT_IDV_CH3    0x00000003
+#define DEDIC_GPIO_OUT_IDV_CH3_M  (DEDIC_GPIO_OUT_IDV_CH3_V << DEDIC_GPIO_OUT_IDV_CH3_S)
+#define DEDIC_GPIO_OUT_IDV_CH3_V  0x00000003
+#define DEDIC_GPIO_OUT_IDV_CH3_S  6
+/* DEDIC_GPIO_OUT_IDV_CH4:WO；比特位置：[10:8]；默认值：0；配置通道4输出值。0：保持输出值；1： 设定输出值；2： 明确输出值；3： 反向输出值。
+ */
+#define DEDIC_GPIO_OUT_IDV_CH4    0x00000003
+#define DEDIC_GPIO_OUT_IDV_CH4_M  (DEDIC_GPIO_OUT_IDV_CH4_V << DEDIC_GPIO_OUT_IDV_CH4_S)
+#define DEDIC_GPIO_OUT_IDV_CH4_V  0x00000003
+#define DEDIC_GPIO_OUT_IDV_CH4_S  8
+/* DEDIC_GPIO_OUT_IDV_CH5:WO；比特位置：[12:10]；默认值：0；配置通道5输出值。0：保持输出值；1： 设定输出值；2： 明确输出值；3： 反向输出值。
+ */
+#define DEDIC_GPIO_OUT_IDV_CH5    0x00000003
+#define DEDIC_GPIO_OUT_IDV_CH5_M  (DEDIC_GPIO_OUT_IDV_CH5_V << DEDIC_GPIO_OUT_IDV_CH5_S)
+#define DEDIC_GPIO_OUT_IDV_CH5_V  0x00000003
+#define DEDIC_GPIO_OUT_IDV_CH5_S  10
+/* DEDIC_GPIO_OUT_IDV_CH6:WO；比特位置：[14:12]；默认值：0；配置通道6输出值。0：保持输出值；1： 设定输出值；2： 明确输出值；3： 反向输出值。
+ */
+#define DEDIC_GPIO_OUT_IDV_CH6    0x00000003
+#define DEDIC_GPIO_OUT_IDV_CH6_M  (DEDIC_GPIO_OUT_IDV_CH6_V << DEDIC_GPIO_OUT_IDV_CH6_S)
+#define DEDIC_GPIO_OUT_IDV_CH6_V  0x00000003
+#define DEDIC_GPIO_OUT_IDV_CH6_S  12
+/* DEDIC_GPIO_OUT_IDV_CH7:WO；比特位置：[16:14]；默认值：0；配置通道7输出值。0：保持输出值；1： 设定输出值；2： 明确输出值；3： 反向输出值。
+ */
+#define DEDIC_GPIO_OUT_IDV_CH7    0x00000003
+#define DEDIC_GPIO_OUT_IDV_CH7_M  (DEDIC_GPIO_OUT_IDV_CH7_V << DEDIC_GPIO_OUT_IDV_CH7_S)
+#define DEDIC_GPIO_OUT_IDV_CH7_V  0x00000003
+#define DEDIC_GPIO_OUT_IDV_CH7_S  14
+
+/** DEDIC_GPIO_OUT_CPU_REG寄存器专用GPIO输出模式选择寄存器
+ */
+#define DEDIC_GPIO_OUT_CPU_REG (DR_REG_DEDICATED_GPIO_BASE + 0x10)
+/* DEDIC_GPIO_OUT_CPU_SEL0:R/W；位位置：[0]；默认值：0；为通道0选择寄存器或CPU指令器配置的gpio输出值。1：选择CPU指令器。
+ */
+#define DEDIC_GPIO_OUT_CPU_SEL0    (BIT(0))
+#define DEDIC_GPIO_OUT_CPU_SEL0_M  (DEDIC_GPIO_OUT_CPU_SEL0_V << DEDIC_GPIO_OUT_CPU_SEL0_S)
+#define DEDIC_GPIO_OUT_CPU_SEL0_V  0x00000001
+#define DEDIC_GPIO_OUT_CPU_SEL0_S  0
+/* DEDIC_GPIO_OUT_CPU_SEL1:R/W；位位置：[1]；默认值：0；为通道1选择寄存器或CPU指令器配置的gpio输出值。1：选择CPU指令器。
+ */
+#define DEDIC_GPIO_OUT_CPU_SEL1    (BIT(1))
+#define DEDIC_GPIO_OUT_CPU_SEL1_M  (DEDIC_GPIO_OUT_CPU_SEL1_V << DEDIC_GPIO_OUT_CPU_SEL1_S)
+#define DEDIC_GPIO_OUT_CPU_SEL1_V  0x00000001
+#define DEDIC_GPIO_OUT_CPU_SEL1_S  1
+/* DEDIC_GPIO_OUT_CPU_SEL2:R/W；位位置：[2]；默认值：0；为通道2.1选择寄存器或CPU指令器配置的gpio输出值：选择CPU指令器。
+ */
+#define DEDIC_GPIO_OUT_CPU_SEL2    (BIT(2))
+#define DEDIC_GPIO_OUT_CPU_SEL2_M  (DEDIC_GPIO_OUT_CPU_SEL2_V << DEDIC_GPIO_OUT_CPU_SEL2_S)
+#define DEDIC_GPIO_OUT_CPU_SEL2_V  0x00000001
+#define DEDIC_GPIO_OUT_CPU_SEL2_S  2
+/* DEDIC_GPIO_OUT_CPU_SEL3:R/W；位位置：[3]；默认值：0；为通道3.1选择寄存器或CPU指令器配置的gpio输出值：选择CPU指令器。
+ */
+#define DEDIC_GPIO_OUT_CPU_SEL3    (BIT(3))
+#define DEDIC_GPIO_OUT_CPU_SEL3_M  (DEDIC_GPIO_OUT_CPU_SEL3_V << DEDIC_GPIO_OUT_CPU_SEL3_S)
+#define DEDIC_GPIO_OUT_CPU_SEL3_V  0x00000001
+#define DEDIC_GPIO_OUT_CPU_SEL3_S  3
+/* DEDIC_GPIO_OUT_CPU_SEL4:R/W；位位置：[4]；默认值：0；为通道4.1选择寄存器或CPU指令器配置的gpio输出值：选择CPU指令器。
+ */
+#define DEDIC_GPIO_OUT_CPU_SEL4    (BIT(4))
+#define DEDIC_GPIO_OUT_CPU_SEL4_M  (DEDIC_GPIO_OUT_CPU_SEL4_V << DEDIC_GPIO_OUT_CPU_SEL4_S)
+#define DEDIC_GPIO_OUT_CPU_SEL4_V  0x00000001
+#define DEDIC_GPIO_OUT_CPU_SEL4_S  4
+/* DEDIC_GPIO_OUT_CPU_SEL5:R/W；位位置：[5]；默认值：0；为通道5.1选择寄存器或CPU指令器配置的gpio输出值：选择CPU指令器。
+ */
+#define DEDIC_GPIO_OUT_CPU_SEL5    (BIT(5))
+#define DEDIC_GPIO_OUT_CPU_SEL5_M  (DEDIC_GPIO_OUT_CPU_SEL5_V << DEDIC_GPIO_OUT_CPU_SEL5_S)
+#define DEDIC_GPIO_OUT_CPU_SEL5_V  0x00000001
+#define DEDIC_GPIO_OUT_CPU_SEL5_S  5
+/* DEDIC_GPIO_OUT_CPU_SEL6:R/W；位位置：[6]；默认值：0；为通道6.1选择寄存器或CPU指令器配置的gpio输出值：选择CPU指令器。
+ */
+#define DEDIC_GPIO_OUT_CPU_SEL6    (BIT(6))
+#define DEDIC_GPIO_OUT_CPU_SEL6_M  (DEDIC_GPIO_OUT_CPU_SEL6_V << DEDIC_GPIO_OUT_CPU_SEL6_S)
+#define DEDIC_GPIO_OUT_CPU_SEL6_V  0x00000001
+#define DEDIC_GPIO_OUT_CPU_SEL6_S  6
+/* DEDIC_GPIO_OUT_CPU_SEL7:R/W；位位置：[7]；默认值：0；为通道7.1选择寄存器或CPU指令器配置的gpio输出值：选择CPU指令器。
+ */
+#define DEDIC_GPIO_OUT_CPU_SEL7    (BIT(7))
+#define DEDIC_GPIO_OUT_CPU_SEL7_M  (DEDIC_GPIO_OUT_CPU_SEL7_V << DEDIC_GPIO_OUT_CPU_SEL7_S)
+#define DEDIC_GPIO_OUT_CPU_SEL7_V  0x00000001
+#define DEDIC_GPIO_OUT_CPU_SEL7_S  7
+
+/** DEDIC_GPIO_IN_DLY_REG寄存器专用GPIO输入延迟配置寄存器
+ */
+#define DEDIC_GPIO_IN_DLY_REG (DR_REG_DEDICATED_GPIO_BASE + 0x14)
+/* DEDIC_GPIO_IN_DLY_CH0:R/W；位位置：[2:0]；默认值：0；配置gpio 0输入延迟。0：无延迟；1： 一个时钟延迟；2： 双时钟延迟；3： 三时钟延迟。
+ */
+#define DEDIC_GPIO_IN_DLY_CH0    0x00000003
+#define DEDIC_GPIO_IN_DLY_CH0_M  (DEDIC_GPIO_IN_DLY_CH0_V << DEDIC_GPIO_IN_DLY_CH0_S)
+#define DEDIC_GPIO_IN_DLY_CH0_V  0x00000003
+#define DEDIC_GPIO_IN_DLY_CH0_S  0
+/* DEDIC_GPIO_IN_DLY_CH1:R/W；位位置：[4:2]；默认值：0；配置gpio 1输入延迟。0：无延迟；1： 一个时钟延迟；2： 双时钟延迟；3： 三时钟延迟。
+ */
+#define DEDIC_GPIO_IN_DLY_CH1    0x00000003
+#define DEDIC_GPIO_IN_DLY_CH1_M  (DEDIC_GPIO_IN_DLY_CH1_V << DEDIC_GPIO_IN_DLY_CH1_S)
+#define DEDIC_GPIO_IN_DLY_CH1_V  0x00000003
+#define DEDIC_GPIO_IN_DLY_CH1_S  2
+/* DEDIC_GPIO_IN_DLY_CH2:R/W；比特位置：[6:4]；默认值：0；配置gpio 2输入延迟。0：无延迟；1： 一个时钟延迟；2： 双时钟延迟；3： 三时钟延迟。
+ */
+#define DEDIC_GPIO_IN_DLY_CH2    0x00000003
+#define DEDIC_GPIO_IN_DLY_CH2_M  (DEDIC_GPIO_IN_DLY_CH2_V << DEDIC_GPIO_IN_DLY_CH2_S)
+#define DEDIC_GPIO_IN_DLY_CH2_V  0x00000003
+#define DEDIC_GPIO_IN_DLY_CH2_S  4
+/* DEDIC_GPIO_IN_DLY_CH3:R/W；位位置：[8:6]；默认值：0；配置gpio 3输入延迟。0：无延迟；1： 一个时钟延迟；2： 双时钟延迟；3： 三时钟延迟。
+ */
+#define DEDIC_GPIO_IN_DLY_CH3    0x00000003
+#define DEDIC_GPIO_IN_DLY_CH3_M  (DEDIC_GPIO_IN_DLY_CH3_V << DEDIC_GPIO_IN_DLY_CH3_S)
+#define DEDIC_GPIO_IN_DLY_CH3_V  0x00000003
+#define DEDIC_GPIO_IN_DLY_CH3_S  6
+/* DEDIC_GPIO_IN_DLY_CH4：R/W；比特位置：[10:8]；默认值：0；配置gpio 4输入延迟。0：无延迟；1： 一个时钟延迟；2： 双时钟延迟；3： 三时钟延迟。
+ */
+#define DEDIC_GPIO_IN_DLY_CH4    0x00000003
+#define DEDIC_GPIO_IN_DLY_CH4_M  (DEDIC_GPIO_IN_DLY_CH4_V << DEDIC_GPIO_IN_DLY_CH4_S)
+#define DEDIC_GPIO_IN_DLY_CH4_V  0x00000003
+#define DEDIC_GPIO_IN_DLY_CH4_S  8
+/* DEDIC_GPIO_IN_DLY_CH5:R/W；比特位置：[12:10]；默认值：0；配置gpio 5输入延迟。0：无延迟；1： 一个时钟延迟；2： 双时钟延迟；3： 三时钟延迟。
+ */
+#define DEDIC_GPIO_IN_DLY_CH5    0x00000003
+#define DEDIC_GPIO_IN_DLY_CH5_M  (DEDIC_GPIO_IN_DLY_CH5_V << DEDIC_GPIO_IN_DLY_CH5_S)
+#define DEDIC_GPIO_IN_DLY_CH5_V  0x00000003
+#define DEDIC_GPIO_IN_DLY_CH5_S  10
+/* DEDIC_GPIO_IN_DLY_CH6:R/W；比特位置：[14:12]；默认值：0；配置gpio 6输入延迟。0：无延迟；1： 一个时钟延迟；2： 双时钟延迟；3： 三时钟延迟。
+ */
+#define DEDIC_GPIO_IN_DLY_CH6    0x00000003
+#define DEDIC_GPIO_IN_DLY_CH6_M  (DEDIC_GPIO_IN_DLY_CH6_V << DEDIC_GPIO_IN_DLY_CH6_S)
+#define DEDIC_GPIO_IN_DLY_CH6_V  0x00000003
+#define DEDIC_GPIO_IN_DLY_CH6_S  12
+/* DEDIC_GPIO_IN_DLY_CH7:R/W；比特位置：[16:14]；默认值：0；配置gpio 7输入延迟。0：无延迟；1： 一个时钟延迟；2： 双时钟延迟；3： 三时钟延迟。
+ */
+#define DEDIC_GPIO_IN_DLY_CH7    0x00000003
+#define DEDIC_GPIO_IN_DLY_CH7_M  (DEDIC_GPIO_IN_DLY_CH7_V << DEDIC_GPIO_IN_DLY_CH7_S)
+#define DEDIC_GPIO_IN_DLY_CH7_V  0x00000003
+#define DEDIC_GPIO_IN_DLY_CH7_S  14
+
+/** DEDIC_GPIO_INTR_RCGN_REG寄存器专用GPIO中断生成模式寄存器
+ */
+#define DEDIC_GPIO_INTR_RCGN_REG (DR_REG_DEDICATED_GPIO_BASE + 0x1c)
+/* DEDIC_GPIO_INTR_MODE_CH0:R/W；位位置：[3:0]；默认值：0；配置通道0中断生成模式。0/1：不生成中断；2： 低电平触发；3： 高电平触发；4： 下降沿触发器；5： 上升边缘触发器；6/7：下降和上升边缘触发器。
+ */
+#define DEDIC_GPIO_INTR_MODE_CH0    0x00000007
+#define DEDIC_GPIO_INTR_MODE_CH0_M  (DEDIC_GPIO_INTR_MODE_CH0_V << DEDIC_GPIO_INTR_MODE_CH0_S)
+#define DEDIC_GPIO_INTR_MODE_CH0_V  0x00000007
+#define DEDIC_GPIO_INTR_MODE_CH0_S  0
+/* DEDIC_GPIO_INTR_MODE_CH1:R/W；比特位置：[6:3]；默认值：0；配置通道1中断生成模式。0/1：不生成中断；2： 低电平触发；3： 高电平触发；4： 下降沿触发器；5： 上升边缘触发器；6/7：下降和上升边缘触发器。
+ */
+#define DEDIC_GPIO_INTR_MODE_CH1    0x00000007
+#define DEDIC_GPIO_INTR_MODE_CH1_M  (DEDIC_GPIO_INTR_MODE_CH1_V << DEDIC_GPIO_INTR_MODE_CH1_S)
+#define DEDIC_GPIO_INTR_MODE_CH1_V  0x00000007
+#define DEDIC_GPIO_INTR_MODE_CH1_S  3
+/* DEDIC_GPIO_INTR_MODE_CH2:R/W；比特位置：[9:6]；默认值：0；配置通道2中断生成模式。0/1：不生成中断；2： 低电平触发；3： 高电平触发；4： 下降沿触发器；5： 上升边缘触发器；6/7：下降和上升边缘触发器。
+ */
+#define DEDIC_GPIO_INTR_MODE_CH2    0x00000007
+#define DEDIC_GPIO_INTR_MODE_CH2_M  (DEDIC_GPIO_INTR_MODE_CH2_V << DEDIC_GPIO_INTR_MODE_CH2_S)
+#define DEDIC_GPIO_INTR_MODE_CH2_V  0x00000007
+#define DEDIC_GPIO_INTR_MODE_CH2_S  6
+/* DEDIC_GPIO_INTR_MODE_CH3:R/W；比特位置：[12:9]；默认值：0；配置通道3中断生成模式。0/1：不生成中断；2： 低电平触发；3： 高电平触发；4： 下降沿触发器；5： 上升边缘触发器；6/7：下降和上升边缘触发器。
+ */
+#define DEDIC_GPIO_INTR_MODE_CH3    0x00000007
+#define DEDIC_GPIO_INTR_MODE_CH3_M  (DEDIC_GPIO_INTR_MODE_CH3_V << DEDIC_GPIO_INTR_MODE_CH3_S)
+#define DEDIC_GPIO_INTR_MODE_CH3_V  0x00000007
+#define DEDIC_GPIO_INTR_MODE_CH3_S  9
+/* DEDIC_GPIO_INTR_MODE_CH4:R/W；比特位置：[15:12]；默认值：0；配置通道4中断生成模式。0/1：不生成中断；2： 低电平触发；3： 高电平触发；4： 下降沿触发器；5： 上升边缘触发器；6/7：下降和上升边缘触发器。
+ */
+#define DEDIC_GPIO_INTR_MODE_CH4    0x00000007
+#define DEDIC_GPIO_INTR_MODE_CH4_M  (DEDIC_GPIO_INTR_MODE_CH4_V << DEDIC_GPIO_INTR_MODE_CH4_S)
+#define DEDIC_GPIO_INTR_MODE_CH4_V  0x00000007
+#define DEDIC_GPIO_INTR_MODE_CH4_S  12
+/* DEDIC_GPIO_INTR_MODE_CH5:R/W；比特位置：[18:15]；默认值：0；配置通道5中断生成模式。0/1：不生成中断；2： 低电平触发；3： 高电平触发；4： 下降沿触发器；5： 上升边缘触发器；6/7：下降和上升边缘触发器。
+ */
+#define DEDIC_GPIO_INTR_MODE_CH5    0x00000007
+#define DEDIC_GPIO_INTR_MODE_CH5_M  (DEDIC_GPIO_INTR_MODE_CH5_V << DEDIC_GPIO_INTR_MODE_CH5_S)
+#define DEDIC_GPIO_INTR_MODE_CH5_V  0x00000007
+#define DEDIC_GPIO_INTR_MODE_CH5_S  15
+/* DEDIC_GPIO_INTR_MODE_CH6:R/W；比特位置：[21:18]；默认值：0；配置通道6中断生成模式。0/1：不生成中断；2： 低电平触发；3： 高电平触发；4： 下降沿触发器；5： 上升边缘触发器；6/7：下降和上升边缘触发器。
+ */
+#define DEDIC_GPIO_INTR_MODE_CH6    0x00000007
+#define DEDIC_GPIO_INTR_MODE_CH6_M  (DEDIC_GPIO_INTR_MODE_CH6_V << DEDIC_GPIO_INTR_MODE_CH6_S)
+#define DEDIC_GPIO_INTR_MODE_CH6_V  0x00000007
+#define DEDIC_GPIO_INTR_MODE_CH6_S  18
+/* DEDIC_GPIO_INTR_MODE_CH7:R/W；位位置：[24:21]；默认值：0；配置通道7中断生成模式。0/1：不生成中断；2： 低电平触发；3： 高电平触发；4： 下降沿触发器；5： 上升边缘触发器；6/7：下降和上升边缘触发器。
+ */
+#define DEDIC_GPIO_INTR_MODE_CH7    0x00000007
+#define DEDIC_GPIO_INTR_MODE_CH7_M  (DEDIC_GPIO_INTR_MODE_CH7_V << DEDIC_GPIO_INTR_MODE_CH7_S)
+#define DEDIC_GPIO_INTR_MODE_CH7_V  0x00000007
+#define DEDIC_GPIO_INTR_MODE_CH7_S  21
+
+
+/**状态寄存器*/
+
+/** DEDIC_GPIO_OUT_SCAN_REG寄存器专用GPIO输出状态寄存器
+ */
+#define DEDIC_GPIO_OUT_SCAN_REG (DR_REG_DEDICATED_GPIO_BASE + 0xc)
+/* DEDIC_GPIO_OUT_STATUS:RO；位位置：[8:0]；默认值：0；gpio out值由DEDIC_gpio_out_DRT_REG、DEDIC_GAPIO_out_MSK_REG、DE DIC_gpio_out_IDV_REG配置。
+ */
+#define DEDIC_GPIO_OUT_STATUS    0x000000FF
+#define DEDIC_GPIO_OUT_STATUS_M  (DEDIC_GPIO_OUT_STATUS_V << DEDIC_GPIO_OUT_STATUS_S)
+#define DEDIC_GPIO_OUT_STATUS_V  0x000000FF
+#define DEDIC_GPIO_OUT_STATUS_S  0
+
+/** DEDIC_GPIO_IN_SCAN_REG寄存器专用GPIO输入状态寄存器
+ */
+#define DEDIC_GPIO_IN_SCAN_REG (DR_REG_DEDICATED_GPIO_BASE + 0x18)
+/* DEDIC_GPIO_IN_STATUS:RO；位位置：[8:0]；默认值：0；由DEDIC_gpio_in_DLY_REG配置后的gpio值。
+ */
+#define DEDIC_GPIO_IN_STATUS    0x000000FF
+#define DEDIC_GPIO_IN_STATUS_M  (DEDIC_GPIO_IN_STATUS_V << DEDIC_GPIO_IN_STATUS_S)
+#define DEDIC_GPIO_IN_STATUS_V  0x000000FF
+#define DEDIC_GPIO_IN_STATUS_S  0
+
+
+/**中断寄存器*/
+
+/** DEDIC_GPIO_INTR_RAW_REG寄存器原始中断状态
+ */
+#define DEDIC_GPIO_INTR_RAW_REG (DR_REG_DEDICATED_GPIO_BASE + 0x20)
+/* DEDIC_GPIO0_INT_RAW:RO；位位置：[0]；默认值：0；当专用GPIO 0具有由DEDIC_GPIO_INTR_RCGN_REG配置的电平/边缘变化时，该中断原始位变为高电平。
+ */
+#define DEDIC_GPIO0_INT_RAW    (BIT(0))
+#define DEDIC_GPIO0_INT_RAW_M  (DEDIC_GPIO0_INT_RAW_V << DEDIC_GPIO0_INT_RAW_S)
+#define DEDIC_GPIO0_INT_RAW_V  0x00000001
+#define DEDIC_GPIO0_INT_RAW_S  0
+/* DEDIC_GPIO1_INT_RAW:RO；位位置：[1]；默认值：0；当专用GPIO 1具有由DEDIC_GPIO_INTR_RCGN_REG配置的电平/边缘变化时，该中断原始位变为高电平。
+ */
+#define DEDIC_GPIO1_INT_RAW    (BIT(1))
+#define DEDIC_GPIO1_INT_RAW_M  (DEDIC_GPIO1_INT_RAW_V << DEDIC_GPIO1_INT_RAW_S)
+#define DEDIC_GPIO1_INT_RAW_V  0x00000001
+#define DEDIC_GPIO1_INT_RAW_S  1
+/* DEDIC_GPIO2_INT_RAW:RO；位位置：[2]；默认值：0；当专用GPIO 2具有由DEDIC_GPIO_INTR_RCGN_REG配置的电平/边缘变化时，该中断原始位变为高电平。
+ */
+#define DEDIC_GPIO2_INT_RAW    (BIT(2))
+#define DEDIC_GPIO2_INT_RAW_M  (DEDIC_GPIO2_INT_RAW_V << DEDIC_GPIO2_INT_RAW_S)
+#define DEDIC_GPIO2_INT_RAW_V  0x00000001
+#define DEDIC_GPIO2_INT_RAW_S  2
+/* DEDIC_GPIO3_INT_RAW:RO；位位置：[3]；默认值：0；当专用GPIO 3具有由DEDIC_GPIO_INTR_RCGN_REG配置的电平/边缘变化时，该中断原始位变为高电平。
+ */
+#define DEDIC_GPIO3_INT_RAW    (BIT(3))
+#define DEDIC_GPIO3_INT_RAW_M  (DEDIC_GPIO3_INT_RAW_V << DEDIC_GPIO3_INT_RAW_S)
+#define DEDIC_GPIO3_INT_RAW_V  0x00000001
+#define DEDIC_GPIO3_INT_RAW_S  3
+/* DEDIC_GPIO4_INT_RAW:RO；位位置：[4]；默认值：0；当专用GPIO 4具有由DEDIC_GPIO_INTR_RCGN_REG配置的电平/边缘变化时，该中断原始位变为高电平。
+ */
+#define DEDIC_GPIO4_INT_RAW    (BIT(4))
+#define DEDIC_GPIO4_INT_RAW_M  (DEDIC_GPIO4_INT_RAW_V << DEDIC_GPIO4_INT_RAW_S)
+#define DEDIC_GPIO4_INT_RAW_V  0x00000001
+#define DEDIC_GPIO4_INT_RAW_S  4
+/* DEDIC_GPIO5_INT_RAW:RO；位位置：[5]；默认值：0；当专用GPIO 5具有由DEDIC_GPIO_INTR_RCGN_REG配置的电平/边缘变化时，该中断原始位变为高电平。
+ */
+#define DEDIC_GPIO5_INT_RAW    (BIT(5))
+#define DEDIC_GPIO5_INT_RAW_M  (DEDIC_GPIO5_INT_RAW_V << DEDIC_GPIO5_INT_RAW_S)
+#define DEDIC_GPIO5_INT_RAW_V  0x00000001
+#define DEDIC_GPIO5_INT_RAW_S  5
+/* DEDIC_GPIO6_INT_RAW:RO；位位置：[6]；默认值：0；当专用GPIO 6具有由DEDIC_GPIO_INTR_RCGN_REG配置的电平/边缘变化时，该中断原始位变为高电平。
+ */
+#define DEDIC_GPIO6_INT_RAW    (BIT(6))
+#define DEDIC_GPIO6_INT_RAW_M  (DEDIC_GPIO6_INT_RAW_V << DEDIC_GPIO6_INT_RAW_S)
+#define DEDIC_GPIO6_INT_RAW_V  0x00000001
+#define DEDIC_GPIO6_INT_RAW_S  6
+/* DEDIC_GPIO7_it_RAW:RO；位位置：[7]；默认值：0；当专用GPIO 7具有由DEDIC_GPIO_INTR_RCGN_REG配置的电平/边缘变化时，该中断原始位变为高电平。
+ */
+#define DEDIC_GPIO7_INT_RAW    (BIT(7))
+#define DEDIC_GPIO7_INT_RAW_M  (DEDIC_GPIO7_INT_RAW_V << DEDIC_GPIO7_INT_RAW_S)
+#define DEDIC_GPIO7_INT_RAW_V  0x00000001
+#define DEDIC_GPIO7_INT_RAW_S  7
+
+/** DEDIC_GPIO_INTR_RLS_REG寄存器中断启用位
+ */
+#define DEDIC_GPIO_INTR_RLS_REG (DR_REG_DEDICATED_GPIO_BASE + 0x24)
+/* DEDIC_GPIO0_INT_ENA:R/W；位位置：[0]；默认值：0；reg_gpio0_int_st寄存器的此启用位。
+ */
+#define DEDIC_GPIO0_INT_ENA    (BIT(0))
+#define DEDIC_GPIO0_INT_ENA_M  (DEDIC_GPIO0_INT_ENA_V << DEDIC_GPIO0_INT_ENA_S)
+#define DEDIC_GPIO0_INT_ENA_V  0x00000001
+#define DEDIC_GPIO0_INT_ENA_S  0
+/* DEDIC_GPIO1_INT_ENA:R/W；位位置：[1]；默认值：0；reg_gpio1_int_st寄存器的此启用位。
+ */
+#define DEDIC_GPIO1_INT_ENA    (BIT(1))
+#define DEDIC_GPIO1_INT_ENA_M  (DEDIC_GPIO1_INT_ENA_V << DEDIC_GPIO1_INT_ENA_S)
+#define DEDIC_GPIO1_INT_ENA_V  0x00000001
+#define DEDIC_GPIO1_INT_ENA_S  1
+/* DEDIC_GPIO2_INT_ENA:R/W；位位置：[2]；默认值：0；reg_gpio2_int_st寄存器的此启用位。
+ */
+#define DEDIC_GPIO2_INT_ENA    (BIT(2))
+#define DEDIC_GPIO2_INT_ENA_M  (DEDIC_GPIO2_INT_ENA_V << DEDIC_GPIO2_INT_ENA_S)
+#define DEDIC_GPIO2_INT_ENA_V  0x00000001
+#define DEDIC_GPIO2_INT_ENA_S  2
+/* DEDIC_GPIO3_INT_ENA:R/W；位位置：[3]；默认值：0；reg_gpio3_int_st寄存器的此启用位。
+ */
+#define DEDIC_GPIO3_INT_ENA    (BIT(3))
+#define DEDIC_GPIO3_INT_ENA_M  (DEDIC_GPIO3_INT_ENA_V << DEDIC_GPIO3_INT_ENA_S)
+#define DEDIC_GPIO3_INT_ENA_V  0x00000001
+#define DEDIC_GPIO3_INT_ENA_S  3
+/* DEDIC_GPIO4_INT_ENA:R/W；位位置：[4]；默认值：0；reg_gpio4_int_st寄存器的此启用位。
+ */
+#define DEDIC_GPIO4_INT_ENA    (BIT(4))
+#define DEDIC_GPIO4_INT_ENA_M  (DEDIC_GPIO4_INT_ENA_V << DEDIC_GPIO4_INT_ENA_S)
+#define DEDIC_GPIO4_INT_ENA_V  0x00000001
+#define DEDIC_GPIO4_INT_ENA_S  4
+/* DEDIC_GPIO5_INT_ENA:R/W；位位置：[5]；默认值：0；reg_gpio5_int_st寄存器的此启用位。
+ */
+#define DEDIC_GPIO5_INT_ENA    (BIT(5))
+#define DEDIC_GPIO5_INT_ENA_M  (DEDIC_GPIO5_INT_ENA_V << DEDIC_GPIO5_INT_ENA_S)
+#define DEDIC_GPIO5_INT_ENA_V  0x00000001
+#define DEDIC_GPIO5_INT_ENA_S  5
+/* DEDIC_GPIO6_INT_ENA:R/W；位位置：[6]；默认值：0；reg_gpio6_int_st寄存器的此启用位。
+ */
+#define DEDIC_GPIO6_INT_ENA    (BIT(6))
+#define DEDIC_GPIO6_INT_ENA_M  (DEDIC_GPIO6_INT_ENA_V << DEDIC_GPIO6_INT_ENA_S)
+#define DEDIC_GPIO6_INT_ENA_V  0x00000001
+#define DEDIC_GPIO6_INT_ENA_S  6
+/* DEDIC_GPIO7_INT_ENA:R/W；位位置：[7]；默认值：0；reg_gpio7_it_st寄存器的此启用位。
+ */
+#define DEDIC_GPIO7_INT_ENA    (BIT(7))
+#define DEDIC_GPIO7_INT_ENA_M  (DEDIC_GPIO7_INT_ENA_V << DEDIC_GPIO7_INT_ENA_S)
+#define DEDIC_GPIO7_INT_ENA_V  0x00000001
+#define DEDIC_GPIO7_INT_ENA_S  7
+
+/** DEDIC_GPIO_INTR_ST_REG寄存器屏蔽中断状态
+ */
+#define DEDIC_GPIO_INTR_ST_REG (DR_REG_DEDICATED_GPIO_BASE + 0x28)
+/* DEDIC_GPIO0_INT_ST:RO；位位置：[0]；默认值：0；这是reg_gpio0_int_ena设置为1时reg_gpio_int_raw的状态位。
+ */
+#define DEDIC_GPIO0_INT_ST    (BIT(0))
+#define DEDIC_GPIO0_INT_ST_M  (DEDIC_GPIO0_INT_ST_V << DEDIC_GPIO0_INT_ST_S)
+#define DEDIC_GPIO0_INT_ST_V  0x00000001
+#define DEDIC_GPIO0_INT_ST_S  0
+/* DEDIC_GPIO1_INT_ST:RO；位位置：[1]；默认值：0；这是reg_gpio1_int_ena设置为1时reg_gpiu1_int_raw的状态位。
+ */
+#define DEDIC_GPIO1_INT_ST    (BIT(1))
+#define DEDIC_GPIO1_INT_ST_M  (DEDIC_GPIO1_INT_ST_V << DEDIC_GPIO1_INT_ST_S)
+#define DEDIC_GPIO1_INT_ST_V  0x00000001
+#define DEDIC_GPIO1_INT_ST_S  1
+/* DEDIC_GPIO2_INT_ST:RO；位位置：[2]；默认值：0；这是reg_gpio2_int_ena设置为1时reg_gpio2_int_raw的状态位。
+ */
+#define DEDIC_GPIO2_INT_ST    (BIT(2))
+#define DEDIC_GPIO2_INT_ST_M  (DEDIC_GPIO2_INT_ST_V << DEDIC_GPIO2_INT_ST_S)
+#define DEDIC_GPIO2_INT_ST_V  0x00000001
+#define DEDIC_GPIO2_INT_ST_S  2
+/* DEDIC_GPIO3_INT_ST:RO；位位置：[3]；默认值：0；这是reg_gpio3_int_ena设置为1时reg_gpio3_int_raw的状态位。
+ */
+#define DEDIC_GPIO3_INT_ST    (BIT(3))
+#define DEDIC_GPIO3_INT_ST_M  (DEDIC_GPIO3_INT_ST_V << DEDIC_GPIO3_INT_ST_S)
+#define DEDIC_GPIO3_INT_ST_V  0x00000001
+#define DEDIC_GPIO3_INT_ST_S  3
+/* DEDIC_GPIO4_INT_ST:RO；位位置：[4]；默认值：0；这是reg_gpio_int_ena设置为1时reg_gpiO_int_raw的状态位。
+ */
+#define DEDIC_GPIO4_INT_ST    (BIT(4))
+#define DEDIC_GPIO4_INT_ST_M  (DEDIC_GPIO4_INT_ST_V << DEDIC_GPIO4_INT_ST_S)
+#define DEDIC_GPIO4_INT_ST_V  0x00000001
+#define DEDIC_GPIO4_INT_ST_S  4
+/* DEDIC_GPIO5_INT_ST:RO；位位置：[5]；默认值：0；这是reg_gpio5_int_ena设置为1时reg_gpio_int_raw的状态位。
+ */
+#define DEDIC_GPIO5_INT_ST    (BIT(5))
+#define DEDIC_GPIO5_INT_ST_M  (DEDIC_GPIO5_INT_ST_V << DEDIC_GPIO5_INT_ST_S)
+#define DEDIC_GPIO5_INT_ST_V  0x00000001
+#define DEDIC_GPIO5_INT_ST_S  5
+/* DEDIC_GPIO6_INT_ST:RO；位位置：[6]；默认值：0；当reg_gpio6_int_ena设置为1时，这是reg_gpio 6_int_raw的状态位。
+ */
+#define DEDIC_GPIO6_INT_ST    (BIT(6))
+#define DEDIC_GPIO6_INT_ST_M  (DEDIC_GPIO6_INT_ST_V << DEDIC_GPIO6_INT_ST_S)
+#define DEDIC_GPIO6_INT_ST_V  0x00000001
+#define DEDIC_GPIO6_INT_ST_S  6
+/* DEDIC_GPIO7_INT_ST:RO；位位置：[7]；默认值：0；这是reg_gpio7_int_ena设置为1时reg_gpio 7_int_raw的状态位。
+ */
+#define DEDIC_GPIO7_INT_ST    (BIT(7))
+#define DEDIC_GPIO7_INT_ST_M  (DEDIC_GPIO7_INT_ST_V << DEDIC_GPIO7_INT_ST_S)
+#define DEDIC_GPIO7_INT_ST_V  0x00000001
+#define DEDIC_GPIO7_INT_ST_S  7
+
+/** DEDIC_GPIO_INTR_CLR_REG寄存器中断清除位
+ */
+#define DEDIC_GPIO_INTR_CLR_REG (DR_REG_DEDICATED_GPIO_BASE + 0x2c)
+/* DEDIC_GPIO0_INT_CLR:WO；位位置：[0]；默认值：0；设置此位以清除reg_gpio0_int_raw中断。
+ */
+#define DEDIC_GPIO0_INT_CLR    (BIT(0))
+#define DEDIC_GPIO0_INT_CLR_M  (DEDIC_GPIO0_INT_CLR_V << DEDIC_GPIO0_INT_CLR_S)
+#define DEDIC_GPIO0_INT_CLR_V  0x00000001
+#define DEDIC_GPIO0_INT_CLR_S  0
+/* DEDIC_GPIO1_INT_CLR:WO；位位置：[1]；默认值：0；设置此位以清除reg_gpio1_int_raw中断。
+ */
+#define DEDIC_GPIO1_INT_CLR    (BIT(1))
+#define DEDIC_GPIO1_INT_CLR_M  (DEDIC_GPIO1_INT_CLR_V << DEDIC_GPIO1_INT_CLR_S)
+#define DEDIC_GPIO1_INT_CLR_V  0x00000001
+#define DEDIC_GPIO1_INT_CLR_S  1
+/* DEDIC_GPIO2_INT_CLR:WO；位位置：[2]；默认值：0；设置此位以清除reg_gpio2_int_raw中断。
+ */
+#define DEDIC_GPIO2_INT_CLR    (BIT(2))
+#define DEDIC_GPIO2_INT_CLR_M  (DEDIC_GPIO2_INT_CLR_V << DEDIC_GPIO2_INT_CLR_S)
+#define DEDIC_GPIO2_INT_CLR_V  0x00000001
+#define DEDIC_GPIO2_INT_CLR_S  2
+/* DEDIC_GPIO3_INT_CLR:WO；位位置：[3]；默认值：0；设置此位以清除reg_gpio3_int_raw中断。
+ */
+#define DEDIC_GPIO3_INT_CLR    (BIT(3))
+#define DEDIC_GPIO3_INT_CLR_M  (DEDIC_GPIO3_INT_CLR_V << DEDIC_GPIO3_INT_CLR_S)
+#define DEDIC_GPIO3_INT_CLR_V  0x00000001
+#define DEDIC_GPIO3_INT_CLR_S  3
+/* DEDIC_GPIO4_INT_CLR:WO；位位置：[4]；默认值：0；设置此位以清除reg_gpio4_int_raw中断。
+ */
+#define DEDIC_GPIO4_INT_CLR    (BIT(4))
+#define DEDIC_GPIO4_INT_CLR_M  (DEDIC_GPIO4_INT_CLR_V << DEDIC_GPIO4_INT_CLR_S)
+#define DEDIC_GPIO4_INT_CLR_V  0x00000001
+#define DEDIC_GPIO4_INT_CLR_S  4
+/* DEDIC_GPIO5_INT_CLR:WO；位位置：[5]；默认值：0；设置此位以清除reg_gpio5_int_raw中断。
+ */
+#define DEDIC_GPIO5_INT_CLR    (BIT(5))
+#define DEDIC_GPIO5_INT_CLR_M  (DEDIC_GPIO5_INT_CLR_V << DEDIC_GPIO5_INT_CLR_S)
+#define DEDIC_GPIO5_INT_CLR_V  0x00000001
+#define DEDIC_GPIO5_INT_CLR_S  5
+/* DEDIC_GPIO6_INT_CLR:WO；位位置：[6]；默认值：0；设置此位以清除reg_gpio6_int_raw中断。
+ */
+#define DEDIC_GPIO6_INT_CLR    (BIT(6))
+#define DEDIC_GPIO6_INT_CLR_M  (DEDIC_GPIO6_INT_CLR_V << DEDIC_GPIO6_INT_CLR_S)
+#define DEDIC_GPIO6_INT_CLR_V  0x00000001
+#define DEDIC_GPIO6_INT_CLR_S  6
+/* DEDIC_GPIO7_INT_CLR:WO；位位置：[7]；默认值：0；设置此位以清除reg_gpio7_it_raw中断。
+ */
+#define DEDIC_GPIO7_INT_CLR    (BIT(7))
+#define DEDIC_GPIO7_INT_CLR_M  (DEDIC_GPIO7_INT_CLR_V << DEDIC_GPIO7_INT_CLR_S)
+#define DEDIC_GPIO7_INT_CLR_V  0x00000001
+#define DEDIC_GPIO7_INT_CLR_S  7
+
+#ifdef __cplusplus
+}
+#endif
+

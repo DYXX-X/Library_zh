@@ -1,0 +1,2309 @@
+// 版权所有2017-2018 Espressif Systems（上海）私人有限公司
+//
+// 根据Apache许可证2.0版（“许可证”）获得许可；
+// 除非符合许可证，否则不得使用此文件。
+// 您可以在以下地址获取许可证副本：
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// 除非适用法律要求或书面同意，软件
+// 根据许可证分发的内容是按“原样”分发的，
+// 无任何明示或暗示的保证或条件。
+// 有关管理权限和
+// 许可证下的限制。
+#ifndef _SOC_EFUSE_REG_H_
+#define _SOC_EFUSE_REG_H_
+
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+#include "soc.h"
+#define EFUSE_PGM_DATA0_REG          (DR_REG_EFUSE_BASE + 0x000)
+/* EFUSE_WR_DIS:R/W；位位置：[31:0]；默认值：32'h0；*/
+/*description:设置此位以禁用eFuse编程。*/
+#define EFUSE_WR_DIS  0xFFFFFFFF
+#define EFUSE_WR_DIS_M  ((EFUSE_WR_DIS_V)<<(EFUSE_WR_DIS_S))
+#define EFUSE_WR_DIS_V  0xFFFFFFFF
+#define EFUSE_WR_DIS_S  0
+
+#define EFUSE_PGM_DATA1_REG          (DR_REG_EFUSE_BASE + 0x004)
+/* EFUSE_VDD_SPI_DREFH:R/W；比特位置：[31:30]；默认值：2'h0；*/
+/*描述：SPI稳压器高压参考。*/
+#define EFUSE_VDD_SPI_DREFH  0x00000003
+#define EFUSE_VDD_SPI_DREFH_M  ((EFUSE_VDD_SPI_DREFH_V)<<(EFUSE_VDD_SPI_DREFH_S))
+#define EFUSE_VDD_SPI_DREFH_V  0x3
+#define EFUSE_VDD_SPI_DREFH_S  30
+/* EFUSE_VDD_SPI_MODECURLIM:R/W；位位置：[29]；默认值：1'0；*/
+/*描述：SPI调节器切换电流限制模式。*/
+#define EFUSE_VDD_SPI_MODECURLIM  (BIT(29))
+#define EFUSE_VDD_SPI_MODECURLIM_M  (BIT(29))
+#define EFUSE_VDD_SPI_MODECURLIM_V  0x1
+#define EFUSE_VDD_SPI_MODECURLIM_S  29
+/* EFUSE_RPT4_RESERVED0:RO；位位置：[28:27]；默认值：2'h0；*/
+/*description:保留（用于四种备份方法）。*/
+#define EFUSE_RPT4_RESERVED0  0x00000003
+#define EFUSE_RPT4_RESERVED0_M  ((EFUSE_RPT4_RESERVED0_V)<<(EFUSE_RPT4_RESERVED0_S))
+#define EFUSE_RPT4_RESERVED0_V  0x3
+#define EFUSE_RPT4_RESERVED0_S  27
+/* EFUSE_USB_FORCE_NOPERSIST:R/W；位位置：[26]；默认值：1'0；*/
+/*description:强制nopersist为1。*/
+#define EFUSE_USB_FORCE_NOPERSIST  (BIT(26))
+#define EFUSE_USB_FORCE_NOPERSIST_M  (BIT(26))
+#define EFUSE_USB_FORCE_NOPERSIST_V  0x1
+#define EFUSE_USB_FORCE_NOPERSIST_S  26
+/* EFUSE_USB_EXT_PHY_ENABLE:R/W；位位置：[25]；默认值：1'0；*/
+/*description:设置此位以启用外部PHY。*/
+#define EFUSE_USB_EXT_PHY_ENABLE  (BIT(25))
+#define EFUSE_USB_EXT_PHY_ENABLE_M  (BIT(25))
+#define EFUSE_USB_EXT_PHY_ENABLE_V  0x1
+#define EFUSE_USB_EXT_PHY_ENABLE_S  25
+/* EFUSE_USB_EXCHG_PINS：R/W；位位置：[24]；默认值：1'0；*/
+/*description:设置此位以交换D+和D-引脚。*/
+#define EFUSE_USB_EXCHG_PINS  (BIT(24))
+#define EFUSE_USB_EXCHG_PINS_M  (BIT(24))
+#define EFUSE_USB_EXCHG_PINS_V  0x1
+#define EFUSE_USB_EXCHG_PINS_S  24
+/* EFUSE_USB_DREFL:R/W；比特位置：[23:22]；默认值：2'h0；*/
+/*描述：控制单端输入阈值vrefl 0.8 V至1.04 V，步长为80 mV，存储在eFuse中。*/
+#define EFUSE_USB_DREFL  0x00000003
+#define EFUSE_USB_DREFL_M  ((EFUSE_USB_DREFL_V)<<(EFUSE_USB_DREFL_S))
+#define EFUSE_USB_DREFL_V  0x3
+#define EFUSE_USB_DREFL_S  22
+/* EFUSE_USB_DREFH:R/W；比特位置：[21:20]；默认值：2'h0；*/
+/*描述：控制存储在eFuse中的单端输入阈值vrefh 1.76 V至2 V，步长为80 mV。*/
+#define EFUSE_USB_DREFH  0x00000003
+#define EFUSE_USB_DREFH_M  ((EFUSE_USB_DREFH_V)<<(EFUSE_USB_DREFH_S))
+#define EFUSE_USB_DREFH_V  0x3
+#define EFUSE_USB_DREFH_S  20
+/* EFUSE_DIS_DOWNLOAD_MANUAL_ENCRYPT:R/W；位位置：[19]；默认值：1'0；*/
+/*description:设置此位以禁用闪存加密功能（SPI/HSPI/Legacy_SPI引导模式除外）。*/
+#define EFUSE_DIS_DOWNLOAD_MANUAL_ENCRYPT  (BIT(19))
+#define EFUSE_DIS_DOWNLOAD_MANUAL_ENCRYPT_M  (BIT(19))
+#define EFUSE_DIS_DOWNLOAD_MANUAL_ENCRYPT_V  0x1
+#define EFUSE_DIS_DOWNLOAD_MANUAL_ENCRYPT_S  19
+/* EFUSE_HARD_DIS_JTAG:R/W；位位置：[18]；默认值：1'0；*/
+/*description:设置此位以禁用JTAG。JTAG被永久禁用。*/
+#define EFUSE_HARD_DIS_JTAG  (BIT(18))
+#define EFUSE_HARD_DIS_JTAG_M  (BIT(18))
+#define EFUSE_HARD_DIS_JTAG_V  0x1
+#define EFUSE_HARD_DIS_JTAG_S  18
+/* EFUSE_SOFT_DIS_JTAG:R/W；位位置：[17]；默认值：1'0；*/
+/*description:设置此位以软方式禁用JTAG。JTAG可在HMAC模块中启用。*/
+#define EFUSE_SOFT_DIS_JTAG  (BIT(17))
+#define EFUSE_SOFT_DIS_JTAG_M  (BIT(17))
+#define EFUSE_SOFT_DIS_JTAG_V  0x1
+#define EFUSE_SOFT_DIS_JTAG_S  17
+/* EFUSE_DIS_EFUSE_ATE_WR:R/W；位位置：[16]；默认值：1'0；*/
+/*description:设置此位以禁用通过ATE模式编程eFuse。*/
+#define EFUSE_DIS_EFUSE_ATE_WR  (BIT(16))
+#define EFUSE_DIS_EFUSE_ATE_WR_M  (BIT(16))
+#define EFUSE_DIS_EFUSE_ATE_WR_V  0x1
+#define EFUSE_DIS_EFUSE_ATE_WR_S  16
+/* EFUSE_DIS_BOOT_REMAP:R/W；位位置：[15]；默认值：1'0；*/
+/*description:设置此位以禁用从RAM到ROM的引导重映射。*/
+#define EFUSE_DIS_BOOT_REMAP  (BIT(15))
+#define EFUSE_DIS_BOOT_REMAP_M  (BIT(15))
+#define EFUSE_DIS_BOOT_REMAP_V  0x1
+#define EFUSE_DIS_BOOT_REMAP_S  15
+/* EFUSE_DIS_CAN:R/W；位位置：[14]；默认值：1'0；*/
+/*description:设置此位以禁用CAN功能。*/
+#define EFUSE_DIS_CAN  (BIT(14))
+#define EFUSE_DIS_CAN_M  (BIT(14))
+#define EFUSE_DIS_CAN_V  0x1
+#define EFUSE_DIS_CAN_S  14
+/* EFUSE_DIS_USB:R/W；位位置：[13]；默认值：1'0；*/
+/*description:设置此位以禁用USB功能。*/
+#define EFUSE_DIS_USB  (BIT(13))
+#define EFUSE_DIS_USB_M  (BIT(13))
+#define EFUSE_DIS_USB_V  0x1
+#define EFUSE_DIS_USB_S  13
+/* EFUSE_DIS_FORCE_DOWNLOAD:R/W；位位置：[12]；默认值：1'0；*/
+/*description:设置此位以禁用强制芯片进入下载模式的功能。*/
+#define EFUSE_DIS_FORCE_DOWNLOAD  (BIT(12))
+#define EFUSE_DIS_FORCE_DOWNLOAD_M  (BIT(12))
+#define EFUSE_DIS_FORCE_DOWNLOAD_V  0x1
+#define EFUSE_DIS_FORCE_DOWNLOAD_S  12
+/* EFUSE_DIS_DOWNLOAD_DCACHE:R/W；位位置：[11]；默认值：1'0；*/
+/*description:将此位设置为在下载模式下禁用Dcache（boot_mode[3:0]为0 1 2 3 6 7）。*/
+#define EFUSE_DIS_DOWNLOAD_DCACHE  (BIT(11))
+#define EFUSE_DIS_DOWNLOAD_DCACHE_M  (BIT(11))
+#define EFUSE_DIS_DOWNLOAD_DCACHE_V  0x1
+#define EFUSE_DIS_DOWNLOAD_DCACHE_S  11
+/* EFUSE_DIS_DOWNLOAD_ICACHE：R/W；位位置：[10]；默认值：1'0；*/
+/*description:将此位设置为在下载模式下禁用Icache（boot_mode[3:0]为0 1 2 3 6 7）。*/
+#define EFUSE_DIS_DOWNLOAD_ICACHE  (BIT(10))
+#define EFUSE_DIS_DOWNLOAD_ICACHE_M  (BIT(10))
+#define EFUSE_DIS_DOWNLOAD_ICACHE_V  0x1
+#define EFUSE_DIS_DOWNLOAD_ICACHE_S  10
+/* EFUSE_DIS_dache:R/W；位位置：[9]；默认值：1'0；*/
+/*description:设置此位以禁用Dcache。*/
+#define EFUSE_DIS_DCACHE  (BIT(9))
+#define EFUSE_DIS_DCACHE_M  (BIT(9))
+#define EFUSE_DIS_DCACHE_V  0x1
+#define EFUSE_DIS_DCACHE_S  9
+/* EFUSE_DIS_inache:R/W；位位置：[8]；默认值：1'0；*/
+/*description:设置此位以禁用Icache。*/
+#define EFUSE_DIS_ICACHE  (BIT(8))
+#define EFUSE_DIS_ICACHE_M  (BIT(8))
+#define EFUSE_DIS_ICACHE_V  0x1
+#define EFUSE_DIS_ICACHE_S  8
+/* EFUSE_DIS_RTC_RAM_BOOT:R/W；位位置：[7]；默认值：1'0；*/
+/*description:设置此位以禁用从RTC RAM启动。*/
+#define EFUSE_DIS_RTC_RAM_BOOT  (BIT(7))
+#define EFUSE_DIS_RTC_RAM_BOOT_M  (BIT(7))
+#define EFUSE_DIS_RTC_RAM_BOOT_V  0x1
+#define EFUSE_DIS_RTC_RAM_BOOT_S  7
+/* EFUSE_RD_DIS:R/W；比特位置：[6:0]；默认值：7'0；*/
+/*description:设置此位以禁用从BlOCK4-10读取。*/
+#define EFUSE_RD_DIS  0x0000007F
+#define EFUSE_RD_DIS_M  ((EFUSE_RD_DIS_V)<<(EFUSE_RD_DIS_S))
+#define EFUSE_RD_DIS_V  0x7F
+#define EFUSE_RD_DIS_S  0
+
+#define EFUSE_RD_DIS_KEY0 (1<<0)
+#define EFUSE_RD_DIS_KEY1 (1<<1)
+#define EFUSE_RD_DIS_KEY2 (1<<2)
+#define EFUSE_RD_DIS_KEY3 (1<<3)
+#define EFUSE_RD_DIS_KEY4 (1<<4)
+#define EFUSE_RD_DIS_KEY5 (1<<5)
+#define EFUSE_RD_DIS_SYS_DATA_PART2 (1<<6)
+
+#define EFUSE_PGM_DATA2_REG          (DR_REG_EFUSE_BASE + 0x008)
+/* EFUSE_KEY_PURPOSE_1:R/W；位位置：[31:28]；默认值：4'0；*/
+/*description:键1的用途。请参阅表KEY_Purpose值。*/
+#define EFUSE_KEY_PURPOSE_1  0x0000000F
+#define EFUSE_KEY_PURPOSE_1_M  ((EFUSE_KEY_PURPOSE_1_V)<<(EFUSE_KEY_PURPOSE_1_S))
+#define EFUSE_KEY_PURPOSE_1_V  0xF
+#define EFUSE_KEY_PURPOSE_1_S  28
+/* EFUSE_KEY_PURPOSE_0:R/W；位位置：[27:24]；默认值：4'0；*/
+/*description:Key0的用途。请参阅表KEY_Purpose值。*/
+#define EFUSE_KEY_PURPOSE_0  0x0000000F
+#define EFUSE_KEY_PURPOSE_0_M  ((EFUSE_KEY_PURPOSE_0_V)<<(EFUSE_KEY_PURPOSE_0_S))
+#define EFUSE_KEY_PURPOSE_0_V  0xF
+#define EFUSE_KEY_PURPOSE_0_S  24
+/* EFUSE_SECURE_BOOT_KEY_REVOKE2:R/W；位位置：[23]；默认值：1'0；*/
+/*description:设置此位以启用撤销第三个安全启动密钥。*/
+#define EFUSE_SECURE_BOOT_KEY_REVOKE2  (BIT(23))
+#define EFUSE_SECURE_BOOT_KEY_REVOKE2_M  (BIT(23))
+#define EFUSE_SECURE_BOOT_KEY_REVOKE2_V  0x1
+#define EFUSE_SECURE_BOOT_KEY_REVOKE2_S  23
+/* EFUSE_SECURE_BOOT_KEY_REVOKE1:R/W；位位置：[22]；默认值：1'0；*/
+/*description:设置此位以启用撤销第二个安全启动密钥。*/
+#define EFUSE_SECURE_BOOT_KEY_REVOKE1  (BIT(22))
+#define EFUSE_SECURE_BOOT_KEY_REVOKE1_M  (BIT(22))
+#define EFUSE_SECURE_BOOT_KEY_REVOKE1_V  0x1
+#define EFUSE_SECURE_BOOT_KEY_REVOKE1_S  22
+/* EFUSE_SECURE_BOOT_KEY_REVOKE0:R/W；位位置：[21]；默认值：1'0；*/
+/*description:设置此位以启用撤销第一个安全启动密钥。*/
+#define EFUSE_SECURE_BOOT_KEY_REVOKE0  (BIT(21))
+#define EFUSE_SECURE_BOOT_KEY_REVOKE0_M  (BIT(21))
+#define EFUSE_SECURE_BOOT_KEY_REVOKE0_V  0x1
+#define EFUSE_SECURE_BOOT_KEY_REVOKE0_S  21
+/* EFUSE_SPI_BOOT_CRYPT_CNT:R/W；比特位置：[20:18]；默认值：3'h0；*/
+/*description:设置此位以启用SPI引导加密/解密。奇数1：启用*/
+#define EFUSE_SPI_BOOT_CRYPT_CNT  0x00000007
+#define EFUSE_SPI_BOOT_CRYPT_CNT_M  ((EFUSE_SPI_BOOT_CRYPT_CNT_V)<<(EFUSE_SPI_BOOT_CRYPT_CNT_S))
+#define EFUSE_SPI_BOOT_CRYPT_CNT_V  0x7
+#define EFUSE_SPI_BOOT_CRYPT_CNT_S  18
+/* EFUSE_WAT_DELAY_SEL:R/W；比特位置：[17:16]；默认值：2'h0；*/
+/*description:选择RTC看门狗超时阈值。*/
+#define EFUSE_WAT_DELAY_SEL  0x00000003
+#define EFUSE_WAT_DELAY_SEL_M  ((EFUSE_WAT_DELAY_SEL_V)<<(EFUSE_WAT_DELAY_SEL_S))
+#define EFUSE_WAT_DELAY_SEL_V  0x3
+#define EFUSE_WAT_DELAY_SEL_S  16
+/* EFUSE_VDD_SPI_DCAP:R/W；比特位置：[15:14]；默认值：2'h0；*/
+/*描述：防止SPI调节器过冲。*/
+#define EFUSE_VDD_SPI_DCAP  0x00000003
+#define EFUSE_VDD_SPI_DCAP_M  ((EFUSE_VDD_SPI_DCAP_V)<<(EFUSE_VDD_SPI_DCAP_S))
+#define EFUSE_VDD_SPI_DCAP_V  0x3
+#define EFUSE_VDD_SPI_DCAP_S  14
+/* EFUSE_VDD_SPI_INIT:R/W；比特位置：[13:12]；默认值：2'h0；*/
+/*description:将LDO输出端的电阻器添加到地。0：无电阻*/
+#define EFUSE_VDD_SPI_INIT  0x00000003
+#define EFUSE_VDD_SPI_INIT_M  ((EFUSE_VDD_SPI_INIT_V)<<(EFUSE_VDD_SPI_INIT_S))
+#define EFUSE_VDD_SPI_INIT_V  0x3
+#define EFUSE_VDD_SPI_INIT_S  12
+/* EFUSE_VDD_SPI_DCURLIM:R/W；比特位置：[11:9]；默认值：3'h0；*/
+/*描述：当tieh=0约800 mA/（8+d）时，调整SPI调节器的电流限制阈值。*/
+#define EFUSE_VDD_SPI_DCURLIM  0x00000007
+#define EFUSE_VDD_SPI_DCURLIM_M  ((EFUSE_VDD_SPI_DCURLIM_V)<<(EFUSE_VDD_SPI_DCURLIM_S))
+#define EFUSE_VDD_SPI_DCURLIM_V  0x7
+#define EFUSE_VDD_SPI_DCURLIM_S  9
+/* EFUSE_VDD_SPI_ENCURLIM:R/W；位位置：[8]；默认值：1'0；*/
+/*description:将SPI调节器设置为1以启用输出电流限制。*/
+#define EFUSE_VDD_SPI_ENCURLIM  (BIT(8))
+#define EFUSE_VDD_SPI_ENCURLIM_M  (BIT(8))
+#define EFUSE_VDD_SPI_ENCURLIM_V  0x1
+#define EFUSE_VDD_SPI_ENCURLIM_S  8
+/* EFUSE_VDD_SPI_EN_INIT:R/W；位位置：[7]；默认值：1'0；*/
+/*description:将SPI调节器设置为0以配置init[1:0]=0。*/
+#define EFUSE_VDD_SPI_EN_INIT  (BIT(7))
+#define EFUSE_VDD_SPI_EN_INIT_M  (BIT(7))
+#define EFUSE_VDD_SPI_EN_INIT_V  0x1
+#define EFUSE_VDD_SPI_EN_INIT_S  7
+/* EFUSE_VDD_SPI_FORCE:R/W；位位置：[6]；默认值：1'0；*/
+/*description:设置此位并强制使用eFuse的配置来配置VDD_SPI。*/
+#define EFUSE_VDD_SPI_FORCE  (BIT(6))
+#define EFUSE_VDD_SPI_FORCE_M  (BIT(6))
+#define EFUSE_VDD_SPI_FORCE_V  0x1
+#define EFUSE_VDD_SPI_FORCE_S  6
+/* EFUSE_VDD_SPI_TIEH:R/W；位位置：[5]；默认值：1'0；*/
+/*描述：SPI调节器输出短接至VDD3P3_RTC_IO。*/
+#define EFUSE_VDD_SPI_TIEH  (BIT(5))
+#define EFUSE_VDD_SPI_TIEH_M  (BIT(5))
+#define EFUSE_VDD_SPI_TIEH_V  0x1
+#define EFUSE_VDD_SPI_TIEH_S  5
+/* EFUSE_VDD_SPI_XPD:R/W；位位置：[4]；默认值：1'0；*/
+/*描述：SPI调节器通电信号。*/
+#define EFUSE_VDD_SPI_XPD  (BIT(4))
+#define EFUSE_VDD_SPI_XPD_M  (BIT(4))
+#define EFUSE_VDD_SPI_XPD_V  0x1
+#define EFUSE_VDD_SPI_XPD_S  4
+/* EFUSE_VDD_SPI_DREFL:R/W；位位置：[3:2]；默认值：2'h0；*/
+/*描述：SPI稳压器低电压参考。*/
+#define EFUSE_VDD_SPI_DREFL  0x00000003
+#define EFUSE_VDD_SPI_DREFL_M  ((EFUSE_VDD_SPI_DREFL_V)<<(EFUSE_VDD_SPI_DREFL_S))
+#define EFUSE_VDD_SPI_DREFL_V  0x3
+#define EFUSE_VDD_SPI_DREFL_S  2
+/* EFUSE_VDD_SPI_DREFM:R/W；位位置：[1:0]；默认值：2'h0；*/
+/*描述：SPI调节器中压参考。*/
+#define EFUSE_VDD_SPI_DREFM  0x00000003
+#define EFUSE_VDD_SPI_DREFM_M  ((EFUSE_VDD_SPI_DREFM_V)<<(EFUSE_VDD_SPI_DREFM_S))
+#define EFUSE_VDD_SPI_DREFM_V  0x3
+#define EFUSE_VDD_SPI_DREFM_S  0
+
+#define EFUSE_PGM_DATA3_REG          (DR_REG_EFUSE_BASE + 0x00c)
+/* EFUSE_FLASH_TPUW:R/W；位位置：[31:28]；默认值：4'0；*/
+/*description:以毫秒为单位配置通电后的闪存等待时间。当值为15时，等待时间为30毫秒。*/
+#define EFUSE_FLASH_TPUW  0x0000000F
+#define EFUSE_FLASH_TPUW_M  ((EFUSE_FLASH_TPUW_V)<<(EFUSE_FLASH_TPUW_S))
+#define EFUSE_FLASH_TPUW_V  0xF
+#define EFUSE_FLASH_TPUW_S  28
+/* EFUSE_RPT4_RESERVED1:RO；位位置：[27:22]；默认值：6'0；*/
+/*description:保留（用于四种备份方法）。*/
+#define EFUSE_RPT4_RESERVED1  0x0000003F
+#define EFUSE_RPT4_RESERVED1_M  ((EFUSE_RPT4_RESERVED1_V)<<(EFUSE_RPT4_RESERVED1_S))
+#define EFUSE_RPT4_RESERVED1_V  0x3F
+#define EFUSE_RPT4_RESERVED1_S  22
+/* EFUSE_SECURE_BOOT_AGGRESSIVE_REVOKE:R/W；位位置：[21]；默认值：1'0；*/
+/*description:设置此位以启用撤消攻击性安全引导。*/
+#define EFUSE_SECURE_BOOT_AGGRESSIVE_REVOKE  (BIT(21))
+#define EFUSE_SECURE_BOOT_AGGRESSIVE_REVOKE_M  (BIT(21))
+#define EFUSE_SECURE_BOOT_AGGRESSIVE_REVOKE_V  0x1
+#define EFUSE_SECURE_BOOT_AGGRESSIVE_REVOKE_S  21
+/* EFUSE_SECURE_BOOT_EN:R/W；位位置：[20]；默认值：1'0；*/
+/*description:设置此位以启用安全引导。*/
+#define EFUSE_SECURE_BOOT_EN  (BIT(20))
+#define EFUSE_SECURE_BOOT_EN_M  (BIT(20))
+#define EFUSE_SECURE_BOOT_EN_V  0x1
+#define EFUSE_SECURE_BOOT_EN_S  20
+/* EFUSE_KEY_PURPOSE_6:R/W；比特位置：[19:16]；默认值：4'0；*/
+/*description:键6的用途。请参阅表KEY_Purpose值。*/
+#define EFUSE_KEY_PURPOSE_6  0x0000000F
+#define EFUSE_KEY_PURPOSE_6_M  ((EFUSE_KEY_PURPOSE_6_V)<<(EFUSE_KEY_PURPOSE_6_S))
+#define EFUSE_KEY_PURPOSE_6_V  0xF
+#define EFUSE_KEY_PURPOSE_6_S  16
+/* EFUSE_KEY_PURPOSE_5:R/W；比特位置：[15:12]；默认值：4'0；*/
+/*description:键5的用途。请参阅表KEY_Purpose值。*/
+#define EFUSE_KEY_PURPOSE_5  0x0000000F
+#define EFUSE_KEY_PURPOSE_5_M  ((EFUSE_KEY_PURPOSE_5_V)<<(EFUSE_KEY_PURPOSE_5_S))
+#define EFUSE_KEY_PURPOSE_5_V  0xF
+#define EFUSE_KEY_PURPOSE_5_S  12
+/* EFUSE_KEY_PURPOSE_4:R/W；位位置：[11:8]；默认值：4'0；*/
+/*description:键4的用途。请参阅表KEY_Purpose值。*/
+#define EFUSE_KEY_PURPOSE_4  0x0000000F
+#define EFUSE_KEY_PURPOSE_4_M  ((EFUSE_KEY_PURPOSE_4_V)<<(EFUSE_KEY_PURPOSE_4_S))
+#define EFUSE_KEY_PURPOSE_4_V  0xF
+#define EFUSE_KEY_PURPOSE_4_S  8
+/* EFUSE_KEY_PURPOSE_3:R/W；位位置：[7:4]；默认值：4'0；*/
+/*description:键3的用途。请参阅表KEY_Purpose值。*/
+#define EFUSE_KEY_PURPOSE_3  0x0000000F
+#define EFUSE_KEY_PURPOSE_3_M  ((EFUSE_KEY_PURPOSE_3_V)<<(EFUSE_KEY_PURPOSE_3_S))
+#define EFUSE_KEY_PURPOSE_3_V  0xF
+#define EFUSE_KEY_PURPOSE_3_S  4
+/* EFUSE_KEY_PURPOSE_2:R/W；位位置：[3:0]；默认值：4'0；*/
+/*description:键2的用途。请参阅表KEY_Purpose值。*/
+#define EFUSE_KEY_PURPOSE_2  0x0000000F
+#define EFUSE_KEY_PURPOSE_2_M  ((EFUSE_KEY_PURPOSE_2_V)<<(EFUSE_KEY_PURPOSE_2_S))
+#define EFUSE_KEY_PURPOSE_2_V  0xF
+#define EFUSE_KEY_PURPOSE_2_S  0
+
+#define EFUSE_PGM_DATA4_REG          (DR_REG_EFUSE_BASE + 0x010)
+/* EFUSE_RPT4_RESERVED2:RO；位位置：[31:27]；默认值：5'h0；*/
+/*description:保留（用于四种备份方法）。*/
+#define EFUSE_RPT4_RESERVED2  0x0000001F
+#define EFUSE_RPT4_RESERVED2_M  ((EFUSE_RPT4_RESERVED2_V)<<(EFUSE_RPT4_RESERVED2_S))
+#define EFUSE_RPT4_RESERVED2_V  0x1F
+#define EFUSE_RPT4_RESERVED2_S  27
+/* EFUSE_SECURE_VERSION：R/W；比特位置：[26:11]；默认值：16'0；*/
+/*description:IDF安全版本。*/
+#define EFUSE_SECURE_VERSION  0x0000FFFF
+#define EFUSE_SECURE_VERSION_M  ((EFUSE_SECURE_VERSION_V)<<(EFUSE_SECURE_VERSION_S))
+#define EFUSE_SECURE_VERSION_V  0xFFFF
+#define EFUSE_SECURE_VERSION_S  11
+/* EFUSE_FORCE_SEND_RESUME:R/W；位位置：[10]；默认值：1'0；*/
+/*description:设置此位以强制ROM代码在SPI引导期间发送恢复命令。*/
+#define EFUSE_FORCE_SEND_RESUME  (BIT(10))
+#define EFUSE_FORCE_SEND_RESUME_M  (BIT(10))
+#define EFUSE_FORCE_SEND_RESUME_V  0x1
+#define EFUSE_FORCE_SEND_RESUME_S  10
+/* EFUSE_FLASH_TYPE:R/W；位位置：[9]；默认值：1'0；*/
+/*description:接口闪存的类型。0：四条数据线1：八条数据线。*/
+#define EFUSE_FLASH_TYPE  (BIT(9))
+#define EFUSE_FLASH_TYPE_M  (BIT(9))
+#define EFUSE_FLASH_TYPE_V  0x1
+#define EFUSE_FLASH_TYPE_S  9
+/* EFUSE_PIN_POWER_SELECTION:R/W；位位置：[8]；默认值：1'0；*/
+/*说明：GPIO33-GPIO37电源选择在ROM代码中。0:VDD3P3_CPU*/
+#define EFUSE_PIN_POWER_SELECTION  (BIT(8))
+#define EFUSE_PIN_POWER_SELECTION_M  (BIT(8))
+#define EFUSE_PIN_POWER_SELECTION_V  0x1
+#define EFUSE_PIN_POWER_SELECTION_S  8
+/* EFUSE_UART_PRINT_CONTROL:R/W；位位置：[7:6]；默认值：2'h0；*/
+/*description:UART打印控件的类型。00：强制打印。01：由GPIO46控制，低电平打印。10： 由GPIO46控制，高水平打印。11： 强制禁用打印。*/
+#define EFUSE_UART_PRINT_CONTROL  0x00000003
+#define EFUSE_UART_PRINT_CONTROL_M  ((EFUSE_UART_PRINT_CONTROL_V)<<(EFUSE_UART_PRINT_CONTROL_S))
+#define EFUSE_UART_PRINT_CONTROL_V  0x3
+#define EFUSE_UART_PRINT_CONTROL_S  6
+/* EFUSE_ENABLE_SECURITY_DOWNLOAD:R/W；位位置：[5]；默认值：1'0；*/
+/*description:设置此位以启用安全下载模式。*/
+#define EFUSE_ENABLE_SECURITY_DOWNLOAD  (BIT(5))
+#define EFUSE_ENABLE_SECURITY_DOWNLOAD_M  (BIT(5))
+#define EFUSE_ENABLE_SECURITY_DOWNLOAD_V  0x1
+#define EFUSE_ENABLE_SECURITY_DOWNLOAD_S  5
+/* EFUSE_DIS_USB_DOWNLOAD_MODE：R/W；位位置：[4]；默认值：1'0；*/
+/*description:设置此位以禁用通过USB下载。*/
+#define EFUSE_DIS_USB_DOWNLOAD_MODE  (BIT(4))
+#define EFUSE_DIS_USB_DOWNLOAD_MODE_M  (BIT(4))
+#define EFUSE_DIS_USB_DOWNLOAD_MODE_V  0x1
+#define EFUSE_DIS_USB_DOWNLOAD_MODE_S  4
+/* EFUSE_RPT4_RESERVED3:R/W；位位置：[3]；默认值：1'0；*/
+/*description:设置此位以禁用ROM中的微型基本控制台。*/
+#define EFUSE_RPT4_RESERVED3  (BIT(3))
+#define EFUSE_RPT4_RESERVED3_M  (BIT(3))
+#define EFUSE_RPT4_RESERVED3_V  0x1
+#define EFUSE_RPT4_RESERVED3_S  3
+/* EFUSE_UART_PRINT_CHANNEL:R/W；位位置：[2]；默认值：1'0；*/
+/*description:选择UART打印通道。0:UART0*/
+#define EFUSE_UART_PRINT_CHANNEL  (BIT(2))
+#define EFUSE_UART_PRINT_CHANNEL_M  (BIT(2))
+#define EFUSE_UART_PRINT_CHANNEL_V  0x1
+#define EFUSE_UART_PRINT_CHANNEL_S  2
+/* EFUSE_DIS_LEGACY_SPI_BOOT:R/W；位位置：[1]；默认值：1'0；*/
+/*description:设置此位以禁用传统SPI引导模式（boot_mode[3:0]=4）。*/
+#define EFUSE_DIS_LEGACY_SPI_BOOT  (BIT(1))
+#define EFUSE_DIS_LEGACY_SPI_BOOT_M  (BIT(1))
+#define EFUSE_DIS_LEGACY_SPI_BOOT_V  0x1
+#define EFUSE_DIS_LEGACY_SPI_BOOT_S  1
+/* EFUSE_DIS_DOWNLOAD_MODE：R/W；位位置：[0]；默认值：1'0；*/
+/*description:将此位设置为禁用下载模式（boot_mode[3:0]=0 1 2 3 6 7）。*/
+#define EFUSE_DIS_DOWNLOAD_MODE  (BIT(0))
+#define EFUSE_DIS_DOWNLOAD_MODE_M  (BIT(0))
+#define EFUSE_DIS_DOWNLOAD_MODE_V  0x1
+#define EFUSE_DIS_DOWNLOAD_MODE_S  0
+
+#define EFUSE_PGM_DATA5_REG          (DR_REG_EFUSE_BASE + 0x014)
+/* EFUSE_RPT1_RESERVED0:RO；位位置：[31:24]；默认值：8'0；*/
+/*description:保留。*/
+#define EFUSE_RPT1_RESERVED0  0x000000FF
+#define EFUSE_RPT1_RESERVED0_M  ((EFUSE_RPT1_RESERVED0_V)<<(EFUSE_RPT1_RESERVED0_S))
+#define EFUSE_RPT1_RESERVED0_V  0xFF
+#define EFUSE_RPT1_RESERVED0_S  24
+/* EFUSE_RPT4_RESERVED4:RO；比特位置：[23:0]；默认值：24小时；*/
+/*description:保留（用于四种备份方法）。*/
+#define EFUSE_RPT4_RESERVED4  0x00FFFFFF
+#define EFUSE_RPT4_RESERVED4_M  ((EFUSE_RPT4_RESERVED4_V)<<(EFUSE_RPT4_RESERVED4_S))
+#define EFUSE_RPT4_RESERVED4_V  0xFFFFFF
+#define EFUSE_RPT4_RESERVED4_S  0
+
+#define EFUSE_PGM_DATA6_REG          (DR_REG_EFUSE_BASE + 0x018)
+/* EFUSE_PGM_DATA_6:R/W；位位置：[31:0]；默认值：32'h0；*/
+/*description:要编程的第六个32位数据的内容。*/
+#define EFUSE_PGM_DATA_6  0xFFFFFFFF
+#define EFUSE_PGM_DATA_6_M  ((EFUSE_PGM_DATA_6_V)<<(EFUSE_PGM_DATA_6_S))
+#define EFUSE_PGM_DATA_6_V  0xFFFFFFFF
+#define EFUSE_PGM_DATA_6_S  0
+
+#define EFUSE_PGM_DATA7_REG          (DR_REG_EFUSE_BASE + 0x01c)
+/* EFUSE_PGM_DATA_7:R/W；位位置：[31:0]；默认值：32'h0；*/
+/*description:pgm数据的值7。*/
+#define EFUSE_PGM_DATA_7  0xFFFFFFFF
+#define EFUSE_PGM_DATA_7_M  ((EFUSE_PGM_DATA_7_V)<<(EFUSE_PGM_DATA_7_S))
+#define EFUSE_PGM_DATA_7_V  0xFFFFFFFF
+#define EFUSE_PGM_DATA_7_S  0
+
+#define EFUSE_PGM_CHECK_VALUE0_REG          (DR_REG_EFUSE_BASE + 0x020)
+/* EFUSE_PGM_RS_DATA_0:R/W；位位置：[31:0]；默认值：32'h0；*/
+/*description:要编程的第0个32位RS代码的内容。*/
+#define EFUSE_PGM_RS_DATA_0  0xFFFFFFFF
+#define EFUSE_PGM_RS_DATA_0_M  ((EFUSE_PGM_RS_DATA_0_V)<<(EFUSE_PGM_RS_DATA_0_S))
+#define EFUSE_PGM_RS_DATA_0_V  0xFFFFFFFF
+#define EFUSE_PGM_RS_DATA_0_S  0
+
+#define EFUSE_PGM_CHECK_VALUE1_REG          (DR_REG_EFUSE_BASE + 0x024)
+/* EFUSE_PGM_RS_DATA_1:R/W；位位置：[31:0]；默认值：32'h0；*/
+/*description:要编程的第一个32位RS代码的内容。*/
+#define EFUSE_PGM_RS_DATA_1  0xFFFFFFFF
+#define EFUSE_PGM_RS_DATA_1_M  ((EFUSE_PGM_RS_DATA_1_V)<<(EFUSE_PGM_RS_DATA_1_S))
+#define EFUSE_PGM_RS_DATA_1_V  0xFFFFFFFF
+#define EFUSE_PGM_RS_DATA_1_S  0
+
+#define EFUSE_PGM_CHECK_VALUE2_REG          (DR_REG_EFUSE_BASE + 0x028)
+/* EFUSE_PGM_RS_DATA_2:R/W；位位置：[31:0]；默认值：32'h0；*/
+/*description:要编程的第二个32位RS代码的内容。*/
+#define EFUSE_PGM_RS_DATA_2  0xFFFFFFFF
+#define EFUSE_PGM_RS_DATA_2_M  ((EFUSE_PGM_RS_DATA_2_V)<<(EFUSE_PGM_RS_DATA_2_S))
+#define EFUSE_PGM_RS_DATA_2_V  0xFFFFFFFF
+#define EFUSE_PGM_RS_DATA_2_S  0
+
+#define EFUSE_RD_WR_DIS_REG          (DR_REG_EFUSE_BASE + 0x02c)
+/* EFUSE_WR_DIS:RO；位位置：[31:0]；默认值：32'h0；*/
+/*description:WR_DIS的值。*/
+#define EFUSE_WR_DIS  0xFFFFFFFF
+#define EFUSE_WR_DIS_M  ((EFUSE_WR_DIS_V)<<(EFUSE_WR_DIS_S))
+#define EFUSE_WR_DIS_V  0xFFFFFFFF
+#define EFUSE_WR_DIS_S  0
+
+#define EFUSE_WR_DIS_RD_DIS                        (1<<0)
+#define EFUSE_WR_DIS_DIS_RTC_RAM_BOOT              (1<<1)
+#define EFUSE_WR_DIS_GROUP_1                       (1<<2)
+#define EFUSE_WR_DIS_GROUP_2                       (1<<3)
+#define EFUSE_WR_DIS_SPI_BOOT_CRYPT_CNT            (1<<4)
+#define EFUSE_WR_DIS_SECURE_BOOT_KEY_REVOKE0       (1<<5)
+#define EFUSE_WR_DIS_SECURE_BOOT_KEY_REVOKE1       (1<<6)
+#define EFUSE_WR_DIS_SECURE_BOOT_KEY_REVOKE2       (1<<7)
+#define EFUSE_WR_DIS_KEY0_PURPOSE                  (1<<8)
+#define EFUSE_WR_DIS_KEY1_PURPOSE                  (1<<9)
+#define EFUSE_WR_DIS_KEY2_PURPOSE                  (1<<10)
+#define EFUSE_WR_DIS_KEY3_PURPOSE                  (1<<11)
+#define EFUSE_WR_DIS_KEY4_PURPOSE                  (1<<12)
+#define EFUSE_WR_DIS_KEY5_PURPOSE                  (1<<13)
+#define EFUSE_WR_DIS_SECURE_BOOT_EN                (1<<15)
+#define EFUSE_WR_DIS_SECURE_BOOT_AGGRESSIVE_REVOKE (1<<16)
+#define EFUSE_WR_DIS_GROUP_3                       (1<<18)
+#define EFUSE_WR_DIS_BLK1                          (1<<20)
+#define EFUSE_WR_DIS_SYS_DATA_PART1                (1<<21)
+#define EFUSE_WR_DIS_USER_DATA                     (1<<22)
+#define EFUSE_WR_DIS_KEY0                          (1<<23)
+#define EFUSE_WR_DIS_KEY1                          (1<<24)
+#define EFUSE_WR_DIS_KEY2                          (1<<25)
+#define EFUSE_WR_DIS_KEY3                          (1<<26)
+#define EFUSE_WR_DIS_KEY4                          (1<<27)
+#define EFUSE_WR_DIS_KEY5                          (1<<28)
+#define EFUSE_WR_DIS_SYS_DATA_PART2                (1<<29)
+#define EFUSE_WR_DIS_USB_EXCHG_PINS                (1<<30)
+
+
+#define EFUSE_RD_REPEAT_DATA0_REG          (DR_REG_EFUSE_BASE + 0x030)
+/* EFUSE_VDD_SPI_DREFH:RO；比特位置：[31:30]；默认值：2'h0；*/
+/*description:VDD_SPI_DREFH的值。*/
+#define EFUSE_VDD_SPI_DREFH  0x00000003
+#define EFUSE_VDD_SPI_DREFH_M  ((EFUSE_VDD_SPI_DREFH_V)<<(EFUSE_VDD_SPI_DREFH_S))
+#define EFUSE_VDD_SPI_DREFH_V  0x3
+#define EFUSE_VDD_SPI_DREFH_S  30
+/* EFUSE_VDD_SPI_MODECURLIM:RO；位位置：[29]；默认值：1'0；*/
+/*description:VDD_SPI_MODECURLIM的值。*/
+#define EFUSE_VDD_SPI_MODECURLIM  (BIT(29))
+#define EFUSE_VDD_SPI_MODECURLIM_M  (BIT(29))
+#define EFUSE_VDD_SPI_MODECURLIM_V  0x1
+#define EFUSE_VDD_SPI_MODECURLIM_S  29
+/* EFUSE_RPT4_RESERVED0:RO；位位置：[28:27]；默认值：2'h0；*/
+/*description:保留。*/
+#define EFUSE_RPT4_RESERVED0  0x00000003
+#define EFUSE_RPT4_RESERVED0_M  ((EFUSE_RPT4_RESERVED0_V)<<(EFUSE_RPT4_RESERVED0_S))
+#define EFUSE_RPT4_RESERVED0_V  0x3
+#define EFUSE_RPT4_RESERVED0_S  27
+/* EFUSE_USB_FORCE_NOPERSIST:RO；位位置：[26]；默认值：1'0；*/
+/*description:usb_force_nopersist的值*/
+#define EFUSE_USB_FORCE_NOPERSIST  (BIT(26))
+#define EFUSE_USB_FORCE_NOPERSIST_M  (BIT(26))
+#define EFUSE_USB_FORCE_NOPERSIST_V  0x1
+#define EFUSE_USB_FORCE_NOPERSIST_S  26
+/* EFUSE_USB_EXT_PHY_ENABLE:RO；位位置：[25]；默认值：1'0；*/
+/*description:EXT_PHY_ENABLE的值。*/
+#define EFUSE_USB_EXT_PHY_ENABLE  (BIT(25))
+#define EFUSE_USB_EXT_PHY_ENABLE_M  (BIT(25))
+#define EFUSE_USB_EXT_PHY_ENABLE_V  0x1
+#define EFUSE_USB_EXT_PHY_ENABLE_S  25
+/* EFUSE_USB_EXCHG_PINS：RO；位位置：[24]；默认值：1'0；*/
+/*description:保留。*/
+#define EFUSE_USB_EXCHG_PINS  (BIT(24))
+#define EFUSE_USB_EXCHG_PINS_M  (BIT(24))
+#define EFUSE_USB_EXCHG_PINS_V  0x1
+#define EFUSE_USB_EXCHG_PINS_S  24
+/* EFUSE_USB_DREFL:RO；比特位置：[23:22]；默认值：2'h0；*/
+/*description:USB_DREFL的值。*/
+#define EFUSE_USB_DREFL  0x00000003
+#define EFUSE_USB_DREFL_M  ((EFUSE_USB_DREFL_V)<<(EFUSE_USB_DREFL_S))
+#define EFUSE_USB_DREFL_V  0x3
+#define EFUSE_USB_DREFL_S  22
+/* EFUSE_USB_DREFH:RO；比特位置：[21:20]；默认值：2'h0；*/
+/*description:USB_DREFH的值。*/
+#define EFUSE_USB_DREFH  0x00000003
+#define EFUSE_USB_DREFH_M  ((EFUSE_USB_DREFH_V)<<(EFUSE_USB_DREFH_S))
+#define EFUSE_USB_DREFH_V  0x3
+#define EFUSE_USB_DREFH_S  20
+/* EFUSE_DIS_DOWNLOAD_MANUAL_ENCRYPT:RO；位位置：[19]；默认值：1'0；*/
+/*description:DIS_DOWNLOAD_MANUAL_ENCRYPT的值。*/
+#define EFUSE_DIS_DOWNLOAD_MANUAL_ENCRYPT  (BIT(19))
+#define EFUSE_DIS_DOWNLOAD_MANUAL_ENCRYPT_M  (BIT(19))
+#define EFUSE_DIS_DOWNLOAD_MANUAL_ENCRYPT_V  0x1
+#define EFUSE_DIS_DOWNLOAD_MANUAL_ENCRYPT_S  19
+/* EFUSE_HARD_DIS_JTAG:RO；位位置：[18]；默认值：1'0；*/
+/*description:HARD_DIS_JTAG的值。*/
+#define EFUSE_HARD_DIS_JTAG  (BIT(18))
+#define EFUSE_HARD_DIS_JTAG_M  (BIT(18))
+#define EFUSE_HARD_DIS_JTAG_V  0x1
+#define EFUSE_HARD_DIS_JTAG_S  18
+/* EFUSE_SOFT_DIS_JTAG:RO；位位置：[17]；默认值：1'0；*/
+/*description:SOFT_DIS_JTAG的值。*/
+#define EFUSE_SOFT_DIS_JTAG  (BIT(17))
+#define EFUSE_SOFT_DIS_JTAG_M  (BIT(17))
+#define EFUSE_SOFT_DIS_JTAG_V  0x1
+#define EFUSE_SOFT_DIS_JTAG_S  17
+/* EFUSE_DIS_EFUSE_ATE_WR:RO；位位置：[16]；默认值：1'0；*/
+/*description:DIS_EFUSE_ATE_WR的值。*/
+#define EFUSE_DIS_EFUSE_ATE_WR  (BIT(16))
+#define EFUSE_DIS_EFUSE_ATE_WR_M  (BIT(16))
+#define EFUSE_DIS_EFUSE_ATE_WR_V  0x1
+#define EFUSE_DIS_EFUSE_ATE_WR_S  16
+/* EFUSE_DIS_BOOT_REMAP:RO；位位置：[15]；默认值：1'0；*/
+/*description:DIS_BOOT_REMAP的值。*/
+#define EFUSE_DIS_BOOT_REMAP  (BIT(15))
+#define EFUSE_DIS_BOOT_REMAP_M  (BIT(15))
+#define EFUSE_DIS_BOOT_REMAP_V  0x1
+#define EFUSE_DIS_BOOT_REMAP_S  15
+/* EFUSE_DIS_CAN:RO；位位置：[14]；默认值：1'0；*/
+/*description:DIS_CAN的值。*/
+#define EFUSE_DIS_CAN  (BIT(14))
+#define EFUSE_DIS_CAN_M  (BIT(14))
+#define EFUSE_DIS_CAN_V  0x1
+#define EFUSE_DIS_CAN_S  14
+/* EFUSE_DIS_USB:RO；位位置：[13]；默认值：1'0；*/
+/*description:DIS_USB的值。*/
+#define EFUSE_DIS_USB  (BIT(13))
+#define EFUSE_DIS_USB_M  (BIT(13))
+#define EFUSE_DIS_USB_V  0x1
+#define EFUSE_DIS_USB_S  13
+/* EFUSE_DIS_FORCE_DOWNLOAD:RO；位位置：[12]；默认值：1'0；*/
+/*description:DIS_FORCE_DOWNLOAD的值。*/
+#define EFUSE_DIS_FORCE_DOWNLOAD  (BIT(12))
+#define EFUSE_DIS_FORCE_DOWNLOAD_M  (BIT(12))
+#define EFUSE_DIS_FORCE_DOWNLOAD_V  0x1
+#define EFUSE_DIS_FORCE_DOWNLOAD_S  12
+/* EFUSE_DIS_DOWNLOAD_DCACHE:RO；位位置：[11]；默认值：1'0；*/
+/*description:DIS_DOWNLOAD_CACHE的值。*/
+#define EFUSE_DIS_DOWNLOAD_DCACHE  (BIT(11))
+#define EFUSE_DIS_DOWNLOAD_DCACHE_M  (BIT(11))
+#define EFUSE_DIS_DOWNLOAD_DCACHE_V  0x1
+#define EFUSE_DIS_DOWNLOAD_DCACHE_S  11
+/* EFUSE_DIS_DOWNLOAD_ICACHE:RO；位位置：[10]；默认值：1'0；*/
+/*description:DIS_DOWNLOAD_CACHE的值。*/
+#define EFUSE_DIS_DOWNLOAD_ICACHE  (BIT(10))
+#define EFUSE_DIS_DOWNLOAD_ICACHE_M  (BIT(10))
+#define EFUSE_DIS_DOWNLOAD_ICACHE_V  0x1
+#define EFUSE_DIS_DOWNLOAD_ICACHE_S  10
+/* EFUSE_DIS_dache:RO；位位置：[9]；默认值：1'0；*/
+/*description:DIS_DCACHE的值。*/
+#define EFUSE_DIS_DCACHE  (BIT(9))
+#define EFUSE_DIS_DCACHE_M  (BIT(9))
+#define EFUSE_DIS_DCACHE_V  0x1
+#define EFUSE_DIS_DCACHE_S  9
+/* EFUSE_DIS_inache:RO；位位置：[8]；默认值：1'0；*/
+/*description:DIS_ICACHE的值。*/
+#define EFUSE_DIS_ICACHE  (BIT(8))
+#define EFUSE_DIS_ICACHE_M  (BIT(8))
+#define EFUSE_DIS_ICACHE_V  0x1
+#define EFUSE_DIS_ICACHE_S  8
+/* EFUSE_DIS_RTC_RAM_BOOT:RO；位位置：[7]；默认值：1'0；*/
+/*description:DIS_RTC_RAM_BOOT的值。*/
+#define EFUSE_DIS_RTC_RAM_BOOT  (BIT(7))
+#define EFUSE_DIS_RTC_RAM_BOOT_M  (BIT(7))
+#define EFUSE_DIS_RTC_RAM_BOOT_V  0x1
+#define EFUSE_DIS_RTC_RAM_BOOT_S  7
+/* EFUSE_RD_DIS:RO；比特位置：[6:0]；默认值：7'0；*/
+/*description:RD_DIS的值。*/
+#define EFUSE_RD_DIS  0x0000007F
+#define EFUSE_RD_DIS_M  ((EFUSE_RD_DIS_V)<<(EFUSE_RD_DIS_S))
+#define EFUSE_RD_DIS_V  0x7F
+#define EFUSE_RD_DIS_S  0
+
+#define EFUSE_RD_REPEAT_DATA1_REG          (DR_REG_EFUSE_BASE + 0x034)
+/* EFUSE_KEY_PURPOSE_1:RO；位位置：[31:28]；默认值：4'0；*/
+/*description:KEY_PURPOSE_1的值。*/
+#define EFUSE_KEY_PURPOSE_1  0x0000000F
+#define EFUSE_KEY_PURPOSE_1_M  ((EFUSE_KEY_PURPOSE_1_V)<<(EFUSE_KEY_PURPOSE_1_S))
+#define EFUSE_KEY_PURPOSE_1_V  0xF
+#define EFUSE_KEY_PURPOSE_1_S  28
+/* EFUSE_KEY_PURPOSE_0:RO；位位置：[27:24]；默认值：4'0；*/
+/*description:KEY_PURPOSE_0的值。*/
+#define EFUSE_KEY_PURPOSE_0  0x0000000F
+#define EFUSE_KEY_PURPOSE_0_M  ((EFUSE_KEY_PURPOSE_0_V)<<(EFUSE_KEY_PURPOSE_0_S))
+#define EFUSE_KEY_PURPOSE_0_V  0xF
+#define EFUSE_KEY_PURPOSE_0_S  24
+/* EFUSE_SECURE_BOOT_KEY_REVOKE2:RO；位位置：[23]；默认值：1'0；*/
+/*description:SECURE_BOOT_KEY_REVOKE2的值。*/
+#define EFUSE_SECURE_BOOT_KEY_REVOKE2  (BIT(23))
+#define EFUSE_SECURE_BOOT_KEY_REVOKE2_M  (BIT(23))
+#define EFUSE_SECURE_BOOT_KEY_REVOKE2_V  0x1
+#define EFUSE_SECURE_BOOT_KEY_REVOKE2_S  23
+/* EFUSE_SECURE_BOOT_KEY_REVOKE1:RO；位位置：[22]；默认值：1'0；*/
+/*description:SECURE_BOOT_KEY_REVOKE1的值。*/
+#define EFUSE_SECURE_BOOT_KEY_REVOKE1  (BIT(22))
+#define EFUSE_SECURE_BOOT_KEY_REVOKE1_M  (BIT(22))
+#define EFUSE_SECURE_BOOT_KEY_REVOKE1_V  0x1
+#define EFUSE_SECURE_BOOT_KEY_REVOKE1_S  22
+/* EFUSE_SECURE_BOOT_KEY_REVOKE0:RO；位位置：[21]；默认值：1'0；*/
+/*description:SECURE_BOOT_KEY_REVOKE0的值。*/
+#define EFUSE_SECURE_BOOT_KEY_REVOKE0  (BIT(21))
+#define EFUSE_SECURE_BOOT_KEY_REVOKE0_M  (BIT(21))
+#define EFUSE_SECURE_BOOT_KEY_REVOKE0_V  0x1
+#define EFUSE_SECURE_BOOT_KEY_REVOKE0_S  21
+/* EFUSE_SPI_BOOT_CRYPT_CNT:RO；比特位置：[20:18]；默认值：3'h0；*/
+/*description:SPI_BOOT_CRYPT_CNT的值。*/
+#define EFUSE_SPI_BOOT_CRYPT_CNT  0x00000007
+#define EFUSE_SPI_BOOT_CRYPT_CNT_M  ((EFUSE_SPI_BOOT_CRYPT_CNT_V)<<(EFUSE_SPI_BOOT_CRYPT_CNT_S))
+#define EFUSE_SPI_BOOT_CRYPT_CNT_V  0x7
+#define EFUSE_SPI_BOOT_CRYPT_CNT_S  18
+/* EFUSE_WDT_DELAY_SEL:RO；比特位置：[17:16]；默认值：2'h0；*/
+/*description:WDT_DELAY_SEL的值。*/
+#define EFUSE_WDT_DELAY_SEL  0x00000003
+#define EFUSE_WDT_DELAY_SEL_M  ((EFUSE_WDT_DELAY_SEL_V)<<(EFUSE_WDT_DELAY_SEL_S))
+#define EFUSE_WDT_DELAY_SEL_V  0x3
+#define EFUSE_WDT_DELAY_SEL_S  16
+/* EFUSE_VDD_SPI_DCAP:RO；比特位置：[15:14]；默认值：2'h0；*/
+/*description:REG_VDD_SPI_DCAP的值。*/
+#define EFUSE_VDD_SPI_DCAP  0x00000003
+#define EFUSE_VDD_SPI_DCAP_M  ((EFUSE_VDD_SPI_DCAP_V)<<(EFUSE_VDD_SPI_DCAP_S))
+#define EFUSE_VDD_SPI_DCAP_V  0x3
+#define EFUSE_VDD_SPI_DCAP_S  14
+/* EFUSE_VDD_SPI_INIT:RO；比特位置：[13:12]；默认值：2'h0；*/
+/*description:VDD_SPI_INIT的值。*/
+#define EFUSE_VDD_SPI_INIT  0x00000003
+#define EFUSE_VDD_SPI_INIT_M  ((EFUSE_VDD_SPI_INIT_V)<<(EFUSE_VDD_SPI_INIT_S))
+#define EFUSE_VDD_SPI_INIT_V  0x3
+#define EFUSE_VDD_SPI_INIT_S  12
+/* EFUSE_VDD_SPI_DCURLIM:RO；比特位置：[11:9]；默认值：3'h0；*/
+/*description:VDD_SPI_DCURLIM的值。*/
+#define EFUSE_VDD_SPI_DCURLIM  0x00000007
+#define EFUSE_VDD_SPI_DCURLIM_M  ((EFUSE_VDD_SPI_DCURLIM_V)<<(EFUSE_VDD_SPI_DCURLIM_S))
+#define EFUSE_VDD_SPI_DCURLIM_V  0x7
+#define EFUSE_VDD_SPI_DCURLIM_S  9
+/* EFUSE_VDD_SPI_ENCURLIM:RO；位位置：[8]；默认值：1'0；*/
+/*description:VDD_SPI_ENCURLIM的值。*/
+#define EFUSE_VDD_SPI_ENCURLIM  (BIT(8))
+#define EFUSE_VDD_SPI_ENCURLIM_M  (BIT(8))
+#define EFUSE_VDD_SPI_ENCURLIM_V  0x1
+#define EFUSE_VDD_SPI_ENCURLIM_S  8
+/* EFUSE_VDD_SPI_EN_INIT:RO；位位置：[7]；默认值：1'0；*/
+/*description:VDD_SPI_EN_INIT的值。*/
+#define EFUSE_VDD_SPI_EN_INIT  (BIT(7))
+#define EFUSE_VDD_SPI_EN_INIT_M  (BIT(7))
+#define EFUSE_VDD_SPI_EN_INIT_V  0x1
+#define EFUSE_VDD_SPI_EN_INIT_S  7
+/* EFUSE_VDD_SPI_FORCE:RO；位位置：[6]；默认值：1'0；*/
+/*description:VDD_SPI_FORCE的值。*/
+#define EFUSE_VDD_SPI_FORCE  (BIT(6))
+#define EFUSE_VDD_SPI_FORCE_M  (BIT(6))
+#define EFUSE_VDD_SPI_FORCE_V  0x1
+#define EFUSE_VDD_SPI_FORCE_S  6
+/* EFUSE_VDD_SPI_TIEH:RO；位位置：[5]；默认值：1'0；*/
+/*description:VDD_SPI_TIEH的值。*/
+#define EFUSE_VDD_SPI_TIEH  (BIT(5))
+#define EFUSE_VDD_SPI_TIEH_M  (BIT(5))
+#define EFUSE_VDD_SPI_TIEH_V  0x1
+#define EFUSE_VDD_SPI_TIEH_S  5
+/* EFUSE_VDD_SPI_XPD:RO；位位置：[4]；默认值：1'0；*/
+/*description:VDD_SPI_XPD的值。*/
+#define EFUSE_VDD_SPI_XPD  (BIT(4))
+#define EFUSE_VDD_SPI_XPD_M  (BIT(4))
+#define EFUSE_VDD_SPI_XPD_V  0x1
+#define EFUSE_VDD_SPI_XPD_S  4
+/* EFUSE_VDD_SPI_DREFL:RO；位位置：[3:2]；默认值：2'h0；*/
+/*description:VDD_SPI_DREFL的值。*/
+#define EFUSE_VDD_SPI_DREFL  0x00000003
+#define EFUSE_VDD_SPI_DREFL_M  ((EFUSE_VDD_SPI_DREFL_V)<<(EFUSE_VDD_SPI_DREFL_S))
+#define EFUSE_VDD_SPI_DREFL_V  0x3
+#define EFUSE_VDD_SPI_DREFL_S  2
+/* EFUSE_VDD_SPI_DREFM:RO；位位置：[1:0]；默认值：2'h0；*/
+/*description:VDD_SPI_DREFM的值。*/
+#define EFUSE_VDD_SPI_DREFM  0x00000003
+#define EFUSE_VDD_SPI_DREFM_M  ((EFUSE_VDD_SPI_DREFM_V)<<(EFUSE_VDD_SPI_DREFM_S))
+#define EFUSE_VDD_SPI_DREFM_V  0x3
+#define EFUSE_VDD_SPI_DREFM_S  0
+
+#define EFUSE_RD_REPEAT_DATA2_REG          (DR_REG_EFUSE_BASE + 0x038)
+/* EFUSE_FLASH_TPUW:RO；位位置：[31:28]；默认值：4'0；*/
+/*description:FLASH_TPUW的值。*/
+#define EFUSE_FLASH_TPUW  0x0000000F
+#define EFUSE_FLASH_TPUW_M  ((EFUSE_FLASH_TPUW_V)<<(EFUSE_FLASH_TPUW_S))
+#define EFUSE_FLASH_TPUW_V  0xF
+#define EFUSE_FLASH_TPUW_S  28
+/* EFUSE_RPT4_RESERVED1:RO；位位置：[27:22]；默认值：6'0；*/
+/*description:保留。*/
+#define EFUSE_RPT4_RESERVED1  0x0000003F
+#define EFUSE_RPT4_RESERVED1_M  ((EFUSE_RPT4_RESERVED1_V)<<(EFUSE_RPT4_RESERVED1_S))
+#define EFUSE_RPT4_RESERVED1_V  0x3F
+#define EFUSE_RPT4_RESERVED1_S  22
+/* EFUSE_SECURE_BOOT_AGGRESSIVE_REVOKE:RO；位位置：[21]；默认值：1'0；*/
+/*description:SECURE_BOOT_AGRESSIVE_REVOKE的值。*/
+#define EFUSE_SECURE_BOOT_AGGRESSIVE_REVOKE  (BIT(21))
+#define EFUSE_SECURE_BOOT_AGGRESSIVE_REVOKE_M  (BIT(21))
+#define EFUSE_SECURE_BOOT_AGGRESSIVE_REVOKE_V  0x1
+#define EFUSE_SECURE_BOOT_AGGRESSIVE_REVOKE_S  21
+/* EFUSE_SECURE_BOOT_EN:RO；位位置：[20]；默认值：1'0；*/
+/*description:SECURE_BOOT_EN的值。*/
+#define EFUSE_SECURE_BOOT_EN  (BIT(20))
+#define EFUSE_SECURE_BOOT_EN_M  (BIT(20))
+#define EFUSE_SECURE_BOOT_EN_V  0x1
+#define EFUSE_SECURE_BOOT_EN_S  20
+/* EFUSE_KEY_PURPOSE_6:RO；比特位置：[19:16]；默认值：4'0；*/
+/*description:KEY_PURPOSE_6的值。*/
+#define EFUSE_KEY_PURPOSE_6  0x0000000F
+#define EFUSE_KEY_PURPOSE_6_M  ((EFUSE_KEY_PURPOSE_6_V)<<(EFUSE_KEY_PURPOSE_6_S))
+#define EFUSE_KEY_PURPOSE_6_V  0xF
+#define EFUSE_KEY_PURPOSE_6_S  16
+/* EFUSE_KEY_PURPOSE_5:RO；比特位置：[15:12]；默认值：4'0；*/
+/*description:KEY_PURPOSE_5的值。*/
+#define EFUSE_KEY_PURPOSE_5  0x0000000F
+#define EFUSE_KEY_PURPOSE_5_M  ((EFUSE_KEY_PURPOSE_5_V)<<(EFUSE_KEY_PURPOSE_5_S))
+#define EFUSE_KEY_PURPOSE_5_V  0xF
+#define EFUSE_KEY_PURPOSE_5_S  12
+/* EFUSE_KEY_PURPOSE_4:RO；位位置：[11:8]；默认值：4'0；*/
+/*description:KEY_PURPOSE_4的值。*/
+#define EFUSE_KEY_PURPOSE_4  0x0000000F
+#define EFUSE_KEY_PURPOSE_4_M  ((EFUSE_KEY_PURPOSE_4_V)<<(EFUSE_KEY_PURPOSE_4_S))
+#define EFUSE_KEY_PURPOSE_4_V  0xF
+#define EFUSE_KEY_PURPOSE_4_S  8
+/* EFUSE_KEY_PURPOSE_3:RO；位位置：[7:4]；默认值：4'0；*/
+/*description:KEY_PURPOSE_3的值。*/
+#define EFUSE_KEY_PURPOSE_3  0x0000000F
+#define EFUSE_KEY_PURPOSE_3_M  ((EFUSE_KEY_PURPOSE_3_V)<<(EFUSE_KEY_PURPOSE_3_S))
+#define EFUSE_KEY_PURPOSE_3_V  0xF
+#define EFUSE_KEY_PURPOSE_3_S  4
+/* EFUSE_KEY_PURPOSE_2:RO；位位置：[3:0]；默认值：4'0；*/
+/*description:KEY_PURPOSE_2的值。*/
+#define EFUSE_KEY_PURPOSE_2  0x0000000F
+#define EFUSE_KEY_PURPOSE_2_M  ((EFUSE_KEY_PURPOSE_2_V)<<(EFUSE_KEY_PURPOSE_2_S))
+#define EFUSE_KEY_PURPOSE_2_V  0xF
+#define EFUSE_KEY_PURPOSE_2_S  0
+
+#define EFUSE_RD_REPEAT_DATA3_REG          (DR_REG_EFUSE_BASE + 0x03c)
+/* EFUSE_RPT4_RESERVED2:RO；位位置：[31:27]；默认值：5'h0；*/
+/*description:保留。*/
+#define EFUSE_RPT4_RESERVED2  0x0000001F
+#define EFUSE_RPT4_RESERVED2_M  ((EFUSE_RPT4_RESERVED2_V)<<(EFUSE_RPT4_RESERVED2_S))
+#define EFUSE_RPT4_RESERVED2_V  0x1F
+#define EFUSE_RPT4_RESERVED2_S  27
+/* EFUSE_SECURE_VERSION:RO；比特位置：[26:11]；默认值：16'0；*/
+/*description:SECURE_VERSION的值。*/
+#define EFUSE_SECURE_VERSION  0x0000FFFF
+#define EFUSE_SECURE_VERSION_M  ((EFUSE_SECURE_VERSION_V)<<(EFUSE_SECURE_VERSION_S))
+#define EFUSE_SECURE_VERSION_V  0xFFFF
+#define EFUSE_SECURE_VERSION_S  11
+/* EFUSE_FORCE_SEND_RESUME:RO；位位置：[10]；默认值：1'0；*/
+/*description:FORCE_SEND_RESUME的值。*/
+#define EFUSE_FORCE_SEND_RESUME  (BIT(10))
+#define EFUSE_FORCE_SEND_RESUME_M  (BIT(10))
+#define EFUSE_FORCE_SEND_RESUME_V  0x1
+#define EFUSE_FORCE_SEND_RESUME_S  10
+/* EFUSE_FLASH_TYPE:RO；位位置：[9]；默认值：1'0；*/
+/*description:FLASH_TYPE的值。*/
+#define EFUSE_FLASH_TYPE  (BIT(9))
+#define EFUSE_FLASH_TYPE_M  (BIT(9))
+#define EFUSE_FLASH_TYPE_V  0x1
+#define EFUSE_FLASH_TYPE_S  9
+/* EFUSE_PIN_POWER_SELECTION:RO；位位置：[8]；默认值：1'0；*/
+/*description:PIN_POWER_SELECTION的值。*/
+#define EFUSE_PIN_POWER_SELECTION  (BIT(8))
+#define EFUSE_PIN_POWER_SELECTION_M  (BIT(8))
+#define EFUSE_PIN_POWER_SELECTION_V  0x1
+#define EFUSE_PIN_POWER_SELECTION_S  8
+/* EFUSE_UART_PRINT_CONTROL:RO；位位置：[7:6]；默认值：2'h0；*/
+/*description:UART_PRINT_CONTROL的值。*/
+#define EFUSE_UART_PRINT_CONTROL  0x00000003
+#define EFUSE_UART_PRINT_CONTROL_M  ((EFUSE_UART_PRINT_CONTROL_V)<<(EFUSE_UART_PRINT_CONTROL_S))
+#define EFUSE_UART_PRINT_CONTROL_V  0x3
+#define EFUSE_UART_PRINT_CONTROL_S  6
+/* EFUSE_ENABLE_SECURITY_DOWNLOAD:RO；位位置：[5]；默认值：1'0；*/
+/*description:ENABLE_SECURITY_DOWNLOAD的值。*/
+#define EFUSE_ENABLE_SECURITY_DOWNLOAD  (BIT(5))
+#define EFUSE_ENABLE_SECURITY_DOWNLOAD_M  (BIT(5))
+#define EFUSE_ENABLE_SECURITY_DOWNLOAD_V  0x1
+#define EFUSE_ENABLE_SECURITY_DOWNLOAD_S  5
+/* EFUSE_DIS_USB_DOWNLOAD_MODE:RO；位位置：[4]；默认值：1'0；*/
+/*description:DIS_USB_DOWNLOAD_MODE的值。*/
+#define EFUSE_DIS_USB_DOWNLOAD_MODE  (BIT(4))
+#define EFUSE_DIS_USB_DOWNLOAD_MODE_M  (BIT(4))
+#define EFUSE_DIS_USB_DOWNLOAD_MODE_V  0x1
+#define EFUSE_DIS_USB_DOWNLOAD_MODE_S  4
+/* EFUSE_RPT4_RESERVED3:RO；位位置：[3]；默认值：1'0；*/
+/*description:RPT4_RESERVED4的值。*/
+#define EFUSE_RPT4_RESERVED3  (BIT(3))
+#define EFUSE_RPT4_RESERVED3_M  (BIT(3))
+#define EFUSE_RPT4_RESERVED3_V  0x1
+#define EFUSE_RPT4_RESERVED3_S  3
+/* EFUSE_UART_PRINT_CHANNEL:RO；位位置：[2]；默认值：1'0；*/
+/*description:UART_PRINT_CHANNEL的值。*/
+#define EFUSE_UART_PRINT_CHANNEL  (BIT(2))
+#define EFUSE_UART_PRINT_CHANNEL_M  (BIT(2))
+#define EFUSE_UART_PRINT_CHANNEL_V  0x1
+#define EFUSE_UART_PRINT_CHANNEL_S  2
+/* EFUSE_DIS_LEGACY_SPI_BOOT:RO；位位置：[1]；默认值：1'0；*/
+/*description:DIS_LEGACY_SPI_BOOT的值。*/
+#define EFUSE_DIS_LEGACY_SPI_BOOT  (BIT(1))
+#define EFUSE_DIS_LEGACY_SPI_BOOT_M  (BIT(1))
+#define EFUSE_DIS_LEGACY_SPI_BOOT_V  0x1
+#define EFUSE_DIS_LEGACY_SPI_BOOT_S  1
+/* EFUSE_DIS_DOWNLOAD_MODE:RO；位位置：[0]；默认值：1'0；*/
+/*description:DIS_DOWNLOAD_MODE的值。*/
+#define EFUSE_DIS_DOWNLOAD_MODE  (BIT(0))
+#define EFUSE_DIS_DOWNLOAD_MODE_M  (BIT(0))
+#define EFUSE_DIS_DOWNLOAD_MODE_V  0x1
+#define EFUSE_DIS_DOWNLOAD_MODE_S  0
+
+#define EFUSE_RD_REPEAT_DATA4_REG          (DR_REG_EFUSE_BASE + 0x040)
+/* EFUSE_RPT1_RESERVED0:RO；位位置：[31:24]；默认值：8'0；*/
+/*description:保留。*/
+#define EFUSE_RPT1_RESERVED0  0x000000FF
+#define EFUSE_RPT1_RESERVED0_M  ((EFUSE_RPT1_RESERVED0_V)<<(EFUSE_RPT1_RESERVED0_S))
+#define EFUSE_RPT1_RESERVED0_V  0xFF
+#define EFUSE_RPT1_RESERVED0_S  24
+/* EFUSE_RPT4_RESERVED4:RO；比特位置：[23:0]；默认值：24小时；*/
+/*description:保留（四种备份方式）。*/
+#define EFUSE_RPT4_RESERVED4  0x00FFFFFF
+#define EFUSE_RPT4_RESERVED4_M  ((EFUSE_RPT4_RESERVED4_V)<<(EFUSE_RPT4_RESERVED4_S))
+#define EFUSE_RPT4_RESERVED4_V  0xFFFFFF
+#define EFUSE_RPT4_RESERVED4_S  0
+
+#define EFUSE_RD_MAC_SPI_SYS_0_REG          (DR_REG_EFUSE_BASE + 0x044)
+/* EFUSE_MAC_0:RO；位位置：[31:0]；默认值：32'h0；*/
+/*description:存储MAC地址的低32位。*/
+#define EFUSE_MAC_0  0xFFFFFFFF
+#define EFUSE_MAC_0_M  ((EFUSE_MAC_0_V)<<(EFUSE_MAC_0_S))
+#define EFUSE_MAC_0_V  0xFFFFFFFF
+#define EFUSE_MAC_0_S  0
+
+#define EFUSE_RD_MAC_SPI_SYS_1_REG          (DR_REG_EFUSE_BASE + 0x048)
+/* EFUSE_SPI_PAD_CONF_0:RO；比特位置：[31:16]；默认值：16'0；*/
+/*description:存储SPI_PAD_CONF的第0部分。*/
+#define EFUSE_SPI_PAD_CONF_0  0x0000FFFF
+#define EFUSE_SPI_PAD_CONF_0_M  ((EFUSE_SPI_PAD_CONF_0_V)<<(EFUSE_SPI_PAD_CONF_0_S))
+#define EFUSE_SPI_PAD_CONF_0_V  0xFFFF
+#define EFUSE_SPI_PAD_CONF_0_S  16
+/* EFUSE_MAC_1:RO；比特位置：[15:0]；默认值：16'0；*/
+/*description:存储MAC地址的高16位。*/
+#define EFUSE_MAC_1  0x0000FFFF
+#define EFUSE_MAC_1_M  ((EFUSE_MAC_1_V)<<(EFUSE_MAC_1_S))
+#define EFUSE_MAC_1_V  0xFFFF
+#define EFUSE_MAC_1_S  0
+
+#define EFUSE_RD_MAC_SPI_SYS_2_REG          (DR_REG_EFUSE_BASE + 0x04c)
+/* EFUSE_SPI_PAD_CONF_1:RO；位位置：[31:0]；默认值：32'h0；*/
+/*description:存储SPI_PAD_CONF的第一部分。*/
+#define EFUSE_SPI_PAD_CONF_1  0xFFFFFFFF
+#define EFUSE_SPI_PAD_CONF_1_M  ((EFUSE_SPI_PAD_CONF_1_V)<<(EFUSE_SPI_PAD_CONF_1_S))
+#define EFUSE_SPI_PAD_CONF_1_V  0xFFFFFFFF
+#define EFUSE_SPI_PAD_CONF_1_S  0
+
+#define EFUSE_RD_MAC_SPI_SYS_3_REG          (DR_REG_EFUSE_BASE + 0x050)
+/* EFUSE_PSRAM_VERSION:RO；位位置：[31:28]；默认值：4'0；*/
+/*description:PSRAM版本*/
+#define EFUSE_PSRAM_VERSION  0x0000000F
+#define EFUSE_PSRAM_VERSION_M  ((EFUSE_PSRAM_VERSION_V)<<(EFUSE_PSRAM_VERSION_S))
+#define EFUSE_PSRAM_VERSION_V  0xF
+#define EFUSE_PSRAM_VERSION_S  28
+/* EFUSE_FLASH_VERSION:RO；位位置：[24:21]；默认值：4'0；*/
+/*description:Flash版本*/
+#define EFUSE_FLASH_VERSION  0x0000000F
+#define EFUSE_FLASH_VERSION_M  ((EFUSE_FLASH_VERSION_V)<<(EFUSE_FLASH_VERSION_S))
+#define EFUSE_FLASH_VERSION_V  0xF
+#define EFUSE_FLASH_VERSION_S  21
+/* EFUSE_WAFER_VERSION:RO；比特位置：[20:18]；默认值：3'h0；*/
+/*description:WAFER版本0:A*/
+#define EFUSE_WAFER_VERSION  0x00000007
+#define EFUSE_WAFER_VERSION_M  ((EFUSE_WAFER_VERSION_V)<<(EFUSE_WAFER_VERSION_S))
+#define EFUSE_WAFER_VERSION_V  0x7
+#define EFUSE_WAFER_VERSION_S  18
+/* EFUSE_SPI_PAD_conf2:RO；比特位置：[17:00]；默认值：18'0；*/
+/*description:存储SPI_PAD_CONF的第二部分。*/
+#define EFUSE_SPI_PAD_CONF_2  0x0003FFFF
+#define EFUSE_SPI_PAD_CONF_2_M  ((EFUSE_SPI_PAD_CONF_2_V)<<(EFUSE_SPI_PAD_CONF_2_S))
+#define EFUSE_SPI_PAD_CONF_2_V  0x3FFFF
+#define EFUSE_SPI_PAD_CONF_2_S  0
+
+#define EFUSE_RD_MAC_SPI_SYS_4_REG          (DR_REG_EFUSE_BASE + 0x054)
+/* EFUSE_SYS_DATA_PART0_1:RO；位位置：[31:4]；默认值：28'0；*/
+/*description:存储系统数据第0部分的前32位。*/
+#define EFUSE_SYS_DATA_PART0_1  0x0FFFFFFF
+#define EFUSE_SYS_DATA_PART0_1_M  ((EFUSE_SYS_DATA_PART0_1_V)<<(EFUSE_SYS_DATA_PART0_1_S))
+#define EFUSE_SYS_DATA_PART0_1_V  0x0FFFFFFF
+#define EFUSE_SYS_DATA_PART0_1_S  4
+/* EFUSE_PKG_VERSION:RO；位位置：[3:0]；默认值：4'0；*/
+/*description:包版本*/
+#define EFUSE_PKG_VERSION  0x0000000F
+#define EFUSE_PKG_VERSION_M  ((EFUSE_PKG_VERSION_V)<<(EFUSE_PKG_VERSION_S))
+#define EFUSE_PKG_VERSION_V  0xF
+#define EFUSE_PKG_VERSION_S  0
+
+#define EFUSE_RD_MAC_SPI_SYS_5_REG          (DR_REG_EFUSE_BASE + 0x058)
+/* EFUSE_SYS_DATA_PART0_2:RO；位位置：[31:0]；默认值：32'h0；*/
+/*description:存储系统数据第0部分的第二个32位。*/
+#define EFUSE_SYS_DATA_PART0_2  0xFFFFFFFF
+#define EFUSE_SYS_DATA_PART0_2_M  ((EFUSE_SYS_DATA_PART0_2_V)<<(EFUSE_SYS_DATA_PART0_2_S))
+#define EFUSE_SYS_DATA_PART0_2_V  0xFFFFFFFF
+#define EFUSE_SYS_DATA_PART0_2_S  0
+
+#define EFUSE_RD_SYS_PART1_DATA0_REG          (DR_REG_EFUSE_BASE + 0x05c)
+/* EFUSE_SYS_DATA_PART1_0:RO；位位置：[31:0]；默认值：32'h0；*/
+/*description:存储系统数据第一部分的第0个32位。*/
+#define EFUSE_SYS_DATA_PART1_0  0xFFFFFFFF
+#define EFUSE_SYS_DATA_PART1_0_M  ((EFUSE_SYS_DATA_PART1_0_V)<<(EFUSE_SYS_DATA_PART1_0_S))
+#define EFUSE_SYS_DATA_PART1_0_V  0xFFFFFFFF
+#define EFUSE_SYS_DATA_PART1_0_S  0
+
+#define EFUSE_RD_SYS_PART1_DATA1_REG          (DR_REG_EFUSE_BASE + 0x060)
+/* EFUSE_SYS_DATA_PART1_1:RO；位位置：[31:0]；默认值：32'h0；*/
+/*description:存储系统数据第一部分的前32位。*/
+#define EFUSE_SYS_DATA_PART1_1  0xFFFFFFFF
+#define EFUSE_SYS_DATA_PART1_1_M  ((EFUSE_SYS_DATA_PART1_1_V)<<(EFUSE_SYS_DATA_PART1_1_S))
+#define EFUSE_SYS_DATA_PART1_1_V  0xFFFFFFFF
+#define EFUSE_SYS_DATA_PART1_1_S  0
+
+#define EFUSE_RD_SYS_PART1_DATA2_REG          (DR_REG_EFUSE_BASE + 0x064)
+/* EFUSE_SYS_DATA_PART1_2:RO；位位置：[31:0]；默认值：32'h0；*/
+/*description:存储系统数据第一部分的第二个32位。*/
+#define EFUSE_SYS_DATA_PART1_2  0xFFFFFFFF
+#define EFUSE_SYS_DATA_PART1_2_M  ((EFUSE_SYS_DATA_PART1_2_V)<<(EFUSE_SYS_DATA_PART1_2_S))
+#define EFUSE_SYS_DATA_PART1_2_V  0xFFFFFFFF
+#define EFUSE_SYS_DATA_PART1_2_S  0
+
+#define EFUSE_RD_SYS_PART1_DATA3_REG          (DR_REG_EFUSE_BASE + 0x068)
+/* EFUSE_SYS_DATA_PART1_3:RO；位位置：[31:0]；默认值：32'h0；*/
+/*description:存储系统数据第一部分的第三个32位。*/
+#define EFUSE_SYS_DATA_PART1_3  0xFFFFFFFF
+#define EFUSE_SYS_DATA_PART1_3_M  ((EFUSE_SYS_DATA_PART1_3_V)<<(EFUSE_SYS_DATA_PART1_3_S))
+#define EFUSE_SYS_DATA_PART1_3_V  0xFFFFFFFF
+#define EFUSE_SYS_DATA_PART1_3_S  0
+
+#define EFUSE_RD_SYS_PART1_DATA4_REG          (DR_REG_EFUSE_BASE + 0x06c)
+/* EFUSE_SYS_DATA_PART1_4:RO；位位置：[31:0]；默认值：32'h0；*/
+/*description:存储系统数据第一部分的第四个32位。*/
+#define EFUSE_SYS_DATA_PART1_4  0xFFFFFFFF
+#define EFUSE_SYS_DATA_PART1_4_M  ((EFUSE_SYS_DATA_PART1_4_V)<<(EFUSE_SYS_DATA_PART1_4_S))
+#define EFUSE_SYS_DATA_PART1_4_V  0xFFFFFFFF
+#define EFUSE_SYS_DATA_PART1_4_S  0
+
+#define EFUSE_RD_SYS_PART1_DATA5_REG          (DR_REG_EFUSE_BASE + 0x070)
+/* EFUSE_SYS_DATA_PART1_5:RO；位位置：[31:0]；默认值：32'h0；*/
+/*description:存储系统数据第一部分的第五个32位。*/
+#define EFUSE_SYS_DATA_PART1_5  0xFFFFFFFF
+#define EFUSE_SYS_DATA_PART1_5_M  ((EFUSE_SYS_DATA_PART1_5_V)<<(EFUSE_SYS_DATA_PART1_5_S))
+#define EFUSE_SYS_DATA_PART1_5_V  0xFFFFFFFF
+#define EFUSE_SYS_DATA_PART1_5_S  0
+
+#define EFUSE_RD_SYS_PART1_DATA6_REG          (DR_REG_EFUSE_BASE + 0x074)
+/* EFUSE_SYS_DATA_PART1_6:RO；位位置：[31:0]；默认值：32'h0；*/
+/*description:存储系统数据第一部分的第六个32位。*/
+#define EFUSE_SYS_DATA_PART1_6  0xFFFFFFFF
+#define EFUSE_SYS_DATA_PART1_6_M  ((EFUSE_SYS_DATA_PART1_6_V)<<(EFUSE_SYS_DATA_PART1_6_S))
+#define EFUSE_SYS_DATA_PART1_6_V  0xFFFFFFFF
+#define EFUSE_SYS_DATA_PART1_6_S  0
+
+#define EFUSE_RD_SYS_PART1_DATA7_REG          (DR_REG_EFUSE_BASE + 0x078)
+/* EFUSE_SYS_DATA_PART1_7:RO；位位置：[31:0]；默认值：32'h0；*/
+/*description:存储系统数据第一部分的第七个32位。*/
+#define EFUSE_SYS_DATA_PART1_7  0xFFFFFFFF
+#define EFUSE_SYS_DATA_PART1_7_M  ((EFUSE_SYS_DATA_PART1_7_V)<<(EFUSE_SYS_DATA_PART1_7_S))
+#define EFUSE_SYS_DATA_PART1_7_V  0xFFFFFFFF
+#define EFUSE_SYS_DATA_PART1_7_S  0
+
+#define EFUSE_RD_USR_DATA0_REG          (DR_REG_EFUSE_BASE + 0x07c)
+/* EFUSE_USR_DATA0:RO；位位置：[31:0]；默认值：32'h0；*/
+/*description:存储BLOCK3（用户）的第0个32位。*/
+#define EFUSE_USR_DATA0  0xFFFFFFFF
+#define EFUSE_USR_DATA0_M  ((EFUSE_USR_DATA0_V)<<(EFUSE_USR_DATA0_S))
+#define EFUSE_USR_DATA0_V  0xFFFFFFFF
+#define EFUSE_USR_DATA0_S  0
+
+#define EFUSE_RD_USR_DATA1_REG          (DR_REG_EFUSE_BASE + 0x080)
+/* EFUSE_USR_DATA1:RO；位位置：[31:0]；默认值：32'h0；*/
+/*description:存储BLOCK3（用户）的前32位。*/
+#define EFUSE_USR_DATA1  0xFFFFFFFF
+#define EFUSE_USR_DATA1_M  ((EFUSE_USR_DATA1_V)<<(EFUSE_USR_DATA1_S))
+#define EFUSE_USR_DATA1_V  0xFFFFFFFF
+#define EFUSE_USR_DATA1_S  0
+
+#define EFUSE_RD_USR_DATA2_REG          (DR_REG_EFUSE_BASE + 0x084)
+/* EFUSE_USR_DATA2:RO；位位置：[31:0]；默认值：32'h0；*/
+/*description:存储BLOCK3的第二个32位（用户）。*/
+#define EFUSE_USR_DATA2  0xFFFFFFFF
+#define EFUSE_USR_DATA2_M  ((EFUSE_USR_DATA2_V)<<(EFUSE_USR_DATA2_S))
+#define EFUSE_USR_DATA2_V  0xFFFFFFFF
+#define EFUSE_USR_DATA2_S  0
+
+#define EFUSE_RD_USR_DATA3_REG          (DR_REG_EFUSE_BASE + 0x088)
+/* EFUSE_USR_DATA3:RO；位位置：[31:0]；默认值：32'h0；*/
+/*description:存储BLOCK3的第三个32位（用户）。*/
+#define EFUSE_USR_DATA3  0xFFFFFFFF
+#define EFUSE_USR_DATA3_M  ((EFUSE_USR_DATA3_V)<<(EFUSE_USR_DATA3_S))
+#define EFUSE_USR_DATA3_V  0xFFFFFFFF
+#define EFUSE_USR_DATA3_S  0
+
+#define EFUSE_RD_USR_DATA4_REG          (DR_REG_EFUSE_BASE + 0x08c)
+/* EFUSE_USR_DATA4:RO；位位置：[31:0]；默认值：32'h0；*/
+/*description:存储BLOCK3（用户）的第四个32位。*/
+#define EFUSE_USR_DATA4  0xFFFFFFFF
+#define EFUSE_USR_DATA4_M  ((EFUSE_USR_DATA4_V)<<(EFUSE_USR_DATA4_S))
+#define EFUSE_USR_DATA4_V  0xFFFFFFFF
+#define EFUSE_USR_DATA4_S  0
+
+#define EFUSE_RD_USR_DATA5_REG          (DR_REG_EFUSE_BASE + 0x090)
+/* EFUSE_USR_DATA5:RO；位位置：[31:0]；默认值：32'h0；*/
+/*description:存储BLOCK3（用户）的第五个32位。*/
+#define EFUSE_USR_DATA5  0xFFFFFFFF
+#define EFUSE_USR_DATA5_M  ((EFUSE_USR_DATA5_V)<<(EFUSE_USR_DATA5_S))
+#define EFUSE_USR_DATA5_V  0xFFFFFFFF
+#define EFUSE_USR_DATA5_S  0
+
+#define EFUSE_RD_USR_DATA6_REG          (DR_REG_EFUSE_BASE + 0x094)
+/* EFUSE_USR_DATA6:RO；位位置：[31:0]；默认值：32'h0；*/
+/*description:存储BLOCK3（用户）的第六个32位。*/
+#define EFUSE_USR_DATA6  0xFFFFFFFF
+#define EFUSE_USR_DATA6_M  ((EFUSE_USR_DATA6_V)<<(EFUSE_USR_DATA6_S))
+#define EFUSE_USR_DATA6_V  0xFFFFFFFF
+#define EFUSE_USR_DATA6_S  0
+
+#define EFUSE_RD_USR_DATA7_REG          (DR_REG_EFUSE_BASE + 0x098)
+/* EFUSE_USR_DATA7:RO；位位置：[31:0]；默认值：32'h0；*/
+/*description:存储BLOCK3（用户）的第七个32位。*/
+#define EFUSE_USR_DATA7  0xFFFFFFFF
+#define EFUSE_USR_DATA7_M  ((EFUSE_USR_DATA7_V)<<(EFUSE_USR_DATA7_S))
+#define EFUSE_USR_DATA7_V  0xFFFFFFFF
+#define EFUSE_USR_DATA7_S  0
+
+#define EFUSE_RD_KEY0_DATA0_REG          (DR_REG_EFUSE_BASE + 0x09c)
+/* EFUSE_KEY0_DATA0:RO；位位置：[31:0]；默认值：32'h0；*/
+/*description:存储KEY0的第0个32位。*/
+#define EFUSE_KEY0_DATA0  0xFFFFFFFF
+#define EFUSE_KEY0_DATA0_M  ((EFUSE_KEY0_DATA0_V)<<(EFUSE_KEY0_DATA0_S))
+#define EFUSE_KEY0_DATA0_V  0xFFFFFFFF
+#define EFUSE_KEY0_DATA0_S  0
+
+#define EFUSE_RD_KEY0_DATA1_REG          (DR_REG_EFUSE_BASE + 0x0a0)
+/* EFUSE_KEY0_DATA1:RO；位位置：[31:0]；默认值：32'h0；*/
+/*description:存储KEY0的前32位。*/
+#define EFUSE_KEY0_DATA1  0xFFFFFFFF
+#define EFUSE_KEY0_DATA1_M  ((EFUSE_KEY0_DATA1_V)<<(EFUSE_KEY0_DATA1_S))
+#define EFUSE_KEY0_DATA1_V  0xFFFFFFFF
+#define EFUSE_KEY0_DATA1_S  0
+
+#define EFUSE_RD_KEY0_DATA2_REG          (DR_REG_EFUSE_BASE + 0x0a4)
+/* EFUSE_KEY0_DATA2:RO；位位置：[31:0]；默认值：32'h0；*/
+/*description:存储KEY0的第二个32位。*/
+#define EFUSE_KEY0_DATA2  0xFFFFFFFF
+#define EFUSE_KEY0_DATA2_M  ((EFUSE_KEY0_DATA2_V)<<(EFUSE_KEY0_DATA2_S))
+#define EFUSE_KEY0_DATA2_V  0xFFFFFFFF
+#define EFUSE_KEY0_DATA2_S  0
+
+#define EFUSE_RD_KEY0_DATA3_REG          (DR_REG_EFUSE_BASE + 0x0a8)
+/* EFUSE_KEY0_DATA3:RO；位位置：[31:0]；默认值：32'h0；*/
+/*description:存储KEY0的第三个32位。*/
+#define EFUSE_KEY0_DATA3  0xFFFFFFFF
+#define EFUSE_KEY0_DATA3_M  ((EFUSE_KEY0_DATA3_V)<<(EFUSE_KEY0_DATA3_S))
+#define EFUSE_KEY0_DATA3_V  0xFFFFFFFF
+#define EFUSE_KEY0_DATA3_S  0
+
+#define EFUSE_RD_KEY0_DATA4_REG          (DR_REG_EFUSE_BASE + 0x0ac)
+/* EFUSE_KEY0_DATA4:RO；位位置：[31:0]；默认值：32'h0；*/
+/*description:存储KEY0的第四个32位。*/
+#define EFUSE_KEY0_DATA4  0xFFFFFFFF
+#define EFUSE_KEY0_DATA4_M  ((EFUSE_KEY0_DATA4_V)<<(EFUSE_KEY0_DATA4_S))
+#define EFUSE_KEY0_DATA4_V  0xFFFFFFFF
+#define EFUSE_KEY0_DATA4_S  0
+
+#define EFUSE_RD_KEY0_DATA5_REG          (DR_REG_EFUSE_BASE + 0x0b0)
+/* EFUSE_KEY0_DATA5:RO；位位置：[31:0]；默认值：32'h0；*/
+/*description:存储KEY0的第五个32位。*/
+#define EFUSE_KEY0_DATA5  0xFFFFFFFF
+#define EFUSE_KEY0_DATA5_M  ((EFUSE_KEY0_DATA5_V)<<(EFUSE_KEY0_DATA5_S))
+#define EFUSE_KEY0_DATA5_V  0xFFFFFFFF
+#define EFUSE_KEY0_DATA5_S  0
+
+#define EFUSE_RD_KEY0_DATA6_REG          (DR_REG_EFUSE_BASE + 0x0b4)
+/* EFUSE_KEY0_DATA6:RO；位位置：[31:0]；默认值：32'h0；*/
+/*description:存储KEY0的第六个32位。*/
+#define EFUSE_KEY0_DATA6  0xFFFFFFFF
+#define EFUSE_KEY0_DATA6_M  ((EFUSE_KEY0_DATA6_V)<<(EFUSE_KEY0_DATA6_S))
+#define EFUSE_KEY0_DATA6_V  0xFFFFFFFF
+#define EFUSE_KEY0_DATA6_S  0
+
+#define EFUSE_RD_KEY0_DATA7_REG          (DR_REG_EFUSE_BASE + 0x0b8)
+/* EFUSE_KEY0_DATA7:RO；位位置：[31:0]；默认值：32'h0；*/
+/*description:存储KEY0的第七个32位。*/
+#define EFUSE_KEY0_DATA7  0xFFFFFFFF
+#define EFUSE_KEY0_DATA7_M  ((EFUSE_KEY0_DATA7_V)<<(EFUSE_KEY0_DATA7_S))
+#define EFUSE_KEY0_DATA7_V  0xFFFFFFFF
+#define EFUSE_KEY0_DATA7_S  0
+
+#define EFUSE_RD_KEY1_DATA0_REG          (DR_REG_EFUSE_BASE + 0x0bc)
+/* EFUSE_KEY1_DATA0:RO；位位置：[31:0]；默认值：32'h0；*/
+/*description:存储KEY1的第0个32位。*/
+#define EFUSE_KEY1_DATA0  0xFFFFFFFF
+#define EFUSE_KEY1_DATA0_M  ((EFUSE_KEY1_DATA0_V)<<(EFUSE_KEY1_DATA0_S))
+#define EFUSE_KEY1_DATA0_V  0xFFFFFFFF
+#define EFUSE_KEY1_DATA0_S  0
+
+#define EFUSE_RD_KEY1_DATA1_REG          (DR_REG_EFUSE_BASE + 0x0c0)
+/* EFUSE_KEY1_DATA1:RO；位位置：[31:0]；默认值：32'h0；*/
+/*description:存储KEY1的前32位。*/
+#define EFUSE_KEY1_DATA1  0xFFFFFFFF
+#define EFUSE_KEY1_DATA1_M  ((EFUSE_KEY1_DATA1_V)<<(EFUSE_KEY1_DATA1_S))
+#define EFUSE_KEY1_DATA1_V  0xFFFFFFFF
+#define EFUSE_KEY1_DATA1_S  0
+
+#define EFUSE_RD_KEY1_DATA2_REG          (DR_REG_EFUSE_BASE + 0x0c4)
+/* EFUSE_KEY1_DATA2:RO；位位置：[31:0]；默认值：32'h0；*/
+/*description:存储KEY1的第二个32位。*/
+#define EFUSE_KEY1_DATA2  0xFFFFFFFF
+#define EFUSE_KEY1_DATA2_M  ((EFUSE_KEY1_DATA2_V)<<(EFUSE_KEY1_DATA2_S))
+#define EFUSE_KEY1_DATA2_V  0xFFFFFFFF
+#define EFUSE_KEY1_DATA2_S  0
+
+#define EFUSE_RD_KEY1_DATA3_REG          (DR_REG_EFUSE_BASE + 0x0c8)
+/* EFUSE_KEY1_DATA3:RO；位位置：[31:0]；默认值：32'h0；*/
+/*description:存储KEY1的第三个32位。*/
+#define EFUSE_KEY1_DATA3  0xFFFFFFFF
+#define EFUSE_KEY1_DATA3_M  ((EFUSE_KEY1_DATA3_V)<<(EFUSE_KEY1_DATA3_S))
+#define EFUSE_KEY1_DATA3_V  0xFFFFFFFF
+#define EFUSE_KEY1_DATA3_S  0
+
+#define EFUSE_RD_KEY1_DATA4_REG          (DR_REG_EFUSE_BASE + 0x0cc)
+/* EFUSE_KEY1_DATA4:RO；位位置：[31:0]；默认值：32'h0；*/
+/*description:存储KEY1的第四个32位。*/
+#define EFUSE_KEY1_DATA4  0xFFFFFFFF
+#define EFUSE_KEY1_DATA4_M  ((EFUSE_KEY1_DATA4_V)<<(EFUSE_KEY1_DATA4_S))
+#define EFUSE_KEY1_DATA4_V  0xFFFFFFFF
+#define EFUSE_KEY1_DATA4_S  0
+
+#define EFUSE_RD_KEY1_DATA5_REG          (DR_REG_EFUSE_BASE + 0x0d0)
+/* EFUSE_KEY1_DATA5:RO；位位置：[31:0]；默认值：32'h0；*/
+/*description:存储KEY1的第五个32位。*/
+#define EFUSE_KEY1_DATA5  0xFFFFFFFF
+#define EFUSE_KEY1_DATA5_M  ((EFUSE_KEY1_DATA5_V)<<(EFUSE_KEY1_DATA5_S))
+#define EFUSE_KEY1_DATA5_V  0xFFFFFFFF
+#define EFUSE_KEY1_DATA5_S  0
+
+#define EFUSE_RD_KEY1_DATA6_REG          (DR_REG_EFUSE_BASE + 0x0d4)
+/* EFUSE_KEY1_DATA6:RO；位位置：[31:0]；默认值：32'h0；*/
+/*description:存储KEY1的第六个32位。*/
+#define EFUSE_KEY1_DATA6  0xFFFFFFFF
+#define EFUSE_KEY1_DATA6_M  ((EFUSE_KEY1_DATA6_V)<<(EFUSE_KEY1_DATA6_S))
+#define EFUSE_KEY1_DATA6_V  0xFFFFFFFF
+#define EFUSE_KEY1_DATA6_S  0
+
+#define EFUSE_RD_KEY1_DATA7_REG          (DR_REG_EFUSE_BASE + 0x0d8)
+/* EFUSE_KEY1_DATA7:RO；位位置：[31:0]；默认值：32'h0；*/
+/*description:存储KEY1的第七个32位。*/
+#define EFUSE_KEY1_DATA7  0xFFFFFFFF
+#define EFUSE_KEY1_DATA7_M  ((EFUSE_KEY1_DATA7_V)<<(EFUSE_KEY1_DATA7_S))
+#define EFUSE_KEY1_DATA7_V  0xFFFFFFFF
+#define EFUSE_KEY1_DATA7_S  0
+
+#define EFUSE_RD_KEY2_DATA0_REG          (DR_REG_EFUSE_BASE + 0x0dc)
+/* EFUSE_KEY2_DATA0:RO；位位置：[31:0]；默认值：32'h0；*/
+/*description:存储KEY2的第0个32位。*/
+#define EFUSE_KEY2_DATA0  0xFFFFFFFF
+#define EFUSE_KEY2_DATA0_M  ((EFUSE_KEY2_DATA0_V)<<(EFUSE_KEY2_DATA0_S))
+#define EFUSE_KEY2_DATA0_V  0xFFFFFFFF
+#define EFUSE_KEY2_DATA0_S  0
+
+#define EFUSE_RD_KEY2_DATA1_REG          (DR_REG_EFUSE_BASE + 0x0e0)
+/* EFUSE_KEY2_DATA1:RO；位位置：[31:0]；默认值：32'h0；*/
+/*description:存储KEY2的前32位。*/
+#define EFUSE_KEY2_DATA1  0xFFFFFFFF
+#define EFUSE_KEY2_DATA1_M  ((EFUSE_KEY2_DATA1_V)<<(EFUSE_KEY2_DATA1_S))
+#define EFUSE_KEY2_DATA1_V  0xFFFFFFFF
+#define EFUSE_KEY2_DATA1_S  0
+
+#define EFUSE_RD_KEY2_DATA2_REG          (DR_REG_EFUSE_BASE + 0x0e4)
+/* EFUSE_KEY2_DATA2:RO；位位置：[31:0]；默认值：32'h0；*/
+/*description:存储KEY2的第二个32位。*/
+#define EFUSE_KEY2_DATA2  0xFFFFFFFF
+#define EFUSE_KEY2_DATA2_M  ((EFUSE_KEY2_DATA2_V)<<(EFUSE_KEY2_DATA2_S))
+#define EFUSE_KEY2_DATA2_V  0xFFFFFFFF
+#define EFUSE_KEY2_DATA2_S  0
+
+#define EFUSE_RD_KEY2_DATA3_REG          (DR_REG_EFUSE_BASE + 0x0e8)
+/* EFUSE_KEY2_DATA3:RO；位位置：[31:0]；默认值：32'h0；*/
+/*description:存储KEY2的第三个32位。*/
+#define EFUSE_KEY2_DATA3  0xFFFFFFFF
+#define EFUSE_KEY2_DATA3_M  ((EFUSE_KEY2_DATA3_V)<<(EFUSE_KEY2_DATA3_S))
+#define EFUSE_KEY2_DATA3_V  0xFFFFFFFF
+#define EFUSE_KEY2_DATA3_S  0
+
+#define EFUSE_RD_KEY2_DATA4_REG          (DR_REG_EFUSE_BASE + 0x0ec)
+/* EFUSE_KEY2_DATA4:RO；位位置：[31:0]；默认值：32'h0；*/
+/*description:存储KEY2的第四个32位。*/
+#define EFUSE_KEY2_DATA4  0xFFFFFFFF
+#define EFUSE_KEY2_DATA4_M  ((EFUSE_KEY2_DATA4_V)<<(EFUSE_KEY2_DATA4_S))
+#define EFUSE_KEY2_DATA4_V  0xFFFFFFFF
+#define EFUSE_KEY2_DATA4_S  0
+
+#define EFUSE_RD_KEY2_DATA5_REG          (DR_REG_EFUSE_BASE + 0x0f0)
+/* EFUSE_KEY2_DATA5:RO；位位置：[31:0]；默认值：32'h0；*/
+/*description:存储KEY2的第五个32位。*/
+#define EFUSE_KEY2_DATA5  0xFFFFFFFF
+#define EFUSE_KEY2_DATA5_M  ((EFUSE_KEY2_DATA5_V)<<(EFUSE_KEY2_DATA5_S))
+#define EFUSE_KEY2_DATA5_V  0xFFFFFFFF
+#define EFUSE_KEY2_DATA5_S  0
+
+#define EFUSE_RD_KEY2_DATA6_REG          (DR_REG_EFUSE_BASE + 0x0f4)
+/* EFUSE_KEY2_DATA6:RO；位位置：[31:0]；默认值：32'h0；*/
+/*description:存储KEY2的第六个32位。*/
+#define EFUSE_KEY2_DATA6  0xFFFFFFFF
+#define EFUSE_KEY2_DATA6_M  ((EFUSE_KEY2_DATA6_V)<<(EFUSE_KEY2_DATA6_S))
+#define EFUSE_KEY2_DATA6_V  0xFFFFFFFF
+#define EFUSE_KEY2_DATA6_S  0
+
+#define EFUSE_RD_KEY2_DATA7_REG          (DR_REG_EFUSE_BASE + 0x0f8)
+/* EFUSE_KEY2_DATA7:RO；位位置：[31:0]；默认值：32'h0；*/
+/*description:存储KEY2的第七个32位。*/
+#define EFUSE_KEY2_DATA7  0xFFFFFFFF
+#define EFUSE_KEY2_DATA7_M  ((EFUSE_KEY2_DATA7_V)<<(EFUSE_KEY2_DATA7_S))
+#define EFUSE_KEY2_DATA7_V  0xFFFFFFFF
+#define EFUSE_KEY2_DATA7_S  0
+
+#define EFUSE_RD_KEY3_DATA0_REG          (DR_REG_EFUSE_BASE + 0x0fc)
+/* EFUSE_KEY3_DATA0:RO；位位置：[31:0]；默认值：32'h0；*/
+/*description:存储KEY3的第0个32位。*/
+#define EFUSE_KEY3_DATA0  0xFFFFFFFF
+#define EFUSE_KEY3_DATA0_M  ((EFUSE_KEY3_DATA0_V)<<(EFUSE_KEY3_DATA0_S))
+#define EFUSE_KEY3_DATA0_V  0xFFFFFFFF
+#define EFUSE_KEY3_DATA0_S  0
+
+#define EFUSE_RD_KEY3_DATA1_REG          (DR_REG_EFUSE_BASE + 0x100)
+/* EFUSE_KEY3_DATA1:RO；位位置：[31:0]；默认值：32'h0；*/
+/*description:存储KEY3的前32位。*/
+#define EFUSE_KEY3_DATA1  0xFFFFFFFF
+#define EFUSE_KEY3_DATA1_M  ((EFUSE_KEY3_DATA1_V)<<(EFUSE_KEY3_DATA1_S))
+#define EFUSE_KEY3_DATA1_V  0xFFFFFFFF
+#define EFUSE_KEY3_DATA1_S  0
+
+#define EFUSE_RD_KEY3_DATA2_REG          (DR_REG_EFUSE_BASE + 0x104)
+/* EFUSE_KEY3_DATA2:RO；位位置：[31:0]；默认值：32'h0；*/
+/*description:存储KEY3的第二个32位。*/
+#define EFUSE_KEY3_DATA2  0xFFFFFFFF
+#define EFUSE_KEY3_DATA2_M  ((EFUSE_KEY3_DATA2_V)<<(EFUSE_KEY3_DATA2_S))
+#define EFUSE_KEY3_DATA2_V  0xFFFFFFFF
+#define EFUSE_KEY3_DATA2_S  0
+
+#define EFUSE_RD_KEY3_DATA3_REG          (DR_REG_EFUSE_BASE + 0x108)
+/* EFUSE_KEY3_DATA3:RO；位位置：[31:0]；默认值：32'h0；*/
+/*description:存储KEY3的第三个32位。*/
+#define EFUSE_KEY3_DATA3  0xFFFFFFFF
+#define EFUSE_KEY3_DATA3_M  ((EFUSE_KEY3_DATA3_V)<<(EFUSE_KEY3_DATA3_S))
+#define EFUSE_KEY3_DATA3_V  0xFFFFFFFF
+#define EFUSE_KEY3_DATA3_S  0
+
+#define EFUSE_RD_KEY3_DATA4_REG          (DR_REG_EFUSE_BASE + 0x10c)
+/* EFUSE_KEY3_DATA4:RO；位位置：[31:0]；默认值：32'h0；*/
+/*description:存储KEY3的第四个32位。*/
+#define EFUSE_KEY3_DATA4  0xFFFFFFFF
+#define EFUSE_KEY3_DATA4_M  ((EFUSE_KEY3_DATA4_V)<<(EFUSE_KEY3_DATA4_S))
+#define EFUSE_KEY3_DATA4_V  0xFFFFFFFF
+#define EFUSE_KEY3_DATA4_S  0
+
+#define EFUSE_RD_KEY3_DATA5_REG          (DR_REG_EFUSE_BASE + 0x110)
+/* EFUSE_KEY3_DATA5:RO；位位置：[31:0]；默认值：32'h0；*/
+/*description:存储KEY3的第五个32位。*/
+#define EFUSE_KEY3_DATA5  0xFFFFFFFF
+#define EFUSE_KEY3_DATA5_M  ((EFUSE_KEY3_DATA5_V)<<(EFUSE_KEY3_DATA5_S))
+#define EFUSE_KEY3_DATA5_V  0xFFFFFFFF
+#define EFUSE_KEY3_DATA5_S  0
+
+#define EFUSE_RD_KEY3_DATA6_REG          (DR_REG_EFUSE_BASE + 0x114)
+/* EFUSE_KEY3_DATA6:RO；位位置：[31:0]；默认值：32'h0；*/
+/*description:存储KEY3的第六个32位。*/
+#define EFUSE_KEY3_DATA6  0xFFFFFFFF
+#define EFUSE_KEY3_DATA6_M  ((EFUSE_KEY3_DATA6_V)<<(EFUSE_KEY3_DATA6_S))
+#define EFUSE_KEY3_DATA6_V  0xFFFFFFFF
+#define EFUSE_KEY3_DATA6_S  0
+
+#define EFUSE_RD_KEY3_DATA7_REG          (DR_REG_EFUSE_BASE + 0x118)
+/* EFUSE_KEY3_DATA7:RO；位位置：[31:0]；默认值：32'h0；*/
+/*description:存储KEY3的第七个32位。*/
+#define EFUSE_KEY3_DATA7  0xFFFFFFFF
+#define EFUSE_KEY3_DATA7_M  ((EFUSE_KEY3_DATA7_V)<<(EFUSE_KEY3_DATA7_S))
+#define EFUSE_KEY3_DATA7_V  0xFFFFFFFF
+#define EFUSE_KEY3_DATA7_S  0
+
+#define EFUSE_RD_KEY4_DATA0_REG          (DR_REG_EFUSE_BASE + 0x11c)
+/* EFUSE_KEY4_DATA0:RO；位位置：[31:0]；默认值：32'h0；*/
+/*description:存储KEY4的第0个32位。*/
+#define EFUSE_KEY4_DATA0  0xFFFFFFFF
+#define EFUSE_KEY4_DATA0_M  ((EFUSE_KEY4_DATA0_V)<<(EFUSE_KEY4_DATA0_S))
+#define EFUSE_KEY4_DATA0_V  0xFFFFFFFF
+#define EFUSE_KEY4_DATA0_S  0
+
+#define EFUSE_RD_KEY4_DATA1_REG          (DR_REG_EFUSE_BASE + 0x120)
+/* EFUSE_KEY4_DATA1:RO；位位置：[31:0]；默认值：32'h0；*/
+/*description:存储KEY4的前32位。*/
+#define EFUSE_KEY4_DATA1  0xFFFFFFFF
+#define EFUSE_KEY4_DATA1_M  ((EFUSE_KEY4_DATA1_V)<<(EFUSE_KEY4_DATA1_S))
+#define EFUSE_KEY4_DATA1_V  0xFFFFFFFF
+#define EFUSE_KEY4_DATA1_S  0
+
+#define EFUSE_RD_KEY4_DATA2_REG          (DR_REG_EFUSE_BASE + 0x124)
+/* EFUSE_KEY4_DATA2:RO；位位置：[31:0]；默认值：32'h0；*/
+/*description:存储KEY4的第二个32位。*/
+#define EFUSE_KEY4_DATA2  0xFFFFFFFF
+#define EFUSE_KEY4_DATA2_M  ((EFUSE_KEY4_DATA2_V)<<(EFUSE_KEY4_DATA2_S))
+#define EFUSE_KEY4_DATA2_V  0xFFFFFFFF
+#define EFUSE_KEY4_DATA2_S  0
+
+#define EFUSE_RD_KEY4_DATA3_REG          (DR_REG_EFUSE_BASE + 0x128)
+/* EFUSE_KEY4_DATA3:RO；位位置：[31:0]；默认值：32'h0；*/
+/*description:存储KEY4的第三个32位。*/
+#define EFUSE_KEY4_DATA3  0xFFFFFFFF
+#define EFUSE_KEY4_DATA3_M  ((EFUSE_KEY4_DATA3_V)<<(EFUSE_KEY4_DATA3_S))
+#define EFUSE_KEY4_DATA3_V  0xFFFFFFFF
+#define EFUSE_KEY4_DATA3_S  0
+
+#define EFUSE_RD_KEY4_DATA4_REG          (DR_REG_EFUSE_BASE + 0x12c)
+/* EFUSE_KEY4_DATA4:RO；位位置：[31:0]；默认值：32'h0；*/
+/*description:存储KEY4的第四个32位。*/
+#define EFUSE_KEY4_DATA4  0xFFFFFFFF
+#define EFUSE_KEY4_DATA4_M  ((EFUSE_KEY4_DATA4_V)<<(EFUSE_KEY4_DATA4_S))
+#define EFUSE_KEY4_DATA4_V  0xFFFFFFFF
+#define EFUSE_KEY4_DATA4_S  0
+
+#define EFUSE_RD_KEY4_DATA5_REG          (DR_REG_EFUSE_BASE + 0x130)
+/* EFUSE_KEY4_DATA5:RO；位位置：[31:0]；默认值：32'h0；*/
+/*description:存储KEY4的第五个32位。*/
+#define EFUSE_KEY4_DATA5  0xFFFFFFFF
+#define EFUSE_KEY4_DATA5_M  ((EFUSE_KEY4_DATA5_V)<<(EFUSE_KEY4_DATA5_S))
+#define EFUSE_KEY4_DATA5_V  0xFFFFFFFF
+#define EFUSE_KEY4_DATA5_S  0
+
+#define EFUSE_RD_KEY4_DATA6_REG          (DR_REG_EFUSE_BASE + 0x134)
+/* EFUSE_KEY4_DATA6:RO；位位置：[31:0]；默认值：32'h0；*/
+/*description:存储KEY4的第六个32位。*/
+#define EFUSE_KEY4_DATA6  0xFFFFFFFF
+#define EFUSE_KEY4_DATA6_M  ((EFUSE_KEY4_DATA6_V)<<(EFUSE_KEY4_DATA6_S))
+#define EFUSE_KEY4_DATA6_V  0xFFFFFFFF
+#define EFUSE_KEY4_DATA6_S  0
+
+#define EFUSE_RD_KEY4_DATA7_REG          (DR_REG_EFUSE_BASE + 0x138)
+/* EFUSE_KEY4_DATA7:RO；位位置：[31:0]；默认值：32'h0；*/
+/*description:存储KEY4的第七个32位。*/
+#define EFUSE_KEY4_DATA7  0xFFFFFFFF
+#define EFUSE_KEY4_DATA7_M  ((EFUSE_KEY4_DATA7_V)<<(EFUSE_KEY4_DATA7_S))
+#define EFUSE_KEY4_DATA7_V  0xFFFFFFFF
+#define EFUSE_KEY4_DATA7_S  0
+
+#define EFUSE_RD_KEY5_DATA0_REG          (DR_REG_EFUSE_BASE + 0x13c)
+/* EFUSE_KEY5_DATA0:RO；位位置：[31:0]；默认值：32'h0；*/
+/*description:存储KEY5的第0个32位。*/
+#define EFUSE_KEY5_DATA0  0xFFFFFFFF
+#define EFUSE_KEY5_DATA0_M  ((EFUSE_KEY5_DATA0_V)<<(EFUSE_KEY5_DATA0_S))
+#define EFUSE_KEY5_DATA0_V  0xFFFFFFFF
+#define EFUSE_KEY5_DATA0_S  0
+
+#define EFUSE_RD_KEY5_DATA1_REG          (DR_REG_EFUSE_BASE + 0x140)
+/* EFUSE_KEY5_DATA1:RO；位位置：[31:0]；默认值：32'h0；*/
+/*description:存储KEY5的前32位。*/
+#define EFUSE_KEY5_DATA1  0xFFFFFFFF
+#define EFUSE_KEY5_DATA1_M  ((EFUSE_KEY5_DATA1_V)<<(EFUSE_KEY5_DATA1_S))
+#define EFUSE_KEY5_DATA1_V  0xFFFFFFFF
+#define EFUSE_KEY5_DATA1_S  0
+
+#define EFUSE_RD_KEY5_DATA2_REG          (DR_REG_EFUSE_BASE + 0x144)
+/* EFUSE_KEY5_DATA2:RO；位位置：[31:0]；默认值：32'h0；*/
+/*description:存储KEY5的第二个32位。*/
+#define EFUSE_KEY5_DATA2  0xFFFFFFFF
+#define EFUSE_KEY5_DATA2_M  ((EFUSE_KEY5_DATA2_V)<<(EFUSE_KEY5_DATA2_S))
+#define EFUSE_KEY5_DATA2_V  0xFFFFFFFF
+#define EFUSE_KEY5_DATA2_S  0
+
+#define EFUSE_RD_KEY5_DATA3_REG          (DR_REG_EFUSE_BASE + 0x148)
+/* EFUSE_KEY5_DATA3:RO；位位置：[31:0]；默认值：32'h0；*/
+/*description:存储KEY5的第三个32位。*/
+#define EFUSE_KEY5_DATA3  0xFFFFFFFF
+#define EFUSE_KEY5_DATA3_M  ((EFUSE_KEY5_DATA3_V)<<(EFUSE_KEY5_DATA3_S))
+#define EFUSE_KEY5_DATA3_V  0xFFFFFFFF
+#define EFUSE_KEY5_DATA3_S  0
+
+#define EFUSE_RD_KEY5_DATA4_REG          (DR_REG_EFUSE_BASE + 0x14c)
+/* EFUSE_KEY5_DATA4:RO；位位置：[31:0]；默认值：32'h0；*/
+/*description:存储KEY5的第四个32位。*/
+#define EFUSE_KEY5_DATA4  0xFFFFFFFF
+#define EFUSE_KEY5_DATA4_M  ((EFUSE_KEY5_DATA4_V)<<(EFUSE_KEY5_DATA4_S))
+#define EFUSE_KEY5_DATA4_V  0xFFFFFFFF
+#define EFUSE_KEY5_DATA4_S  0
+
+#define EFUSE_RD_KEY5_DATA5_REG          (DR_REG_EFUSE_BASE + 0x150)
+/* EFUSE_KEY5_DATA5:RO；位位置：[31:0]；默认值：32'h0；*/
+/*description:存储KEY5的第五个32位。*/
+#define EFUSE_KEY5_DATA5  0xFFFFFFFF
+#define EFUSE_KEY5_DATA5_M  ((EFUSE_KEY5_DATA5_V)<<(EFUSE_KEY5_DATA5_S))
+#define EFUSE_KEY5_DATA5_V  0xFFFFFFFF
+#define EFUSE_KEY5_DATA5_S  0
+
+#define EFUSE_RD_KEY5_DATA6_REG          (DR_REG_EFUSE_BASE + 0x154)
+/* EFUSE_KEY5_DATA6:RO；位位置：[31:0]；默认值：32'h0；*/
+/*description:存储KEY5的第六个32位。*/
+#define EFUSE_KEY5_DATA6  0xFFFFFFFF
+#define EFUSE_KEY5_DATA6_M  ((EFUSE_KEY5_DATA6_V)<<(EFUSE_KEY5_DATA6_S))
+#define EFUSE_KEY5_DATA6_V  0xFFFFFFFF
+#define EFUSE_KEY5_DATA6_S  0
+
+#define EFUSE_RD_KEY5_DATA7_REG          (DR_REG_EFUSE_BASE + 0x158)
+/* EFUSE_KEY5_DATA7:RO；位位置：[31:0]；默认值：32'h0；*/
+/*description:存储KEY5的第七个32位。*/
+#define EFUSE_KEY5_DATA7  0xFFFFFFFF
+#define EFUSE_KEY5_DATA7_M  ((EFUSE_KEY5_DATA7_V)<<(EFUSE_KEY5_DATA7_S))
+#define EFUSE_KEY5_DATA7_V  0xFFFFFFFF
+#define EFUSE_KEY5_DATA7_S  0
+
+#define EFUSE_RD_SYS_PART2_DATA0_REG          (DR_REG_EFUSE_BASE + 0x15c)
+/* EFUSE_SYS_DATA_PART2_0:RO；位位置：[31:0]；默认值：32'h0；*/
+/*description:存储系统数据第二部分的第n个32位。*/
+#define EFUSE_SYS_DATA_PART2_0  0xFFFFFFFF
+#define EFUSE_SYS_DATA_PART2_0_M  ((EFUSE_SYS_DATA_PART2_0_V)<<(EFUSE_SYS_DATA_PART2_0_S))
+#define EFUSE_SYS_DATA_PART2_0_V  0xFFFFFFFF
+#define EFUSE_SYS_DATA_PART2_0_S  0
+
+#define EFUSE_RD_SYS_PART2_DATA1_REG          (DR_REG_EFUSE_BASE + 0x160)
+/* EFUSE_SYS_DATA_PART2_1:RO；位位置：[31:0]；默认值：32'h0；*/
+/*description:存储系统数据第二部分的第n个32位。*/
+#define EFUSE_SYS_DATA_PART2_1  0xFFFFFFFF
+#define EFUSE_SYS_DATA_PART2_1_M  ((EFUSE_SYS_DATA_PART2_1_V)<<(EFUSE_SYS_DATA_PART2_1_S))
+#define EFUSE_SYS_DATA_PART2_1_V  0xFFFFFFFF
+#define EFUSE_SYS_DATA_PART2_1_S  0
+
+#define EFUSE_RD_SYS_PART2_DATA2_REG          (DR_REG_EFUSE_BASE + 0x164)
+/* EFUSE_SYS_DATA_PART2_2:RO；位位置：[31:0]；默认值：32'h0；*/
+/*description:存储系统数据第二部分的第n个32位。*/
+#define EFUSE_SYS_DATA_PART2_2  0xFFFFFFFF
+#define EFUSE_SYS_DATA_PART2_2_M  ((EFUSE_SYS_DATA_PART2_2_V)<<(EFUSE_SYS_DATA_PART2_2_S))
+#define EFUSE_SYS_DATA_PART2_2_V  0xFFFFFFFF
+#define EFUSE_SYS_DATA_PART2_2_S  0
+
+#define EFUSE_RD_SYS_PART2_DATA3_REG          (DR_REG_EFUSE_BASE + 0x168)
+/* EFUSE_SYS_DATA_PART2_3:RO；位位置：[31:0]；默认值：32'h0；*/
+/*description:存储系统数据第二部分的第n个32位。*/
+#define EFUSE_SYS_DATA_PART2_3  0xFFFFFFFF
+#define EFUSE_SYS_DATA_PART2_3_M  ((EFUSE_SYS_DATA_PART2_3_V)<<(EFUSE_SYS_DATA_PART2_3_S))
+#define EFUSE_SYS_DATA_PART2_3_V  0xFFFFFFFF
+#define EFUSE_SYS_DATA_PART2_3_S  0
+
+#define EFUSE_RD_SYS_PART2_DATA4_REG          (DR_REG_EFUSE_BASE + 0x16c)
+/* EFUSE_SYS_DATA_PART2_4:RO；位位置：[31:0]；默认值：32'h0；*/
+/*description:存储系统数据第二部分的第n个32位。*/
+#define EFUSE_SYS_DATA_PART2_4  0xFFFFFFFF
+#define EFUSE_SYS_DATA_PART2_4_M  ((EFUSE_SYS_DATA_PART2_4_V)<<(EFUSE_SYS_DATA_PART2_4_S))
+#define EFUSE_SYS_DATA_PART2_4_V  0xFFFFFFFF
+#define EFUSE_SYS_DATA_PART2_4_S  0
+
+#define EFUSE_RD_SYS_PART2_DATA5_REG          (DR_REG_EFUSE_BASE + 0x170)
+/* EFUSE_SYS_DATA_PART2_5:RO；位位置：[31:0]；默认值：32'h0；*/
+/*description:存储系统数据第二部分的第n个32位。*/
+#define EFUSE_SYS_DATA_PART2_5  0xFFFFFFFF
+#define EFUSE_SYS_DATA_PART2_5_M  ((EFUSE_SYS_DATA_PART2_5_V)<<(EFUSE_SYS_DATA_PART2_5_S))
+#define EFUSE_SYS_DATA_PART2_5_V  0xFFFFFFFF
+#define EFUSE_SYS_DATA_PART2_5_S  0
+
+#define EFUSE_RD_SYS_PART2_DATA6_REG          (DR_REG_EFUSE_BASE + 0x174)
+/* EFUSE_SYS_DATA_PART2_6:RO；位位置：[31:0]；默认值：32'h0；*/
+/*description:存储系统数据第二部分的第n个32位。*/
+#define EFUSE_SYS_DATA_PART2_6  0xFFFFFFFF
+#define EFUSE_SYS_DATA_PART2_6_M  ((EFUSE_SYS_DATA_PART2_6_V)<<(EFUSE_SYS_DATA_PART2_6_S))
+#define EFUSE_SYS_DATA_PART2_6_V  0xFFFFFFFF
+#define EFUSE_SYS_DATA_PART2_6_S  0
+
+#define EFUSE_RD_SYS_PART2_DATA7_REG          (DR_REG_EFUSE_BASE + 0x178)
+/* EFUSE_SYS_DATA_PART2_7:RO；位位置：[31:0]；默认值：32'h0；*/
+/*description:存储系统数据第二部分的第n个32位。*/
+#define EFUSE_SYS_DATA_PART2_7  0xFFFFFFFF
+#define EFUSE_SYS_DATA_PART2_7_M  ((EFUSE_SYS_DATA_PART2_7_V)<<(EFUSE_SYS_DATA_PART2_7_S))
+#define EFUSE_SYS_DATA_PART2_7_V  0xFFFFFFFF
+#define EFUSE_SYS_DATA_PART2_7_S  0
+
+#define EFUSE_RD_REPEAT_ERR0_REG          (DR_REG_EFUSE_BASE + 0x17c)
+/* EFUSE_VDD_SPI_DREFH_ERR:RO；比特位置：[31:30]；默认值：2'h0；*/
+/*描述：如果VDD_SPI_DREFH中的任何位为1，则表示编程错误。*/
+#define EFUSE_VDD_SPI_DREFH_ERR  0x00000003
+#define EFUSE_VDD_SPI_DREFH_ERR_M  ((EFUSE_VDD_SPI_DREFH_ERR_V)<<(EFUSE_VDD_SPI_DREFH_ERR_S))
+#define EFUSE_VDD_SPI_DREFH_ERR_V  0x3
+#define EFUSE_VDD_SPI_DREFH_ERR_S  30
+/* EFUSE_VDD_SPI_MODECURLIM_ERR:RO；位位置：[29]；默认值：1'0；*/
+/*description:如果VDD_SPI_MODECURLIM为1，则表示编程错误。*/
+#define EFUSE_VDD_SPI_MODECURLIM_ERR  (BIT(29))
+#define EFUSE_VDD_SPI_MODECURLIM_ERR_M  (BIT(29))
+#define EFUSE_VDD_SPI_MODECURLIM_ERR_V  0x1
+#define EFUSE_VDD_SPI_MODECURLIM_ERR_S  29
+/* EFUSE_RPT4_RESERVED0_ERR:RO；位位置：[28:27]；默认值：2'h0；*/
+/*description:保留。*/
+#define EFUSE_RPT4_RESERVED0_ERR  0x00000003
+#define EFUSE_RPT4_RESERVED0_ERR_M  ((EFUSE_RPT4_RESERVED0_ERR_V)<<(EFUSE_RPT4_RESERVED0_ERR_S))
+#define EFUSE_RPT4_RESERVED0_ERR_V  0x3
+#define EFUSE_RPT4_RESERVED0_ERR_S  27
+/* EFUSE_USB_FORCE_NOPERSIST_ERR:RO；位位置：[26]；默认值：1'0；*/
+/*description:记录usb_force_nopersist燃烧结果的错误信息。*/
+#define EFUSE_USB_FORCE_NOPERSIST_ERR  (BIT(26))
+#define EFUSE_USB_FORCE_NOPERSIST_ERR_M  (BIT(26))
+#define EFUSE_USB_FORCE_NOPERSIST_ERR_V  0x1
+#define EFUSE_USB_FORCE_NOPERSIST_ERR_S  26
+/* EFUSE_EXT_PHY_ENABLE_ERR:RO；位位置：[25]；默认值：1'0；*/
+/*description:如果EXT_PHY_ENABLE为1，则表示编程错误。*/
+#define EFUSE_EXT_PHY_ENABLE_ERR  (BIT(25))
+#define EFUSE_EXT_PHY_ENABLE_ERR_M  (BIT(25))
+#define EFUSE_EXT_PHY_ENABLE_ERR_V  0x1
+#define EFUSE_EXT_PHY_ENABLE_ERR_S  25
+/* EFUSE_USB_EXCHG_PINS_ERR:RO；位位置：[24]；默认值：1'0；*/
+/*description:如果USB_EXCHG_PINS为1，则表示编程错误。*/
+#define EFUSE_USB_EXCHG_PINS_ERR  (BIT(24))
+#define EFUSE_USB_EXCHG_PINS_ERR_M  (BIT(24))
+#define EFUSE_USB_EXCHG_PINS_ERR_V  0x1
+#define EFUSE_USB_EXCHG_PINS_ERR_S  24
+/* EFUSE_USB_DREFL_ERR:RO；比特位置：[23:22]；默认值：2'h0；*/
+/*description:如果USB_DREFL中的任何位为1，则表示编程错误。*/
+#define EFUSE_USB_DREFL_ERR  0x00000003
+#define EFUSE_USB_DREFL_ERR_M  ((EFUSE_USB_DREFL_ERR_V)<<(EFUSE_USB_DREFL_ERR_S))
+#define EFUSE_USB_DREFL_ERR_V  0x3
+#define EFUSE_USB_DREFL_ERR_S  22
+/* EFUSE_USB_DREFH_ERR:RO；比特位置：[21:20]；默认值：2'h0；*/
+/*description:如果USB_DREFH中的任何位为1，则表示编程错误。*/
+#define EFUSE_USB_DREFH_ERR  0x00000003
+#define EFUSE_USB_DREFH_ERR_M  ((EFUSE_USB_DREFH_ERR_V)<<(EFUSE_USB_DREFH_ERR_S))
+#define EFUSE_USB_DREFH_ERR_V  0x3
+#define EFUSE_USB_DREFH_ERR_S  20
+/* EFUSE_DIS_DOWNLOAD_MANUAL_ENCRYPT_ERR:RO；位位置：[19]；默认值：1'0；*/
+/*description:如果DIS_DOWNLOAD_MANUAL_ENCRYPT为1，则表示编程错误。*/
+#define EFUSE_DIS_DOWNLOAD_MANUAL_ENCRYPT_ERR  (BIT(19))
+#define EFUSE_DIS_DOWNLOAD_MANUAL_ENCRYPT_ERR_M  (BIT(19))
+#define EFUSE_DIS_DOWNLOAD_MANUAL_ENCRYPT_ERR_V  0x1
+#define EFUSE_DIS_DOWNLOAD_MANUAL_ENCRYPT_ERR_S  19
+/* EFUSE_HARD_DIS_JTAG_ERR:RO；位位置：[18]；默认值：1'0；*/
+/*description:如果HARD_DIS_JTAG为1，则表示编程错误。*/
+#define EFUSE_HARD_DIS_JTAG_ERR  (BIT(18))
+#define EFUSE_HARD_DIS_JTAG_ERR_M  (BIT(18))
+#define EFUSE_HARD_DIS_JTAG_ERR_V  0x1
+#define EFUSE_HARD_DIS_JTAG_ERR_S  18
+/* EFUSE_SOFT_DIS_JTAG_ERR:RO；位位置：[17]；默认值：1'0；*/
+/*description:如果SOFT_DIS_JTAG为1，则表示编程错误。*/
+#define EFUSE_SOFT_DIS_JTAG_ERR  (BIT(17))
+#define EFUSE_SOFT_DIS_JTAG_ERR_M  (BIT(17))
+#define EFUSE_SOFT_DIS_JTAG_ERR_V  0x1
+#define EFUSE_SOFT_DIS_JTAG_ERR_S  17
+/* EFUSE_DIS_fuse_ATE_WR_ERR:RO；位位置：[16]；默认值：1'0；*/
+/*description:如果DIS_EFUSE_ATE_WR为1，则表示编程错误。*/
+#define EFUSE_DIS_EFUSE_ATE_WR_ERR  (BIT(16))
+#define EFUSE_DIS_EFUSE_ATE_WR_ERR_M  (BIT(16))
+#define EFUSE_DIS_EFUSE_ATE_WR_ERR_V  0x1
+#define EFUSE_DIS_EFUSE_ATE_WR_ERR_S  16
+/* EFUSE_DIS_BOOT_REMAP_ERR:RO；位位置：[15]；默认值：1'0；*/
+/*description:如果DIS_BOOT_REMAP为1，则表示编程错误。*/
+#define EFUSE_DIS_BOOT_REMAP_ERR  (BIT(15))
+#define EFUSE_DIS_BOOT_REMAP_ERR_M  (BIT(15))
+#define EFUSE_DIS_BOOT_REMAP_ERR_V  0x1
+#define EFUSE_DIS_BOOT_REMAP_ERR_S  15
+/* EFUSE_DIS_CAN_ERR:RO；位位置：[14]；默认值：1'0；*/
+/*description:如果DIS_CAN为1，则表示编程错误。*/
+#define EFUSE_DIS_CAN_ERR  (BIT(14))
+#define EFUSE_DIS_CAN_ERR_M  (BIT(14))
+#define EFUSE_DIS_CAN_ERR_V  0x1
+#define EFUSE_DIS_CAN_ERR_S  14
+/* EFUSE_DIS_USB_ERR:RO；位位置：[13]；默认值：1'0；*/
+/*description:如果DIS_USB为1，则表示编程错误。*/
+#define EFUSE_DIS_USB_ERR  (BIT(13))
+#define EFUSE_DIS_USB_ERR_M  (BIT(13))
+#define EFUSE_DIS_USB_ERR_V  0x1
+#define EFUSE_DIS_USB_ERR_S  13
+/* EFUSE_DIS_FORCE_DOWNLOAD_ERR:RO；位位置：[12]；默认值：1'0；*/
+/*description:如果DIS_FORCE_DOWNLOAD为1，则表示编程错误。*/
+#define EFUSE_DIS_FORCE_DOWNLOAD_ERR  (BIT(12))
+#define EFUSE_DIS_FORCE_DOWNLOAD_ERR_M  (BIT(12))
+#define EFUSE_DIS_FORCE_DOWNLOAD_ERR_V  0x1
+#define EFUSE_DIS_FORCE_DOWNLOAD_ERR_S  12
+/* EFUSE_DIS_DOWNLOAD_DCACHE_ERR:RO；位位置：[11]；默认值：1'0；*/
+/*description:如果DIS_DOWNLOAD_CACHE为1，则表示编程错误。*/
+#define EFUSE_DIS_DOWNLOAD_DCACHE_ERR  (BIT(11))
+#define EFUSE_DIS_DOWNLOAD_DCACHE_ERR_M  (BIT(11))
+#define EFUSE_DIS_DOWNLOAD_DCACHE_ERR_V  0x1
+#define EFUSE_DIS_DOWNLOAD_DCACHE_ERR_S  11
+/* EFUSE_DIS_DOWNLOAD_ICACHE_ERR:RO；位位置：[10]；默认值：1'0；*/
+/*description:如果DIS_DOWNLOAD_CACHE为1，则表示编程错误。*/
+#define EFUSE_DIS_DOWNLOAD_ICACHE_ERR  (BIT(10))
+#define EFUSE_DIS_DOWNLOAD_ICACHE_ERR_M  (BIT(10))
+#define EFUSE_DIS_DOWNLOAD_ICACHE_ERR_V  0x1
+#define EFUSE_DIS_DOWNLOAD_ICACHE_ERR_S  10
+/* EFUSE_DIS_dache_ERR:RO；位位置：[9]；默认值：1'0；*/
+/*description:如果DIS_DCACHE为1，则表示编程错误。*/
+#define EFUSE_DIS_DCACHE_ERR  (BIT(9))
+#define EFUSE_DIS_DCACHE_ERR_M  (BIT(9))
+#define EFUSE_DIS_DCACHE_ERR_V  0x1
+#define EFUSE_DIS_DCACHE_ERR_S  9
+/* EFUSE_DIS_inache_ERR:RO；位位置：[8]；默认值：1'0；*/
+/*description:如果DIS_ICACHE为1，则表示编程错误。*/
+#define EFUSE_DIS_ICACHE_ERR  (BIT(8))
+#define EFUSE_DIS_ICACHE_ERR_M  (BIT(8))
+#define EFUSE_DIS_ICACHE_ERR_V  0x1
+#define EFUSE_DIS_ICACHE_ERR_S  8
+/* EFUSE_DIS_RTC_RAM_BOOT_ERR:RO；位位置：[7]；默认值：1'0；*/
+/*描述：如果DIS_RTC_RAM_BOOT为1，则表示编程错误。*/
+#define EFUSE_DIS_RTC_RAM_BOOT_ERR  (BIT(7))
+#define EFUSE_DIS_RTC_RAM_BOOT_ERR_M  (BIT(7))
+#define EFUSE_DIS_RTC_RAM_BOOT_ERR_V  0x1
+#define EFUSE_DIS_RTC_RAM_BOOT_ERR_S  7
+/* EFUSE_RD_DIS_ERR:RO；比特位置：[6:0]；默认值：7'0；*/
+/*description:如果RD_DIS中的任何位为1，则表示编程错误。*/
+#define EFUSE_RD_DIS_ERR  0x0000007F
+#define EFUSE_RD_DIS_ERR_M  ((EFUSE_RD_DIS_ERR_V)<<(EFUSE_RD_DIS_ERR_S))
+#define EFUSE_RD_DIS_ERR_V  0x7F
+#define EFUSE_RD_DIS_ERR_S  0
+
+#define EFUSE_RD_REPEAT_ERR1_REG          (DR_REG_EFUSE_BASE + 0x180)
+/* EFUSE_KEY_PURPOSE_1_ERR:RO；位位置：[31:28]；默认值：4'0；*/
+/*description:如果KEY_PURPOSE_1中的任何位为1，则表示编程错误。*/
+#define EFUSE_KEY_PURPOSE_1_ERR  0x0000000F
+#define EFUSE_KEY_PURPOSE_1_ERR_M  ((EFUSE_KEY_PURPOSE_1_ERR_V)<<(EFUSE_KEY_PURPOSE_1_ERR_S))
+#define EFUSE_KEY_PURPOSE_1_ERR_V  0xF
+#define EFUSE_KEY_PURPOSE_1_ERR_S  28
+/* EFUSE_KEY_PURPOSE_0_ERR:RO；位位置：[27:24]；默认值：4'0；*/
+/*description:如果KEY_PURPOSE_0中的任何位为1，则表示编程错误。*/
+#define EFUSE_KEY_PURPOSE_0_ERR  0x0000000F
+#define EFUSE_KEY_PURPOSE_0_ERR_M  ((EFUSE_KEY_PURPOSE_0_ERR_V)<<(EFUSE_KEY_PURPOSE_0_ERR_S))
+#define EFUSE_KEY_PURPOSE_0_ERR_V  0xF
+#define EFUSE_KEY_PURPOSE_0_ERR_S  24
+/* EFUSE_SECURE_BOOT_KEY_REVOKE2_ERR:RO；位位置：[23]；默认值：1'0；*/
+/*description:如果SECURE_BOOT_KEY_REVOKE2为1，则表示编程错误。*/
+#define EFUSE_SECURE_BOOT_KEY_REVOKE2_ERR  (BIT(23))
+#define EFUSE_SECURE_BOOT_KEY_REVOKE2_ERR_M  (BIT(23))
+#define EFUSE_SECURE_BOOT_KEY_REVOKE2_ERR_V  0x1
+#define EFUSE_SECURE_BOOT_KEY_REVOKE2_ERR_S  23
+/* EFUSE_SECURE_BOOT_KEY_REVOKE1_ERR:RO；位位置：[22]；默认值：1'0；*/
+/*description:如果SECURE_BOOT_KEY_REVOKE1为1，则表示编程错误。*/
+#define EFUSE_SECURE_BOOT_KEY_REVOKE1_ERR  (BIT(22))
+#define EFUSE_SECURE_BOOT_KEY_REVOKE1_ERR_M  (BIT(22))
+#define EFUSE_SECURE_BOOT_KEY_REVOKE1_ERR_V  0x1
+#define EFUSE_SECURE_BOOT_KEY_REVOKE1_ERR_S  22
+/* EFUSE_SECURE_BOOT_KEY_REVOKE0_ERR:RO；位位置：[21]；默认值：1'0；*/
+/*description:如果SECURE_BOOT_KEY_REVOKE0为1，则表示编程错误。*/
+#define EFUSE_SECURE_BOOT_KEY_REVOKE0_ERR  (BIT(21))
+#define EFUSE_SECURE_BOOT_KEY_REVOKE0_ERR_M  (BIT(21))
+#define EFUSE_SECURE_BOOT_KEY_REVOKE0_ERR_V  0x1
+#define EFUSE_SECURE_BOOT_KEY_REVOKE0_ERR_S  21
+/* EFUSE_SPI_BOOT_CRYPT_CNT_ERR:RO；比特位置：[20:18]；默认值：3'h0；*/
+/*description:如果SPI_BOOT_CRYPT_CNT中的任何位为1，则表示编程错误。*/
+#define EFUSE_SPI_BOOT_CRYPT_CNT_ERR  0x00000007
+#define EFUSE_SPI_BOOT_CRYPT_CNT_ERR_M  ((EFUSE_SPI_BOOT_CRYPT_CNT_ERR_V)<<(EFUSE_SPI_BOOT_CRYPT_CNT_ERR_S))
+#define EFUSE_SPI_BOOT_CRYPT_CNT_ERR_V  0x7
+#define EFUSE_SPI_BOOT_CRYPT_CNT_ERR_S  18
+/* EFUSE_WDT_DELAY_SEL_ERR:RO；比特位置：[17:16]；默认值：2'h0；*/
+/*description:如果WDT_DELAY_SEL中的任何位为1，则表示编程错误。*/
+#define EFUSE_WDT_DELAY_SEL_ERR  0x00000003
+#define EFUSE_WDT_DELAY_SEL_ERR_M  ((EFUSE_WDT_DELAY_SEL_ERR_V)<<(EFUSE_WDT_DELAY_SEL_ERR_S))
+#define EFUSE_WDT_DELAY_SEL_ERR_V  0x3
+#define EFUSE_WDT_DELAY_SEL_ERR_S  16
+/* EFUSE_VDD_SPI_DCAP_ERR:RO；比特位置：[15:14]；默认值：2'h0；*/
+/*description:如果VDD_SPI_DCAP中的任何位为1，则表示编程错误。*/
+#define EFUSE_VDD_SPI_DCAP_ERR  0x00000003
+#define EFUSE_VDD_SPI_DCAP_ERR_M  ((EFUSE_VDD_SPI_DCAP_ERR_V)<<(EFUSE_VDD_SPI_DCAP_ERR_S))
+#define EFUSE_VDD_SPI_DCAP_ERR_V  0x3
+#define EFUSE_VDD_SPI_DCAP_ERR_S  14
+/* EFUSE_VDD_SPI_INIT_ERR:RO；比特位置：[13:12]；默认值：2'h0；*/
+/*description:如果VDD_SPI_INIT中的任何位为1，则表示编程错误。*/
+#define EFUSE_VDD_SPI_INIT_ERR  0x00000003
+#define EFUSE_VDD_SPI_INIT_ERR_M  ((EFUSE_VDD_SPI_INIT_ERR_V)<<(EFUSE_VDD_SPI_INIT_ERR_S))
+#define EFUSE_VDD_SPI_INIT_ERR_V  0x3
+#define EFUSE_VDD_SPI_INIT_ERR_S  12
+/* EFUSE_VDD_SPI_DCURLIM_ERR:RO；比特位置：[11:9]；默认值：3'h0；*/
+/*描述：如果VDD_SPI_DCURLIM中的任何位为1，则表示编程错误。*/
+#define EFUSE_VDD_SPI_DCURLIM_ERR  0x00000007
+#define EFUSE_VDD_SPI_DCURLIM_ERR_M  ((EFUSE_VDD_SPI_DCURLIM_ERR_V)<<(EFUSE_VDD_SPI_DCURLIM_ERR_S))
+#define EFUSE_VDD_SPI_DCURLIM_ERR_V  0x7
+#define EFUSE_VDD_SPI_DCURLIM_ERR_S  9
+/* EFUSE_VDD_SPI_ENCURLIM_ERR:RO；位位置：[8]；默认值：1'0；*/
+/*description:如果VDD_SPI_ENCURLIM为1，则表示编程错误。*/
+#define EFUSE_VDD_SPI_ENCURLIM_ERR  (BIT(8))
+#define EFUSE_VDD_SPI_ENCURLIM_ERR_M  (BIT(8))
+#define EFUSE_VDD_SPI_ENCURLIM_ERR_V  0x1
+#define EFUSE_VDD_SPI_ENCURLIM_ERR_S  8
+/* EFUSE_VDD_SPI_EN_INIT_ERR:RO；位位置：[7]；默认值：1'0；*/
+/*description:如果VDD_SPI_EN_INIT为1，则表示编程错误。*/
+#define EFUSE_VDD_SPI_EN_INIT_ERR  (BIT(7))
+#define EFUSE_VDD_SPI_EN_INIT_ERR_M  (BIT(7))
+#define EFUSE_VDD_SPI_EN_INIT_ERR_V  0x1
+#define EFUSE_VDD_SPI_EN_INIT_ERR_S  7
+/* EFUSE_VDD_SPI_FORCE_ERR:RO；位位置：[6]；默认值：1'0；*/
+/*description:如果VDD_SPI_FORCE为1，则表示编程错误。*/
+#define EFUSE_VDD_SPI_FORCE_ERR  (BIT(6))
+#define EFUSE_VDD_SPI_FORCE_ERR_M  (BIT(6))
+#define EFUSE_VDD_SPI_FORCE_ERR_V  0x1
+#define EFUSE_VDD_SPI_FORCE_ERR_S  6
+/* EFUSE_VDD_SPI_TIEH_ERR:RO；位位置：[5]；默认值：1'0；*/
+/*description:如果VDD_SPI_TIEH为1，则表示编程错误。*/
+#define EFUSE_VDD_SPI_TIEH_ERR  (BIT(5))
+#define EFUSE_VDD_SPI_TIEH_ERR_M  (BIT(5))
+#define EFUSE_VDD_SPI_TIEH_ERR_V  0x1
+#define EFUSE_VDD_SPI_TIEH_ERR_S  5
+/* EFUSE_VDD_SPI_XPD_ERR:RO；位位置：[4]；默认值：1'0；*/
+/*description:如果VDD_SPI_XPD为1，则表示编程错误。*/
+#define EFUSE_VDD_SPI_XPD_ERR  (BIT(4))
+#define EFUSE_VDD_SPI_XPD_ERR_M  (BIT(4))
+#define EFUSE_VDD_SPI_XPD_ERR_V  0x1
+#define EFUSE_VDD_SPI_XPD_ERR_S  4
+/* EFUSE_VDD_SPI_DREFL_ERR:RO；位位置：[3:2]；默认值：2'h0；*/
+/*描述：如果VDD_SPI_DREFL中的任何位为1，则表示编程错误。*/
+#define EFUSE_VDD_SPI_DREFL_ERR  0x00000003
+#define EFUSE_VDD_SPI_DREFL_ERR_M  ((EFUSE_VDD_SPI_DREFL_ERR_V)<<(EFUSE_VDD_SPI_DREFL_ERR_S))
+#define EFUSE_VDD_SPI_DREFL_ERR_V  0x3
+#define EFUSE_VDD_SPI_DREFL_ERR_S  2
+/* EFUSE_VDD_SPI_DREFM_ERR:RO；位位置：[1:0]；默认值：2'h0；*/
+/*描述：如果VDD_SPI_DREFM中的任何位为1，则表示编程错误。*/
+#define EFUSE_VDD_SPI_DREFM_ERR  0x00000003
+#define EFUSE_VDD_SPI_DREFM_ERR_M  ((EFUSE_VDD_SPI_DREFM_ERR_V)<<(EFUSE_VDD_SPI_DREFM_ERR_S))
+#define EFUSE_VDD_SPI_DREFM_ERR_V  0x3
+#define EFUSE_VDD_SPI_DREFM_ERR_S  0
+
+#define EFUSE_RD_REPEAT_ERR2_REG          (DR_REG_EFUSE_BASE + 0x184)
+/* EFUSE_FLASH_TPUW_ERR:RO；位位置：[31:28]；默认值：4'0；*/
+/*描述：如果FLASH_TPUM中的任何位为1，则表示编程错误。*/
+#define EFUSE_FLASH_TPUW_ERR  0x0000000F
+#define EFUSE_FLASH_TPUW_ERR_M  ((EFUSE_FLASH_TPUW_ERR_V)<<(EFUSE_FLASH_TPUW_ERR_S))
+#define EFUSE_FLASH_TPUW_ERR_V  0xF
+#define EFUSE_FLASH_TPUW_ERR_S  28
+/* EFUSE_RPT4_RESERVED1_ERR:RO；位位置：[27:22]；默认值：6'0；*/
+/*description:保留。*/
+#define EFUSE_RPT4_RESERVED1_ERR  0x0000003F
+#define EFUSE_RPT4_RESERVED1_ERR_M  ((EFUSE_RPT4_RESERVED1_ERR_V)<<(EFUSE_RPT4_RESERVED1_ERR_S))
+#define EFUSE_RPT4_RESERVED1_ERR_V  0x3F
+#define EFUSE_RPT4_RESERVED1_ERR_S  22
+/* EFUSE_SECURE_BOOT_AGGRESSIVE_REVOKE_ERR:RO；位位置：[21]；默认值：1'0；*/
+/*description:如果SECURE_BOOT_AGRESSIVE_REVOKE为1，则表示编程错误。*/
+#define EFUSE_SECURE_BOOT_AGGRESSIVE_REVOKE_ERR  (BIT(21))
+#define EFUSE_SECURE_BOOT_AGGRESSIVE_REVOKE_ERR_M  (BIT(21))
+#define EFUSE_SECURE_BOOT_AGGRESSIVE_REVOKE_ERR_V  0x1
+#define EFUSE_SECURE_BOOT_AGGRESSIVE_REVOKE_ERR_S  21
+/* EFUSE_SECURE_BOOT_EN_ERR:RO；位位置：[20]；默认值：1'0；*/
+/*description:如果SECURE_BOOT_EN为1，则表示编程错误。*/
+#define EFUSE_SECURE_BOOT_EN_ERR  (BIT(20))
+#define EFUSE_SECURE_BOOT_EN_ERR_M  (BIT(20))
+#define EFUSE_SECURE_BOOT_EN_ERR_V  0x1
+#define EFUSE_SECURE_BOOT_EN_ERR_S  20
+/* EFUSE_KEY_PURPOSE_6_ERR:RO；比特位置：[19:16]；默认值：4'0；*/
+/*description:如果KEY_PURPOSE_6中的任何位为1，则表示编程错误。*/
+#define EFUSE_KEY_PURPOSE_6_ERR  0x0000000F
+#define EFUSE_KEY_PURPOSE_6_ERR_M  ((EFUSE_KEY_PURPOSE_6_ERR_V)<<(EFUSE_KEY_PURPOSE_6_ERR_S))
+#define EFUSE_KEY_PURPOSE_6_ERR_V  0xF
+#define EFUSE_KEY_PURPOSE_6_ERR_S  16
+/* EFUSE_KEY_PURPOSE_5_ERR:RO；比特位置：[15:12]；默认值：4'0；*/
+/*description:如果KEY_PURPOSE_5中的任何位为1，则表示编程错误。*/
+#define EFUSE_KEY_PURPOSE_5_ERR  0x0000000F
+#define EFUSE_KEY_PURPOSE_5_ERR_M  ((EFUSE_KEY_PURPOSE_5_ERR_V)<<(EFUSE_KEY_PURPOSE_5_ERR_S))
+#define EFUSE_KEY_PURPOSE_5_ERR_V  0xF
+#define EFUSE_KEY_PURPOSE_5_ERR_S  12
+/* EFUSE_KEY_purpose4_ERR:RO；位位置：[11:8]；默认值：4'0；*/
+/*description:如果KEY_PURPOSE_4中的任何位为1，则表示编程错误。*/
+#define EFUSE_KEY_PURPOSE_4_ERR  0x0000000F
+#define EFUSE_KEY_PURPOSE_4_ERR_M  ((EFUSE_KEY_PURPOSE_4_ERR_V)<<(EFUSE_KEY_PURPOSE_4_ERR_S))
+#define EFUSE_KEY_PURPOSE_4_ERR_V  0xF
+#define EFUSE_KEY_PURPOSE_4_ERR_S  8
+/* EFUSE_KEY_purpose3_ERR:RO；位位置：[7:4]；默认值：4'0；*/
+/*description:如果KEY_PURPOSE_3中的任何位为1，则表示编程错误。*/
+#define EFUSE_KEY_PURPOSE_3_ERR  0x0000000F
+#define EFUSE_KEY_PURPOSE_3_ERR_M  ((EFUSE_KEY_PURPOSE_3_ERR_V)<<(EFUSE_KEY_PURPOSE_3_ERR_S))
+#define EFUSE_KEY_PURPOSE_3_ERR_V  0xF
+#define EFUSE_KEY_PURPOSE_3_ERR_S  4
+/* EFUSE_KEY_PURPOSE_error:RO；位位置：[3:0]；默认值：4'0；*/
+/*description:如果KEY_PURPOSE_2中的任何位为1，则表示编程错误。*/
+#define EFUSE_KEY_PURPOSE_2_ERR  0x0000000F
+#define EFUSE_KEY_PURPOSE_2_ERR_M  ((EFUSE_KEY_PURPOSE_2_ERR_V)<<(EFUSE_KEY_PURPOSE_2_ERR_S))
+#define EFUSE_KEY_PURPOSE_2_ERR_V  0xF
+#define EFUSE_KEY_PURPOSE_2_ERR_S  0
+
+#define EFUSE_RD_REPEAT_ERR3_REG          (DR_REG_EFUSE_BASE + 0x188)
+/* EFUSE_RPT4_RESERVED2_ERR:RO；位位置：[31:27]；默认值：5'h0；*/
+/*description:保留。*/
+#define EFUSE_RPT4_RESERVED2_ERR  0x0000001F
+#define EFUSE_RPT4_RESERVED2_ERR_M  ((EFUSE_RPT4_RESERVED2_ERR_V)<<(EFUSE_RPT4_RESERVED2_ERR_S))
+#define EFUSE_RPT4_RESERVED2_ERR_V  0x1F
+#define EFUSE_RPT4_RESERVED2_ERR_S  27
+/* EFUSE_SECURE_VERSION_ERR:RO；比特位置：[26:11]；默认值：16'0；*/
+/*description:如果SECURE_VERSION中的任何位为1，则表示编程错误。*/
+#define EFUSE_SECURE_VERSION_ERR  0x0000FFFF
+#define EFUSE_SECURE_VERSION_ERR_M  ((EFUSE_SECURE_VERSION_ERR_V)<<(EFUSE_SECURE_VERSION_ERR_S))
+#define EFUSE_SECURE_VERSION_ERR_V  0xFFFF
+#define EFUSE_SECURE_VERSION_ERR_S  11
+/* EFUSE_FORCE_SEND_RESUME_ERR:RO；位位置：[10]；默认值：1'0；*/
+/*description:如果FORCE_SEND_RESUME为1，则表示编程错误。*/
+#define EFUSE_FORCE_SEND_RESUME_ERR  (BIT(10))
+#define EFUSE_FORCE_SEND_RESUME_ERR_M  (BIT(10))
+#define EFUSE_FORCE_SEND_RESUME_ERR_V  0x1
+#define EFUSE_FORCE_SEND_RESUME_ERR_S  10
+/* EFUSE_FLASH_TYPE_ERR:RO；位位置：[9]；默认值：1'0；*/
+/*description:如果FLASH_TYPE为1，则表示编程错误。*/
+#define EFUSE_FLASH_TYPE_ERR  (BIT(9))
+#define EFUSE_FLASH_TYPE_ERR_M  (BIT(9))
+#define EFUSE_FLASH_TYPE_ERR_V  0x1
+#define EFUSE_FLASH_TYPE_ERR_S  9
+/* EFUSE_PIN_POWER_SELECTION_er:RO；位位置：[8]；默认值：1'0；*/
+/*description:如果PIN_POWER_SELECTION为1，则表示编程错误。*/
+#define EFUSE_PIN_POWER_SELECTION_ERR  (BIT(8))
+#define EFUSE_PIN_POWER_SELECTION_ERR_M  (BIT(8))
+#define EFUSE_PIN_POWER_SELECTION_ERR_V  0x1
+#define EFUSE_PIN_POWER_SELECTION_ERR_S  8
+/* EFUSE_UART_PRINT_CONTROL_ERR:RO；位位置：[7:6]；默认值：2'h0；*/
+/*description:如果UART_PRINT_CONTROL中的任何位为1，则表示编程错误。*/
+#define EFUSE_UART_PRINT_CONTROL_ERR  0x00000003
+#define EFUSE_UART_PRINT_CONTROL_ERR_M  ((EFUSE_UART_PRINT_CONTROL_ERR_V)<<(EFUSE_UART_PRINT_CONTROL_ERR_S))
+#define EFUSE_UART_PRINT_CONTROL_ERR_V  0x3
+#define EFUSE_UART_PRINT_CONTROL_ERR_S  6
+/* EFUSE_ENABLE_SECURITY_DOWNLOAD_ERR:RO；位位置：[5]；默认值：1'0；*/
+/*description:如果ENABLE_SECURITY_DOWNLOAD为1，则表示编程错误。*/
+#define EFUSE_ENABLE_SECURITY_DOWNLOAD_ERR  (BIT(5))
+#define EFUSE_ENABLE_SECURITY_DOWNLOAD_ERR_M  (BIT(5))
+#define EFUSE_ENABLE_SECURITY_DOWNLOAD_ERR_V  0x1
+#define EFUSE_ENABLE_SECURITY_DOWNLOAD_ERR_S  5
+/* EFUSE_DIS_USB_DOWNLOAD_MODE_ERR:RO；位位置：[4]；默认值：1'0；*/
+/*description:如果DIS_USB_DOWNLOAD_MODE为1，则表示编程错误。*/
+#define EFUSE_DIS_USB_DOWNLOAD_MODE_ERR  (BIT(4))
+#define EFUSE_DIS_USB_DOWNLOAD_MODE_ERR_M  (BIT(4))
+#define EFUSE_DIS_USB_DOWNLOAD_MODE_ERR_V  0x1
+#define EFUSE_DIS_USB_DOWNLOAD_MODE_ERR_S  4
+/* EFUSE_RPT4_RESERVED3_ERR:RO；位位置：[3]；默认值：1'0；*/
+/*description:如果RPT4_RESERVED3为1，则表示编程错误。*/
+#define EFUSE_RPT4_RESERVED3_ERR  (BIT(3))
+#define EFUSE_RPT4_RESERVED3_ERR_M  (BIT(3))
+#define EFUSE_RPT4_RESERVED3_ERR_V  0x1
+#define EFUSE_RPT4_RESERVED3_ERR_S  3
+/* EFUSE_UART_PRINT_CHANNEL_ERR:RO；位位置：[2]；默认值：1'0；*/
+/*description:如果UART_PRINT_CHANNEL为1，则表示编程错误。*/
+#define EFUSE_UART_PRINT_CHANNEL_ERR  (BIT(2))
+#define EFUSE_UART_PRINT_CHANNEL_ERR_M  (BIT(2))
+#define EFUSE_UART_PRINT_CHANNEL_ERR_V  0x1
+#define EFUSE_UART_PRINT_CHANNEL_ERR_S  2
+/* EFUSE_DIS_LEGACY_SPI_BOOT_ERR:RO；位位置：[1]；默认值：1'0；*/
+/*description:如果DIS_LEGACY_SPI_BOOT为1，则表示编程错误。*/
+#define EFUSE_DIS_LEGACY_SPI_BOOT_ERR  (BIT(1))
+#define EFUSE_DIS_LEGACY_SPI_BOOT_ERR_M  (BIT(1))
+#define EFUSE_DIS_LEGACY_SPI_BOOT_ERR_V  0x1
+#define EFUSE_DIS_LEGACY_SPI_BOOT_ERR_S  1
+/* EFUSE_DIS_DOWNLOAD_MODE_ERR:RO；位位置：[0]；默认值：1'0；*/
+/*description:如果DIS_DOWNLOAD_MODE为1，则表示编程错误。*/
+#define EFUSE_DIS_DOWNLOAD_MODE_ERR  (BIT(0))
+#define EFUSE_DIS_DOWNLOAD_MODE_ERR_M  (BIT(0))
+#define EFUSE_DIS_DOWNLOAD_MODE_ERR_V  0x1
+#define EFUSE_DIS_DOWNLOAD_MODE_ERR_S  0
+
+#define EFUSE_RD_REPEAT_ERR4_REG          (DR_REG_EFUSE_BASE + 0x18C)
+/* EFUSE_RPT1_RESERVED0_ERR:RO；位位置：[31:24]；默认值：8'0；*/
+/*description:保留。*/
+#define EFUSE_RPT1_RESERVED0_ERR  0x000000FF
+#define EFUSE_RPT1_RESERVED0_ERR_M  ((EFUSE_RPT1_RESERVED0_ERR_V)<<(EFUSE_RPT1_RESERVED0_ERR_S))
+#define EFUSE_RPT1_RESERVED0_ERR_V  0xFF
+#define EFUSE_RPT1_RESERVED0_ERR_S  24
+/* EFUSE_RPT4_RESERVED4_ERR:RO；比特位置：[23:0]；默认值：24小时；*/
+/*description:保留（四种备份方式）。*/
+#define EFUSE_RPT4_RESERVED4_ERR  0x00FFFFFF
+#define EFUSE_RPT4_RESERVED4_ERR_M  ((EFUSE_RPT4_RESERVED4_ERR_V)<<(EFUSE_RPT4_RESERVED4_ERR_S))
+#define EFUSE_RPT4_RESERVED4_ERR_V  0xFFFFFF
+#define EFUSE_RPT4_RESERVED4_ERR_S  0
+
+#define EFUSE_RD_RS_ERR0_REG          (DR_REG_EFUSE_BASE + 0x1c0)
+/* EFUSE_KEY4_FAIL:RO；位位置：[31]；默认值：1'0；*/
+/*description:0：表示无故障，密钥$n的数据可靠*/
+#define EFUSE_KEY4_FAIL  (BIT(31))
+#define EFUSE_KEY4_FAIL_M  (BIT(31))
+#define EFUSE_KEY4_FAIL_V  0x1
+#define EFUSE_KEY4_FAIL_S  31
+/* EFUSE_KEY4_ERR_NUM:RO；位位置：[30:28]；默认值：3'h0；*/
+/*description:此信号的值表示错误字节数。*/
+#define EFUSE_KEY4_ERR_NUM  0x00000007
+#define EFUSE_KEY4_ERR_NUM_M  ((EFUSE_KEY4_ERR_NUM_V)<<(EFUSE_KEY4_ERR_NUM_S))
+#define EFUSE_KEY4_ERR_NUM_V  0x7
+#define EFUSE_KEY4_ERR_NUM_S  28
+/* EFUSE_KEY3_FAIL:RO；位位置：[27]；默认值：1'0；*/
+/*description:0：表示无故障，密钥$n的数据可靠*/
+#define EFUSE_KEY3_FAIL  (BIT(27))
+#define EFUSE_KEY3_FAIL_M  (BIT(27))
+#define EFUSE_KEY3_FAIL_V  0x1
+#define EFUSE_KEY3_FAIL_S  27
+/* EFUSE_KEY3_ERR_NUM:RO；比特位置：[26:24]；默认值：3'h0；*/
+/*description:此信号的值表示错误字节数。*/
+#define EFUSE_KEY3_ERR_NUM  0x00000007
+#define EFUSE_KEY3_ERR_NUM_M  ((EFUSE_KEY3_ERR_NUM_V)<<(EFUSE_KEY3_ERR_NUM_S))
+#define EFUSE_KEY3_ERR_NUM_V  0x7
+#define EFUSE_KEY3_ERR_NUM_S  24
+/* EFUSE_KEY2_FAIL:RO；位位置：[23]；默认值：1'0；*/
+/*description:0：表示无故障，密钥$n的数据可靠*/
+#define EFUSE_KEY2_FAIL  (BIT(23))
+#define EFUSE_KEY2_FAIL_M  (BIT(23))
+#define EFUSE_KEY2_FAIL_V  0x1
+#define EFUSE_KEY2_FAIL_S  23
+/* EFUSE_KEY2_ERR_NUM:RO；比特位置：[22:20]；默认值：3'h0；*/
+/*description:此信号的值表示错误字节数。*/
+#define EFUSE_KEY2_ERR_NUM  0x00000007
+#define EFUSE_KEY2_ERR_NUM_M  ((EFUSE_KEY2_ERR_NUM_V)<<(EFUSE_KEY2_ERR_NUM_S))
+#define EFUSE_KEY2_ERR_NUM_V  0x7
+#define EFUSE_KEY2_ERR_NUM_S  20
+/* EFUSE_KEY1_FAIL:RO；位位置：[19]；默认值：1'0；*/
+/*description:0：表示无故障，密钥$n的数据可靠*/
+#define EFUSE_KEY1_FAIL  (BIT(19))
+#define EFUSE_KEY1_FAIL_M  (BIT(19))
+#define EFUSE_KEY1_FAIL_V  0x1
+#define EFUSE_KEY1_FAIL_S  19
+/* EFUSE_KEY1_ERR_NUM:RO；比特位置：[18:16]；默认值：3'h0；*/
+/*description:此信号的值表示错误字节数。*/
+#define EFUSE_KEY1_ERR_NUM  0x00000007
+#define EFUSE_KEY1_ERR_NUM_M  ((EFUSE_KEY1_ERR_NUM_V)<<(EFUSE_KEY1_ERR_NUM_S))
+#define EFUSE_KEY1_ERR_NUM_V  0x7
+#define EFUSE_KEY1_ERR_NUM_S  16
+/* EFUSE_KEY0_FAIL:RO；位位置：[15]；默认值：1'0；*/
+/*description:0：表示无故障，密钥$n的数据可靠*/
+#define EFUSE_KEY0_FAIL  (BIT(15))
+#define EFUSE_KEY0_FAIL_M  (BIT(15))
+#define EFUSE_KEY0_FAIL_V  0x1
+#define EFUSE_KEY0_FAIL_S  15
+/* EFUSE_KEY0_ERR_NUM:RO；比特位置：[14:12]；默认值：3'h0；*/
+/*description:此信号的值表示错误字节数。*/
+#define EFUSE_KEY0_ERR_NUM  0x00000007
+#define EFUSE_KEY0_ERR_NUM_M  ((EFUSE_KEY0_ERR_NUM_V)<<(EFUSE_KEY0_ERR_NUM_S))
+#define EFUSE_KEY0_ERR_NUM_V  0x7
+#define EFUSE_KEY0_ERR_NUM_S  12
+/* EFUSE_USR_DATA_FAIL:RO；位位置：[11]；默认值：1'0；*/
+/*description:0:表示无故障，用户数据可靠*/
+#define EFUSE_USR_DATA_FAIL  (BIT(11))
+#define EFUSE_USR_DATA_FAIL_M  (BIT(11))
+#define EFUSE_USR_DATA_FAIL_V  0x1
+#define EFUSE_USR_DATA_FAIL_S  11
+/* EFUSE_USR_DATA_ERR_NUM:RO；比特位置：[10:8]；默认值：3'h0；*/
+/*description:此信号的值表示错误字节数。*/
+#define EFUSE_USR_DATA_ERR_NUM  0x00000007
+#define EFUSE_USR_DATA_ERR_NUM_M  ((EFUSE_USR_DATA_ERR_NUM_V)<<(EFUSE_USR_DATA_ERR_NUM_S))
+#define EFUSE_USR_DATA_ERR_NUM_V  0x7
+#define EFUSE_USR_DATA_ERR_NUM_S  8
+/* EFUSE_SYS_PART1_FAIL:RO；位位置：[7]；默认值：1'0；*/
+/*description:0:表示无故障，系统part1的数据可靠*/
+#define EFUSE_SYS_PART1_FAIL  (BIT(7))
+#define EFUSE_SYS_PART1_FAIL_M  (BIT(7))
+#define EFUSE_SYS_PART1_FAIL_V  0x1
+#define EFUSE_SYS_PART1_FAIL_S  7
+/* EFUSE_SYS_PART1_NUM:RO；比特位置：[6:4]；默认值：3'h0；*/
+/*description:此信号的值表示错误字节数。*/
+#define EFUSE_SYS_PART1_NUM  0x00000007
+#define EFUSE_SYS_PART1_NUM_M  ((EFUSE_SYS_PART1_NUM_V)<<(EFUSE_SYS_PART1_NUM_S))
+#define EFUSE_SYS_PART1_NUM_V  0x7
+#define EFUSE_SYS_PART1_NUM_S  4
+/* EFUSE_MAC_SPI_8M_FAIL:RO；位位置：[3]；默认值：1'0；*/
+/*description:0表示无故障，MAC_SPI_8M数据可靠*/
+#define EFUSE_MAC_SPI_8M_FAIL  (BIT(3))
+#define EFUSE_MAC_SPI_8M_FAIL_M  (BIT(3))
+#define EFUSE_MAC_SPI_8M_FAIL_V  0x1
+#define EFUSE_MAC_SPI_8M_FAIL_S  3
+/* EFUSE_MAC_SPI_8M_ERR_NUM:RO；位位置：[2:0]；默认值：3'h0；*/
+/*description:此信号的值表示错误字节数。*/
+#define EFUSE_MAC_SPI_8M_ERR_NUM  0x00000007
+#define EFUSE_MAC_SPI_8M_ERR_NUM_M  ((EFUSE_MAC_SPI_8M_ERR_NUM_V)<<(EFUSE_MAC_SPI_8M_ERR_NUM_S))
+#define EFUSE_MAC_SPI_8M_ERR_NUM_V  0x7
+#define EFUSE_MAC_SPI_8M_ERR_NUM_S  0
+
+#define EFUSE_RD_RS_ERR1_REG          (DR_REG_EFUSE_BASE + 0x1c4)
+/* EFUSE_SYS_PART2_FAIL:RO；位位置：[7]；默认值：1'0；*/
+/*description:0:表示无故障，系统part2数据可靠*/
+#define EFUSE_SYS_PART2_FAIL  (BIT(7))
+#define EFUSE_SYS_PART2_FAIL_M  (BIT(7))
+#define EFUSE_SYS_PART2_FAIL_V  0x1
+#define EFUSE_SYS_PART2_FAIL_S  7
+/* EFUSE_SYS_PART2_ERR_NUM:RO；比特位置：[6:4]；默认值：3'h0；*/
+/*description:此信号的值表示错误字节数。*/
+#define EFUSE_SYS_PART2_ERR_NUM  0x00000007
+#define EFUSE_SYS_PART2_ERR_NUM_M  ((EFUSE_SYS_PART2_ERR_NUM_V)<<(EFUSE_SYS_PART2_ERR_NUM_S))
+#define EFUSE_SYS_PART2_ERR_NUM_V  0x7
+#define EFUSE_SYS_PART2_ERR_NUM_S  4
+/* EFUSE_KEY5_FAIL:RO；位位置：[3]；默认值：1'0；*/
+/*description:0:表示无故障，KEY5数据可靠*/
+#define EFUSE_KEY5_FAIL  (BIT(3))
+#define EFUSE_KEY5_FAIL_M  (BIT(3))
+#define EFUSE_KEY5_FAIL_V  0x1
+#define EFUSE_KEY5_FAIL_S  3
+/* EFUSE_KEY5_ERR_NUM:RO；位位置：[2:0]；默认值：3'h0；*/
+/*description:此信号的值表示错误字节数。*/
+#define EFUSE_KEY5_ERR_NUM  0x00000007
+#define EFUSE_KEY5_ERR_NUM_M  ((EFUSE_KEY5_ERR_NUM_V)<<(EFUSE_KEY5_ERR_NUM_S))
+#define EFUSE_KEY5_ERR_NUM_V  0x7
+#define EFUSE_KEY5_ERR_NUM_S  0
+
+#define EFUSE_CLK_REG          (DR_REG_EFUSE_BASE + 0x1c8)
+/* EFUSE_CLK_EN:R/W；位位置：[16]；默认值：1'0；*/
+/*description:设置此位并强制启用eFuse存储器的时钟信号。*/
+#define EFUSE_CLK_EN  (BIT(16))
+#define EFUSE_CLK_EN_M  (BIT(16))
+#define EFUSE_CLK_EN_V  0x1
+#define EFUSE_CLK_EN_S  16
+/* EFUSE_MEM_FORCE_PU:R/W；位位置：[2]；默认值：1'0；*/
+/*description:设置此位以强制eFuse SRAM进入工作模式。*/
+#define EFUSE_MEM_FORCE_PU  (BIT(2))
+#define EFUSE_MEM_FORCE_PU_M  (BIT(2))
+#define EFUSE_MEM_FORCE_PU_V  0x1
+#define EFUSE_MEM_FORCE_PU_S  2
+/* EFUSE_MEM_CLK_FORCE_ON:R/W；位位置：[1]；默认值：1'h1；*/
+/*description:设置此位并强制激活eFuse SRAM的时钟信号。*/
+#define EFUSE_MEM_CLK_FORCE_ON  (BIT(1))
+#define EFUSE_MEM_CLK_FORCE_ON_M  (BIT(1))
+#define EFUSE_MEM_CLK_FORCE_ON_V  0x1
+#define EFUSE_MEM_CLK_FORCE_ON_S  1
+/* EFUSE_MEM_FORCE_PD:R/W；位位置：[0]；默认值：1'0；*/
+/*description:设置此位以强制eFuse SRAM进入省电模式。*/
+#define EFUSE_MEM_FORCE_PD  (BIT(0))
+#define EFUSE_MEM_FORCE_PD_M  (BIT(0))
+#define EFUSE_MEM_FORCE_PD_V  0x1
+#define EFUSE_MEM_FORCE_PD_S  0
+
+#define EFUSE_CONF_REG          (DR_REG_EFUSE_BASE + 0x1cc)
+/* EFUSE_OP_CODE:R/W；比特位置：[15:0]；默认值：16'0；*/
+/*description:0x5A5A:操作编程命令*/
+#define EFUSE_OP_CODE  0x0000FFFF
+#define EFUSE_OP_CODE_M  ((EFUSE_OP_CODE_V)<<(EFUSE_OP_CODE_S))
+#define EFUSE_OP_CODE_V  0xFFFF
+#define EFUSE_OP_CODE_S  0
+
+#define EFUSE_STATUS_REG          (DR_REG_EFUSE_BASE + 0x1d0)
+/* EFUSE_REPEAT_ERR_CNT:RO；比特位置：[17:10]；默认值：8'0；*/
+/*description:指示编程BLOCK0期间的错误位数。*/
+#define EFUSE_REPEAT_ERR_CNT  0x000000FF
+#define EFUSE_REPEAT_ERR_CNT_M  ((EFUSE_REPEAT_ERR_CNT_V)<<(EFUSE_REPEAT_ERR_CNT_S))
+#define EFUSE_REPEAT_ERR_CNT_V  0xFF
+#define EFUSE_REPEAT_ERR_CNT_S  10
+/* EFUSE_OTP_VDDQ_IS_SW:RO；位位置：[9]；默认值：1'0；*/
+/*description:OTP_VDDQ_IS_SW的值。*/
+#define EFUSE_OTP_VDDQ_IS_SW  (BIT(9))
+#define EFUSE_OTP_VDDQ_IS_SW_M  (BIT(9))
+#define EFUSE_OTP_VDDQ_IS_SW_V  0x1
+#define EFUSE_OTP_VDDQ_IS_SW_S  9
+/* EFUSE_OTP_PGENB_SW:RO；位位置：[8]；默认值：1'0；*/
+/*description:OTP_PGENB_SW的值。*/
+#define EFUSE_OTP_PGENB_SW  (BIT(8))
+#define EFUSE_OTP_PGENB_SW_M  (BIT(8))
+#define EFUSE_OTP_PGENB_SW_V  0x1
+#define EFUSE_OTP_PGENB_SW_S  8
+/* EFUSE_OTP_CSB_SW:RO；位位置：[7]；默认值：1'0；*/
+/*description:OTP_CSB_SW的值。*/
+#define EFUSE_OTP_CSB_SW  (BIT(7))
+#define EFUSE_OTP_CSB_SW_M  (BIT(7))
+#define EFUSE_OTP_CSB_SW_V  0x1
+#define EFUSE_OTP_CSB_SW_S  7
+/* EFUSE_OTP_STROBE_SW:RO；位位置：[6]；默认值：1'0；*/
+/*description:OTP_STROBE_SW的值。*/
+#define EFUSE_OTP_STROBE_SW  (BIT(6))
+#define EFUSE_OTP_STROBE_SW_M  (BIT(6))
+#define EFUSE_OTP_STROBE_SW_V  0x1
+#define EFUSE_OTP_STROBE_SW_S  6
+/* EFUSE_OTP_VDDQ_C_SYNC2:RO；位位置：[5]；默认值：1'0；*/
+/*description:OTP_VDDQ_C_SYNC2的值。*/
+#define EFUSE_OTP_VDDQ_C_SYNC2  (BIT(5))
+#define EFUSE_OTP_VDDQ_C_SYNC2_M  (BIT(5))
+#define EFUSE_OTP_VDDQ_C_SYNC2_V  0x1
+#define EFUSE_OTP_VDDQ_C_SYNC2_S  5
+/* EFUSE_OTP_LOAD_SW:RO；位位置：[4]；默认值：1'0；*/
+/*description:OTP_LOAD_SW的值。*/
+#define EFUSE_OTP_LOAD_SW  (BIT(4))
+#define EFUSE_OTP_LOAD_SW_M  (BIT(4))
+#define EFUSE_OTP_LOAD_SW_V  0x1
+#define EFUSE_OTP_LOAD_SW_S  4
+/* EFUSE_STATE:RO；位位置：[3:0]；默认值：4'0；*/
+/*description:指示eFuse状态机的状态。*/
+#define EFUSE_STATE  0x0000000F
+#define EFUSE_STATE_M  ((EFUSE_STATE_V)<<(EFUSE_STATE_S))
+#define EFUSE_STATE_V  0xF
+#define EFUSE_STATE_S  0
+
+#define EFUSE_CMD_REG          (DR_REG_EFUSE_BASE + 0x1d4)
+/* EFUSE_BLK_NUM:R/W；比特位置：[5:2]；默认值：4'0；*/
+/*description:要编程的块的序列号。值0-10分别对应于块号0-10。*/
+#define EFUSE_BLK_NUM  0x0000000F
+#define EFUSE_BLK_NUM_M  ((EFUSE_BLK_NUM_V)<<(EFUSE_BLK_NUM_S))
+#define EFUSE_BLK_NUM_V  0xF
+#define EFUSE_BLK_NUM_S  2
+/* EFUSE_PGM_CMD:R/W；位位置：[1]；默认值：1'0；*/
+/*description:设置此位以发送编程命令。*/
+#define EFUSE_PGM_CMD  (BIT(1))
+#define EFUSE_PGM_CMD_M  (BIT(1))
+#define EFUSE_PGM_CMD_V  0x1
+#define EFUSE_PGM_CMD_S  1
+/* EFUSE_READ_CMD:R/W；位位置：[0]；默认值：1'0；*/
+/*description:设置此位以发送读取命令。*/
+#define EFUSE_READ_CMD  (BIT(0))
+#define EFUSE_READ_CMD_M  (BIT(0))
+#define EFUSE_READ_CMD_V  0x1
+#define EFUSE_READ_CMD_S  0
+
+#define EFUSE_INT_RAW_REG          (DR_REG_EFUSE_BASE + 0x1d8)
+/* EFUSE_PGM_DONE_INT_RAW:RO；位位置：[1]；默认值：1'0；*/
+/*description:pgm_done中断的原始位信号。*/
+#define EFUSE_PGM_DONE_INT_RAW  (BIT(1))
+#define EFUSE_PGM_DONE_INT_RAW_M  (BIT(1))
+#define EFUSE_PGM_DONE_INT_RAW_V  0x1
+#define EFUSE_PGM_DONE_INT_RAW_S  1
+/* EFUSE_READ_DONE_INT_RAW:RO；位位置：[0]；默认值：1'0；*/
+/*description:read_done中断的原始位信号。*/
+#define EFUSE_READ_DONE_INT_RAW  (BIT(0))
+#define EFUSE_READ_DONE_INT_RAW_M  (BIT(0))
+#define EFUSE_READ_DONE_INT_RAW_V  0x1
+#define EFUSE_READ_DONE_INT_RAW_S  0
+
+#define EFUSE_INT_ST_REG          (DR_REG_EFUSE_BASE + 0x1dc)
+/* EFUSE_PGM_DONE_INT_ST:RO；位位置：[1]；默认值：1'0；*/
+/*description:pgm_done中断的状态信号。*/
+#define EFUSE_PGM_DONE_INT_ST  (BIT(1))
+#define EFUSE_PGM_DONE_INT_ST_M  (BIT(1))
+#define EFUSE_PGM_DONE_INT_ST_V  0x1
+#define EFUSE_PGM_DONE_INT_ST_S  1
+/* EFUSE_READ_DONE_INT_ST:RO；位位置：[0]；默认值：1'0；*/
+/*description:read_done中断的状态信号。*/
+#define EFUSE_READ_DONE_INT_ST  (BIT(0))
+#define EFUSE_READ_DONE_INT_ST_M  (BIT(0))
+#define EFUSE_READ_DONE_INT_ST_V  0x1
+#define EFUSE_READ_DONE_INT_ST_S  0
+
+#define EFUSE_INT_ENA_REG          (DR_REG_EFUSE_BASE + 0x1e0)
+/* EFUSE_PGM_DONE_INT_ENA:R/W；位位置：[1]；默认值：1'0；*/
+/*description:pgm_done中断的启用信号。*/
+#define EFUSE_PGM_DONE_INT_ENA  (BIT(1))
+#define EFUSE_PGM_DONE_INT_ENA_M  (BIT(1))
+#define EFUSE_PGM_DONE_INT_ENA_V  0x1
+#define EFUSE_PGM_DONE_INT_ENA_S  1
+/* EFUSE_READ_DONE_INT_ENA:R/W；位位置：[0]；默认值：1'0；*/
+/*description:read_done中断的启用信号。*/
+#define EFUSE_READ_DONE_INT_ENA  (BIT(0))
+#define EFUSE_READ_DONE_INT_ENA_M  (BIT(0))
+#define EFUSE_READ_DONE_INT_ENA_V  0x1
+#define EFUSE_READ_DONE_INT_ENA_S  0
+
+#define EFUSE_INT_CLR_REG          (DR_REG_EFUSE_BASE + 0x1e4)
+/* EFUSE_PGM_DONE_INT_CLR:WO；位位置：[1]；默认值：1'0；*/
+/*description:pgm_done中断的清除信号。*/
+#define EFUSE_PGM_DONE_INT_CLR  (BIT(1))
+#define EFUSE_PGM_DONE_INT_CLR_M  (BIT(1))
+#define EFUSE_PGM_DONE_INT_CLR_V  0x1
+#define EFUSE_PGM_DONE_INT_CLR_S  1
+/* EFUSE_READ_DONE_INT_CLR:WO；位位置：[0]；默认值：1'0；*/
+/*description:read_done中断的清除信号。*/
+#define EFUSE_READ_DONE_INT_CLR  (BIT(0))
+#define EFUSE_READ_DONE_INT_CLR_M  (BIT(0))
+#define EFUSE_READ_DONE_INT_CLR_V  0x1
+#define EFUSE_READ_DONE_INT_CLR_S  0
+
+#define EFUSE_DAC_CONF_REG          (DR_REG_EFUSE_BASE + 0x1e8)
+/* EFUSE_OE_CLR:R/W；位位置：[17]；默认值：1'0；*/
+/*description:降低编程电压的电源。*/
+#define EFUSE_OE_CLR  (BIT(17))
+#define EFUSE_OE_CLR_M  (BIT(17))
+#define EFUSE_OE_CLR_V  0x1
+#define EFUSE_OE_CLR_S  17
+/* EFUSE_DAC_NUM:R/W；比特位置：[16:9]；默认值：8'd255；*/
+/*description:控制编程电压的上升周期。*/
+#define EFUSE_DAC_NUM  0x000000FF
+#define EFUSE_DAC_NUM_M  ((EFUSE_DAC_NUM_V)<<(EFUSE_DAC_NUM_S))
+#define EFUSE_DAC_NUM_V  0xFF
+#define EFUSE_DAC_NUM_S  9
+/* EFUSE_DAC_CLK_PAD_SEL：R/W；位位置：[8]；默认值：1'0；*/
+/*description:别在意。*/
+#define EFUSE_DAC_CLK_PAD_SEL  (BIT(8))
+#define EFUSE_DAC_CLK_PAD_SEL_M  (BIT(8))
+#define EFUSE_DAC_CLK_PAD_SEL_V  0x1
+#define EFUSE_DAC_CLK_PAD_SEL_S  8
+/* EFUSE_DAC_CLK_DIV:R/W；位位置：[7:0]；默认值：8'd28；*/
+/*description:控制编程电压上升时钟的分频因数。*/
+#define EFUSE_DAC_CLK_DIV  0x000000FF
+#define EFUSE_DAC_CLK_DIV_M  ((EFUSE_DAC_CLK_DIV_V)<<(EFUSE_DAC_CLK_DIV_S))
+#define EFUSE_DAC_CLK_DIV_V  0xFF
+#define EFUSE_DAC_CLK_DIV_S  0
+
+#define EFUSE_RD_TIM_CONF_REG          (DR_REG_EFUSE_BASE + 0x1ec)
+/* EFUSE_READ_INIT_NUM:R/W；位位置：[31:24]；默认值：8'h12；*/
+/*description:配置eFuse的初始读取时间。*/
+#define EFUSE_READ_INIT_NUM  0x000000FF
+#define EFUSE_READ_INIT_NUM_M  ((EFUSE_READ_INIT_NUM_V)<<(EFUSE_READ_INIT_NUM_S))
+#define EFUSE_READ_INIT_NUM_V  0xFF
+#define EFUSE_READ_INIT_NUM_S  24
+/* EFUSE_TSUR_A:R/W；比特位置：[23:16]；默认值：8'h1；*/
+/*description:配置读取操作的设置时间。*/
+#define EFUSE_TSUR_A  0x000000FF
+#define EFUSE_TSUR_A_M  ((EFUSE_TSUR_A_V)<<(EFUSE_TSUR_A_S))
+#define EFUSE_TSUR_A_V  0xFF
+#define EFUSE_TSUR_A_S  16
+/* EFUSE_TRD:R/W；比特位置：[15:8]；默认值：8'h1；*/
+/*description:配置读取操作的脉冲长度。*/
+#define EFUSE_TRD  0x000000FF
+#define EFUSE_TRD_M  ((EFUSE_TRD_V)<<(EFUSE_TRD_S))
+#define EFUSE_TRD_V  0xFF
+#define EFUSE_TRD_S  8
+/* EFUSE_THR_A:R/W；位位置：[7:0]；默认值：8'h1；*/
+/*description:配置读取操作的保持时间。*/
+#define EFUSE_THR_A  0x000000FF
+#define EFUSE_THR_A_M  ((EFUSE_THR_A_V)<<(EFUSE_THR_A_S))
+#define EFUSE_THR_A_V  0xFF
+#define EFUSE_THR_A_S  0
+
+#define EFUSE_WR_TIM_CONF0_REG          (DR_REG_EFUSE_BASE + 0x1F0)
+/* EFUSE_TPGM:R/W；比特位置：[31:16]；默认值：16'hc8；*/
+/*description:配置编程1至eFuse期间的脉冲长度。*/
+#define EFUSE_TPGM  0x0000FFFF
+#define EFUSE_TPGM_M  ((EFUSE_TPGM_V)<<(EFUSE_TPGM_S))
+#define EFUSE_TPGM_V  0xFFFF
+#define EFUSE_TPGM_S  16
+/* EFUSE_TPGM_INACTIVE:R/W；比特位置：[15:8]；默认值：8'h1；*/
+/*description:配置编程0至eFuse期间的脉冲长度。*/
+#define EFUSE_TPGM_INACTIVE  0x000000FF
+#define EFUSE_TPGM_INACTIVE_M  ((EFUSE_TPGM_INACTIVE_V)<<(EFUSE_TPGM_INACTIVE_S))
+#define EFUSE_TPGM_INACTIVE_V  0xFF
+#define EFUSE_TPGM_INACTIVE_S  8
+/* EFUSE_THP_A:R/W；位位置：[7:0]；默认值：8'h1；*/
+/*description:配置编程操作的保持时间。*/
+#define EFUSE_THP_A  0x000000FF
+#define EFUSE_THP_A_M  ((EFUSE_THP_A_V)<<(EFUSE_THP_A_S))
+#define EFUSE_THP_A_V  0xFF
+#define EFUSE_THP_A_S  0
+
+#define EFUSE_WR_TIM_CONF1_REG          (DR_REG_EFUSE_BASE + 0x1F4)
+/* EFUSE_PWR_ON_NUM:R/W；比特位置：[23:8]；默认值：16'h2880；*/
+/*description:配置VDDQ的通电时间。*/
+#define EFUSE_PWR_ON_NUM  0x0000FFFF
+#define EFUSE_PWR_ON_NUM_M  ((EFUSE_PWR_ON_NUM_V)<<(EFUSE_PWR_ON_NUM_S))
+#define EFUSE_PWR_ON_NUM_V  0xFFFF
+#define EFUSE_PWR_ON_NUM_S  8
+/* EFUSE_TSUP_A:R/W；位位置：[7:0]；默认值：8'h1；*/
+/*description:配置编程操作的设置时间。*/
+#define EFUSE_TSUP_A  0x000000FF
+#define EFUSE_TSUP_A_M  ((EFUSE_TSUP_A_V)<<(EFUSE_TSUP_A_S))
+#define EFUSE_TSUP_A_V  0xFF
+#define EFUSE_TSUP_A_S  0
+
+#define EFUSE_WR_TIM_CONF2_REG          (DR_REG_EFUSE_BASE + 0x1F8)
+/* EFUSE_PWR_OFF_NUM:R/W；比特位置：[15:0]；默认值：16'h190；*/
+/*description:配置VDDQ的断电时间。*/
+#define EFUSE_PWR_OFF_NUM  0x0000FFFF
+#define EFUSE_PWR_OFF_NUM_M  ((EFUSE_PWR_OFF_NUM_V)<<(EFUSE_PWR_OFF_NUM_S))
+#define EFUSE_PWR_OFF_NUM_V  0xFFFF
+#define EFUSE_PWR_OFF_NUM_S  0
+
+#define EFUSE_DATE_REG          (DR_REG_EFUSE_BASE + 0x1FC)
+/* EFUSE_DATE:R/W；位位置：[31:0]；默认值：32'h19081100；*/
+/*description:存储eFuse版本。*/
+#define EFUSE_DATE  0xFFFFFFFF
+#define EFUSE_DATE_M  ((EFUSE_DATE_V)<<(EFUSE_DATE_S))
+#define EFUSE_DATE_V  0xFFFFFFFF
+#define EFUSE_DATE_S  0
+
+#ifdef __cplusplus
+}
+#endif
+
+
+
+#endif /*_SOC_EFUSE_REG_H_ */
+

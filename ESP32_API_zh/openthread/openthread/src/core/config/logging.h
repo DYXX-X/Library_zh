@@ -1,0 +1,399 @@
+/*
+ *  版权所有（c）2019，The OpenThread作者。保留所有权利。
+ *
+ *  在满足以下条件的情况下，允许以源代码和二进制形式重新分发和使用，无论是否进行修改：1.重新分发源代码必须保留上述版权声明、本条件列表和以下免责声明。2.二进制形式的再发行必须在随发行提供的文档和/或其他材料中复制上述版权声明、本条件列表和以下免责声明。3.未经事先书面许可，不得使用版权持有人的姓名或其贡献者的姓名为本软件衍生的产品背书或推广。
+ *
+ *  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ */
+
+/**
+ * @file 此文件包括日志记录服务的编译时配置。
+ *
+ */
+
+#ifndef CONFIG_LOGGING_H_
+#define CONFIG_LOGGING_H_
+
+/**
+ * @def OPENTHREAD_CONFIG_LOG_OUTPUT
+ *
+ * 选择日志输出是否以及输出到何处。
+ *
+ * 有几个选项可用
+ * - @sa OPENTHREAD_CONFIG_LOG_OUTPUT_NONE
+ * - @sa OPENTHREAD_CONFIG_LOG_OUTPUT_DEBUG_UART
+ * - @sa OPENTHREAD_CONFIG_LOG_OUTPUT_APP
+ * - @sa OPENTHREAD_CONFIG_LOG_OUTPUT_PLATFORM_DEFINED
+ * -和其他
+ *
+ * 注：
+ *
+ * 1） 因为默认值为：OPENTHREAD_CONFIG_LOG_OUTPUT_PLATFORM_DEFINED平台应至少为“otPlatLog（）”提供存根。
+ *
+ * 2） 这实际上是一个ENUM，因此在编译时可以是if/else/endif。
+ *
+ */
+#ifndef OPENTHREAD_CONFIG_LOG_OUTPUT
+#define OPENTHREAD_CONFIG_LOG_OUTPUT OPENTHREAD_CONFIG_LOG_OUTPUT_PLATFORM_DEFINED
+#endif
+
+/**日志输出到位桶（禁用）*/
+#define OPENTHREAD_CONFIG_LOG_OUTPUT_NONE 0
+/**日志输出转到调试uart-需要启用OPENTHREAD_CONFIG_ENABLE_debug_uart*/
+#define OPENTHREAD_CONFIG_LOG_OUTPUT_DEBUG_UART 1
+/**日志输出到NCP和CLI代码中由PlatLog（）提供的“应用程序”*/
+#define OPENTHREAD_CONFIG_LOG_OUTPUT_APP 2
+/**日志输出由平台定义的函数处理*/
+#define OPENTHREAD_CONFIG_LOG_OUTPUT_PLATFORM_DEFINED 3
+
+/**
+ * @def OPENTHREAD_CONFIG_LOG_LEVEL
+ *
+ * 日志级别（在编译时使用）。如果设置了`OPENTHREAD_CONFIG_LOG_LEVEL_DYNAMIC_ENABLE`，则定义了可能的最详细日志级别。请参阅“OPENTHREAD_CONFIG_LOG_LEVEL_INIT”以设置初始日志级别。
+ *
+ */
+#ifndef OPENTHREAD_CONFIG_LOG_LEVEL
+#define OPENTHREAD_CONFIG_LOG_LEVEL OT_LOG_LEVEL_CRIT
+#endif
+
+/**
+ * @def OPENTHREAD_CONFIG_LOG_LEVEL_DYNAMIC_ENABLE
+ *
+ * 定义为1以启用动态日志级别控制。
+ *
+ * 请注意，OPENTHREAD_CONFIG_LOG_LEVEL决定编译时的日志级别。动态日志级别控件（如果启用）仅允许从编译时值降低日志级别。
+ *
+ */
+#ifndef OPENTHREAD_CONFIG_LOG_LEVEL_DYNAMIC_ENABLE
+#define OPENTHREAD_CONFIG_LOG_LEVEL_DYNAMIC_ENABLE 0
+#endif
+
+/**
+ * @def OPENTHREAD_CONFIG_LOG_LEVEL_INIT
+ *
+ * 初始化OpenThread时使用的初始日志级别。请参见`OPENTHREAD_CONFIG_LOG_LEVEL_DYNAMIC_ENABLE`。
+ */
+#ifndef OPENTHREAD_CONFIG_LOG_LEVEL_INIT
+#define OPENTHREAD_CONFIG_LOG_LEVEL_INIT OPENTHREAD_CONFIG_LOG_LEVEL
+#endif
+
+/**
+ * @def OPENTHREAD_CONFIG_LOG_API
+ *
+ * 定义以启用OpenThread API日志记录。
+ *
+ */
+#ifndef OPENTHREAD_CONFIG_LOG_API
+#define OPENTHREAD_CONFIG_LOG_API 1
+#endif
+
+/**
+ * @def OPENTHREAD_CONFIG_LOG_MLE
+ *
+ * 定义以启用MLE日志记录。
+ *
+ */
+#ifndef OPENTHREAD_CONFIG_LOG_MLE
+#define OPENTHREAD_CONFIG_LOG_MLE 1
+#endif
+
+/**
+ * @def OPENTHREAD_CONFIG_LOG_MESHCOP
+ *
+ * 定义以启用MeshCoP日志记录。
+ *
+ */
+#ifndef OPENTHREAD_CONFIG_LOG_MESHCOP
+#define OPENTHREAD_CONFIG_LOG_MESHCOP 1
+#endif
+
+/**
+ * @def OPENTHREAD_CONFIG_LOG_ARP
+ *
+ * 定义以启用EID到RLOC映射记录。
+ *
+ */
+#ifndef OPENTHREAD_CONFIG_LOG_ARP
+#define OPENTHREAD_CONFIG_LOG_ARP 1
+#endif
+
+/**
+ * @def OPENTHREAD_CONFIG_LOG_NETDATA
+ *
+ * 定义以启用网络数据日志记录。
+ *
+ */
+#ifndef OPENTHREAD_CONFIG_LOG_NETDATA
+#define OPENTHREAD_CONFIG_LOG_NETDATA 1
+#endif
+
+/**
+ * @def OPENTHREAD_CONFIG_LOG_ICMP
+ *
+ * 定义以启用ICMPv6日志记录。
+ *
+ */
+#ifndef OPENTHREAD_CONFIG_LOG_ICMP
+#define OPENTHREAD_CONFIG_LOG_ICMP 1
+#endif
+
+/**
+ * @def OPENTHREAD_CONFIG_LOG_IP6
+ *
+ * 定义以启用IPv6日志记录。
+ *
+ */
+#ifndef OPENTHREAD_CONFIG_LOG_IP6
+#define OPENTHREAD_CONFIG_LOG_IP6 1
+#endif
+
+/**
+ * @def OPENTHREAD_CONFIG_LOG_TCP
+ *
+ * 定义以启用IPv6日志记录。
+ *
+ */
+#ifndef OPENTHREAD_CONFIG_LOG_TCP
+#define OPENTHREAD_CONFIG_LOG_TCP 1
+#endif
+
+/**
+ * @def OPENTHREAD_CONFIG_LOG_MAC
+ *
+ * 定义以启用IEEE 802.15.4 MAC日志记录。
+ *
+ */
+#ifndef OPENTHREAD_CONFIG_LOG_MAC
+#define OPENTHREAD_CONFIG_LOG_MAC 1
+#endif
+
+/**
+ * @def OPENTHREAD_CONFIG_LOG_MEM
+ *
+ * 定义以启用内存日志记录。
+ *
+ */
+#ifndef OPENTHREAD_CONFIG_LOG_MEM
+#define OPENTHREAD_CONFIG_LOG_MEM 1
+#endif
+
+/**
+ * @def OPENTHREAD_CONFIG_LOG_PKT_DUMP
+ *
+ * 定义以启用数据包的日志内容。
+ *
+ */
+#ifndef OPENTHREAD_CONFIG_LOG_PKT_DUMP
+#define OPENTHREAD_CONFIG_LOG_PKT_DUMP 1
+#endif
+
+/**
+ * @def OPENTHREAD_CONFIG_LOG_NETDIAG
+ *
+ * 定义以启用网络诊断日志记录。
+ *
+ */
+#ifndef OPENTHREAD_CONFIG_LOG_NETDIAG
+#define OPENTHREAD_CONFIG_LOG_NETDIAG 1
+#endif
+
+/**
+ * @def OPENTHREAD_CONFIG_LOG_PLATFORM
+ *
+ * 定义以启用平台区域日志记录。
+ *
+ */
+#ifndef OPENTHREAD_CONFIG_LOG_PLATFORM
+#define OPENTHREAD_CONFIG_LOG_PLATFORM 1
+#endif
+
+/**
+ * @def OPENTHREAD_CONFIG_LOG_CLI
+ *
+ * 定义以启用CLI日志记录。
+ *
+ */
+#ifndef OPENTHREAD_CONFIG_LOG_CLI
+#define OPENTHREAD_CONFIG_LOG_CLI 1
+#endif
+
+/**
+ * @def OPENTHREAD_CONFIG_LOG_COAP
+ *
+ * 定义以启用COAP日志记录。
+ *
+ */
+#ifndef OPENTHREAD_CONFIG_LOG_COAP
+#define OPENTHREAD_CONFIG_LOG_COAP 1
+#endif
+
+/**
+ * @def OPENTHREAD_CONFIG_LOG_CORE
+ *
+ * 定义以启用OpenThreadCore日志记录。
+ *
+ */
+#ifndef OPENTHREAD_CONFIG_LOG_CORE
+#define OPENTHREAD_CONFIG_LOG_CORE 1
+#endif
+
+/**
+ * @def OPENTHREAD_CONFIG_LOG_UTIL
+ *
+ * 定义以启用OpenThread Utility模块日志记录。
+ *
+ */
+#ifndef OPENTHREAD_CONFIG_LOG_UTIL
+#define OPENTHREAD_CONFIG_LOG_UTIL 1
+#endif
+
+/**
+ * @def OPENTHREAD_CONFIG_LOG_BBR
+ *
+ * 注意：自线程1.2起可用。
+ *
+ * 定义以启用骨干路由器（BBR）区域日志记录。
+ *
+ */
+#ifndef OPENTHREAD_CONFIG_LOG_BBR
+#define OPENTHREAD_CONFIG_LOG_BBR 1
+#endif
+
+/**
+ * @def OPENTHREAD_CONFIG_LOG_MLR
+ *
+ * 注意：自线程1.2起可用。
+ *
+ * 定义以启用多播侦听器注册（MLR）区域日志记录。
+ *
+ */
+#ifndef OPENTHREAD_CONFIG_LOG_MLR
+#define OPENTHREAD_CONFIG_LOG_MLR 1
+#endif
+
+/**
+ * @def OPENTHREAD_CONFIG_LOG_DUA
+ *
+ * 注意：自线程1.2起可用。
+ *
+ * 定义以启用域单播地址（DUA）区域日志记录。
+ *
+ */
+#ifndef OPENTHREAD_CONFIG_LOG_DUA
+#define OPENTHREAD_CONFIG_LOG_DUA 1
+#endif
+
+/**
+ * @def OPENTHREAD_CONFIG_LOG_BR
+ *
+ * 定义边界路由器（BR）区域日志记录。
+ *
+ */
+#ifndef OPENTHREAD_CONFIG_LOG_BR
+#define OPENTHREAD_CONFIG_LOG_BR 1
+#endif
+
+/**
+ * @def OPENTHREAD_CONFIG_LOG_SRP
+ *
+ * 定义以启用服务注册协议（SRP）区域日志记录。
+ *
+ */
+#ifndef OPENTHREAD_CONFIG_LOG_SRP
+#define OPENTHREAD_CONFIG_LOG_SRP 1
+#endif
+
+/**
+ * @def OPENTHREAD_CONFIG_LOG_DNS
+ *
+ * 定义以启用DNS区域日志记录。
+ *
+ */
+#ifndef OPENTHREAD_CONFIG_LOG_DNS
+#define OPENTHREAD_CONFIG_LOG_DNS 1
+#endif
+
+/**
+ * @def OPENTHREAD_CONFIG_LOG_PREPEND_UPTIME
+ *
+ * 定义为1，将当前正常运行时间提前到所有日志消息。
+ *
+ */
+#ifndef OPENTHREAD_CONFIG_LOG_PREPEND_UPTIME
+#define OPENTHREAD_CONFIG_LOG_PREPEND_UPTIME 0
+#endif
+
+/**
+ * @def OPENTHREAD_CONFIG_LOG_PREPEND_LEVEL
+ *
+ * 定义为所有日志消息添加日志级别。
+ *
+ */
+#ifndef OPENTHREAD_CONFIG_LOG_PREPEND_LEVEL
+#define OPENTHREAD_CONFIG_LOG_PREPEND_LEVEL 1
+#endif
+
+/**
+ * @def OPENTHREAD_CONFIG_LOG_PREPEND_REGION
+ *
+ * 定义以在所有日志消息之前添加日志区域。
+ *
+ */
+#ifndef OPENTHREAD_CONFIG_LOG_PREPEND_REGION
+#define OPENTHREAD_CONFIG_LOG_PREPEND_REGION 1
+#endif
+
+/**
+ * @def OPENTHREAD_CONFIG_LOG_SUFFIX
+ *
+ * 定义要附加在日志末尾的后缀。
+ *
+ */
+#ifndef OPENTHREAD_CONFIG_LOG_SUFFIX
+#define OPENTHREAD_CONFIG_LOG_SUFFIX ""
+#endif
+
+/**
+ * @def OPENTHREAD_CONFIG_LOG_SRC_DST_IP_ADDRESSES
+ *
+ * 如果在网状转发器中记录IPv6消息信息时定义为1，则还包括消息的源和目标IPv6地址。
+ *
+ */
+#ifndef OPENTHREAD_CONFIG_LOG_SRC_DST_IP_ADDRESSES
+#define OPENTHREAD_CONFIG_LOG_SRC_DST_IP_ADDRESSES 1
+#endif
+
+/**
+ * @def OPENTHREAD_CONFIG_LOG_DEFINE_AS_MACRO_ONLY
+ *
+ * 设置为1，只需要用户宏的所有日志相关定义（直到调用平台日志API）。否则，日志记录实现使用函数（这是首选和推荐的模型）。
+ *
+ * 这是为了满足特殊平台要求，其中日志需要定义为宏（例如，日志标记化或类似功能）。
+ *
+ */
+#ifndef OPENTHREAD_CONFIG_LOG_DEFINE_AS_MACRO_ONLY
+#define OPENTHREAD_CONFIG_LOG_DEFINE_AS_MACRO_ONLY 0
+#endif
+
+/**
+ * @def OPENTHREAD_CONFIG_PLAT_LOG_MACRO_NAME
+ *
+ * 定义用于在OpenThread内部进行日志记录的宏的名称，默认设置为“otPlatLog（）”。这仅在`OPENTHREAD_CONFIG_LOG_DEFINE_ASMACRO_only`设置为1时使用并适用。
+ *
+ */
+#ifndef OPENTHREAD_CONFIG_PLAT_LOG_MACRO_NAME
+#define OPENTHREAD_CONFIG_PLAT_LOG_MACRO_NAME otPlatLog
+#endif
+
+/**
+ * @def OPENTHREAD_CONFIG_LOG_MAX_SIZE
+ *
+ * 最大日志字符串大小（字符数）。
+ *
+ */
+#ifndef OPENTHREAD_CONFIG_LOG_MAX_SIZE
+#define OPENTHREAD_CONFIG_LOG_MAX_SIZE 150
+#endif
+
+#endif // CONFIG_LOGGING_H_
+

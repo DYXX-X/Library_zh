@@ -1,0 +1,977 @@
+/** 版权所有2021 Espressif Systems（Shanghai）PTE LTD
+ *
+ *  根据Apache许可证2.0版（“许可证”）获得许可；除非符合许可证，否则不得使用此文件。您可以在以下地址获取许可证副本：
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *  除非适用法律要求或书面同意，否则根据许可证分发的软件是按“原样”分发的，无任何明示或暗示的担保或条件。有关许可证下权限和限制的具体语言，请参阅许可证。
+ */
+#pragma once
+
+#include <stdint.h>
+#include "soc/soc.h"
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+/** PCNT_U0_CONF0_REG寄存器单元0的配置寄存器0
+ */
+#define PCNT_U0_CONF0_REG (DR_REG_PCNT_BASE + 0x0)
+/** PCNT_FILTER_threes_0:R/W；位位置：[9:0]；默认值：16；这将设置滤波器的最大阈值（APB_CLK周期）。
+ *
+ *  启用滤波器时，宽度小于此值的任何脉冲都将被忽略。
+ */
+#define PCNT_FILTER_THRES_U0    0x000003FFU
+#define PCNT_FILTER_THRES_U0_M  (PCNT_FILTER_THRES_U0_V << PCNT_FILTER_THRES_U0_S)
+#define PCNT_FILTER_THRES_U0_V  0x000003FFU
+#define PCNT_FILTER_THRES_U0_S  0
+/** PCNT_FILTER_EN_U0:R/W；位位置：[10]；默认值：1；这是单元0输入滤波器的启用位。
+ */
+#define PCNT_FILTER_EN_U0    (BIT(10))
+#define PCNT_FILTER_EN_U0_M  (PCNT_FILTER_EN_U0_V << PCNT_FILTER_EN_U0_S)
+#define PCNT_FILTER_EN_U0_V  0x00000001U
+#define PCNT_FILTER_EN_U0_S  10
+/** PCNT_THR_ZERO_EN_U0:R/W；位位置：[11]；默认值：1；这是单元0的零比较器的启用位。
+ */
+#define PCNT_THR_ZERO_EN_U0    (BIT(11))
+#define PCNT_THR_ZERO_EN_U0_M  (PCNT_THR_ZERO_EN_U0_V << PCNT_THR_ZERO_EN_U0_S)
+#define PCNT_THR_ZERO_EN_U0_V  0x00000001U
+#define PCNT_THR_ZERO_EN_U0_S  11
+/** PCNT_THR_H_LIM_EN_U0:R/W；位位置：[12]；默认值：1；这是单元0的thr_hl_lim比较器的启用位。
+ */
+#define PCNT_THR_H_LIM_EN_U0    (BIT(12))
+#define PCNT_THR_H_LIM_EN_U0_M  (PCNT_THR_H_LIM_EN_U0_V << PCNT_THR_H_LIM_EN_U0_S)
+#define PCNT_THR_H_LIM_EN_U0_V  0x00000001U
+#define PCNT_THR_H_LIM_EN_U0_S  12
+/** PCNT_THR_L_LIM_EN_U0:R/W；位位置：[13]；默认值：1；这是单元0的thr_l_lim比较器的启用位。
+ */
+#define PCNT_THR_L_LIM_EN_U0    (BIT(13))
+#define PCNT_THR_L_LIM_EN_U0_M  (PCNT_THR_L_LIM_EN_U0_V << PCNT_THR_L_LIM_EN_U0_S)
+#define PCNT_THR_L_LIM_EN_U0_V  0x00000001U
+#define PCNT_THR_L_LIM_EN_U0_S  13
+/** PCNT_THR_THRES0_EN_U0:R/W；位位置：[14]；默认值：0；这是单元0的thres0比较器的启用位。
+ */
+#define PCNT_THR_THRES0_EN_U0    (BIT(14))
+#define PCNT_THR_THRES0_EN_U0_M  (PCNT_THR_THRES0_EN_U0_V << PCNT_THR_THRES0_EN_U0_S)
+#define PCNT_THR_THRES0_EN_U0_V  0x00000001U
+#define PCNT_THR_THRES0_EN_U0_S  14
+/** PCNT_THR_threshold1_EN_U0:R/W；位位置：[15]；默认值：0；这是单元0的thres1比较器的启用位。
+ */
+#define PCNT_THR_THRES1_EN_U0    (BIT(15))
+#define PCNT_THR_THRES1_EN_U0_M  (PCNT_THR_THRES1_EN_U0_V << PCNT_THR_THRES1_EN_U0_S)
+#define PCNT_THR_THRES1_EN_U0_V  0x00000001U
+#define PCNT_THR_THRES1_EN_U0_S  15
+/** PCNT_CH0_NEG_MODE_U0:R/W；比特位置：[17:16]；默认值：0；该寄存器设置通道0的信号输入检测到负边缘时的行为。
+ *
+ *  1： 增加计数器；2： 减小计数器；0，3:对计数器无影响
+ */
+#define PCNT_CH0_NEG_MODE_U0    0x00000003U
+#define PCNT_CH0_NEG_MODE_U0_M  (PCNT_CH0_NEG_MODE_U0_V << PCNT_CH0_NEG_MODE_U0_S)
+#define PCNT_CH0_NEG_MODE_U0_V  0x00000003U
+#define PCNT_CH0_NEG_MODE_U0_S  16
+/** PCNT_CH0_POS_MODE_U0:R/W；比特位置：[19:18]；默认值：0；该寄存器设置通道0的信号输入检测到正边缘时的行为。
+ *
+ *  1： 增加计数器；2： 减小计数器；0，3:对计数器无影响
+ */
+#define PCNT_CH0_POS_MODE_U0    0x00000003U
+#define PCNT_CH0_POS_MODE_U0_M  (PCNT_CH0_POS_MODE_U0_V << PCNT_CH0_POS_MODE_U0_S)
+#define PCNT_CH0_POS_MODE_U0_V  0x00000003U
+#define PCNT_CH0_POS_MODE_U0_S  18
+/** PCNT_CH0_HCTRL_MODE_U0:R/W；比特位置：[21:20]；默认值：0；该寄存器配置当控制信号为高时如何修改CH0_POS_MODE/CH0_NEG_MODE设置。
+ *
+ *  0：无修改；1： 反转行为（增加->减少，减少->增加）；2、3：禁止计数器修改
+ */
+#define PCNT_CH0_HCTRL_MODE_U0    0x00000003U
+#define PCNT_CH0_HCTRL_MODE_U0_M  (PCNT_CH0_HCTRL_MODE_U0_V << PCNT_CH0_HCTRL_MODE_U0_S)
+#define PCNT_CH0_HCTRL_MODE_U0_V  0x00000003U
+#define PCNT_CH0_HCTRL_MODE_U0_S  20
+/** PCNT_CH0_LCTRL_MODE_U0:R/W；比特位置：[23:22]；默认值：0；该寄存器配置当控制信号为低时如何修改CH0_POS_MODE/CH0_NEG_MODE设置。
+ *
+ *  0：无修改；1： 反转行为（增加->减少，减少->增加）；2、3：禁止计数器修改
+ */
+#define PCNT_CH0_LCTRL_MODE_U0    0x00000003U
+#define PCNT_CH0_LCTRL_MODE_U0_M  (PCNT_CH0_LCTRL_MODE_U0_V << PCNT_CH0_LCTRL_MODE_U0_S)
+#define PCNT_CH0_LCTRL_MODE_U0_V  0x00000003U
+#define PCNT_CH0_LCTRL_MODE_U0_S  22
+/** PCNT_CH1_NEG_MODE_U0:R/W；位位置：[25:24]；默认值：0；该寄存器设置通道1的信号输入检测到负边缘时的行为。
+ *
+ *  1： 增加计数器；2： 递减计数器；0，3:对计数器无影响
+ */
+#define PCNT_CH1_NEG_MODE_U0    0x00000003U
+#define PCNT_CH1_NEG_MODE_U0_M  (PCNT_CH1_NEG_MODE_U0_V << PCNT_CH1_NEG_MODE_U0_S)
+#define PCNT_CH1_NEG_MODE_U0_V  0x00000003U
+#define PCNT_CH1_NEG_MODE_U0_S  24
+/** PCNT_CH1_POS_MODE_U0:R/W；位位置：[27:26]；默认值：0；该寄存器设置通道1的信号输入检测到正边缘时的行为。
+ *
+ *  1： 增加计数器；2： 递减计数器；0，3:对计数器无影响
+ */
+#define PCNT_CH1_POS_MODE_U0    0x00000003U
+#define PCNT_CH1_POS_MODE_U0_M  (PCNT_CH1_POS_MODE_U0_V << PCNT_CH1_POS_MODE_U0_S)
+#define PCNT_CH1_POS_MODE_U0_V  0x00000003U
+#define PCNT_CH1_POS_MODE_U0_S  26
+/** PCNT_CH1_HCTRL_MODE_U0:R/W；位位置：[29:28]；默认值：0；该寄存器配置当控制信号为高时如何修改CH0_POS_MODE/CH0_NEG_MODE设置。
+ *
+ *  0：无修改；1： 反转行为（增加->减少，减少->增加）；2、3：禁止计数器修改
+ */
+#define PCNT_CH1_HCTRL_MODE_U0    0x00000003U
+#define PCNT_CH1_HCTRL_MODE_U0_M  (PCNT_CH1_HCTRL_MODE_U0_V << PCNT_CH1_HCTRL_MODE_U0_S)
+#define PCNT_CH1_HCTRL_MODE_U0_V  0x00000003U
+#define PCNT_CH1_HCTRL_MODE_U0_S  28
+/** PCNT_CH1_LCTRL_MODE_U0:R/W；比特位置：[31:30]；默认值：0；该寄存器配置当控制信号为低时如何修改CH0_POS_MODE/CH0_NEG_MODE设置。
+ *
+ *  0：无修改；1： 反转行为（增加->减少，减少->增加）；2、3：禁止计数器修改
+ */
+#define PCNT_CH1_LCTRL_MODE_U0    0x00000003U
+#define PCNT_CH1_LCTRL_MODE_U0_M  (PCNT_CH1_LCTRL_MODE_U0_V << PCNT_CH1_LCTRL_MODE_U0_S)
+#define PCNT_CH1_LCTRL_MODE_U0_V  0x00000003U
+#define PCNT_CH1_LCTRL_MODE_U0_S  30
+
+/** PCNT_U0_CONF1_REG寄存器单元0的配置寄存器1
+ */
+#define PCNT_U0_CONF1_REG (DR_REG_PCNT_BASE + 0x4)
+/** PCNT_CNT_THRES0_U0:R/W；比特位置：[15:0]；默认值：0；该寄存器用于配置单元0的thres0值。
+ */
+#define PCNT_CNT_THRES0_U0    0x0000FFFFU
+#define PCNT_CNT_THRES0_U0_M  (PCNT_CNT_THRES0_U0_V << PCNT_CNT_THRES0_U0_S)
+#define PCNT_CNT_THRES0_U0_V  0x0000FFFFU
+#define PCNT_CNT_THRES0_U0_S  0
+/** PCNT_CNT_threshold_U0:R/W；比特位置：[31:16]；默认值：0；此寄存器用于配置单元0的thres1值。
+ */
+#define PCNT_CNT_THRES1_U0    0x0000FFFFU
+#define PCNT_CNT_THRES1_U0_M  (PCNT_CNT_THRES1_U0_V << PCNT_CNT_THRES1_U0_S)
+#define PCNT_CNT_THRES1_U0_V  0x0000FFFFU
+#define PCNT_CNT_THRES1_U0_S  16
+
+/** PCNT_U0_CONF2_REG寄存器单元0的配置寄存器2
+ */
+#define PCNT_U0_CONF2_REG (DR_REG_PCNT_BASE + 0x8)
+/** PCNT_CNT_H_LIM_U0:R/W；比特位置：[15:0]；默认值：0；此寄存器用于配置单元0的thr_hl_lim值。
+ */
+#define PCNT_CNT_H_LIM_U0    0x0000FFFFU
+#define PCNT_CNT_H_LIM_U0_M  (PCNT_CNT_H_LIM_U0_V << PCNT_CNT_H_LIM_U0_S)
+#define PCNT_CNT_H_LIM_U0_V  0x0000FFFFU
+#define PCNT_CNT_H_LIM_U0_S  0
+/** PCNT_CNT_L_LIM_U0:R/W；比特位置：[31:16]；默认值：0；此寄存器用于配置单元0的thr_l_lim值。
+ */
+#define PCNT_CNT_L_LIM_U0    0x0000FFFFU
+#define PCNT_CNT_L_LIM_U0_M  (PCNT_CNT_L_LIM_U0_V << PCNT_CNT_L_LIM_U0_S)
+#define PCNT_CNT_L_LIM_U0_V  0x0000FFFFU
+#define PCNT_CNT_L_LIM_U0_S  16
+
+/** PCNT_U1_CONF0_REG寄存器第一单元的配置寄存器0
+ */
+#define PCNT_U1_CONF0_REG (DR_REG_PCNT_BASE + 0xc)
+/** PCNT_FILTER_threshold_U1:R/W；位位置：[9:0]；默认值：16；这将设置滤波器的最大阈值（APB_CLK周期）。
+ *
+ *  启用滤波器时，宽度小于此值的任何脉冲都将被忽略。
+ */
+#define PCNT_FILTER_THRES_U1    0x000003FFU
+#define PCNT_FILTER_THRES_U1_M  (PCNT_FILTER_THRES_U1_V << PCNT_FILTER_THRES_U1_S)
+#define PCNT_FILTER_THRES_U1_V  0x000003FFU
+#define PCNT_FILTER_THRES_U1_S  0
+/** PCNT_FILTER_EN_U1:R/W；位位置：[10]；默认值：1；这是第一单元输入滤波器的启用位。
+ */
+#define PCNT_FILTER_EN_U1    (BIT(10))
+#define PCNT_FILTER_EN_U1_M  (PCNT_FILTER_EN_U1_V << PCNT_FILTER_EN_U1_S)
+#define PCNT_FILTER_EN_U1_V  0x00000001U
+#define PCNT_FILTER_EN_U1_S  10
+/** PCNT_THR_ZERO_EN_U1:R/W；位位置：[11]；默认值：1；这是第一单元零比较器的启用位。
+ */
+#define PCNT_THR_ZERO_EN_U1    (BIT(11))
+#define PCNT_THR_ZERO_EN_U1_M  (PCNT_THR_ZERO_EN_U1_V << PCNT_THR_ZERO_EN_U1_S)
+#define PCNT_THR_ZERO_EN_U1_V  0x00000001U
+#define PCNT_THR_ZERO_EN_U1_S  11
+/** PCNT_THR_H_LIM_EN_U1:R/W；位位置：[12]；默认值：1；这是第一单元thr_h_lim比较器的启用位。
+ */
+#define PCNT_THR_H_LIM_EN_U1    (BIT(12))
+#define PCNT_THR_H_LIM_EN_U1_M  (PCNT_THR_H_LIM_EN_U1_V << PCNT_THR_H_LIM_EN_U1_S)
+#define PCNT_THR_H_LIM_EN_U1_V  0x00000001U
+#define PCNT_THR_H_LIM_EN_U1_S  12
+/** PCNT_THR_L_LIM_EN_U1:R/W；位位置：[13]；默认值：1；这是第一单元thr_l_lim比较器的启用位。
+ */
+#define PCNT_THR_L_LIM_EN_U1    (BIT(13))
+#define PCNT_THR_L_LIM_EN_U1_M  (PCNT_THR_L_LIM_EN_U1_V << PCNT_THR_L_LIM_EN_U1_S)
+#define PCNT_THR_L_LIM_EN_U1_V  0x00000001U
+#define PCNT_THR_L_LIM_EN_U1_S  13
+/** PCNT_THR_THRES0_EN_U1:R/W；位位置：[14]；默认值：0；这是第一单元的thres0比较器的启用位。
+ */
+#define PCNT_THR_THRES0_EN_U1    (BIT(14))
+#define PCNT_THR_THRES0_EN_U1_M  (PCNT_THR_THRES0_EN_U1_V << PCNT_THR_THRES0_EN_U1_S)
+#define PCNT_THR_THRES0_EN_U1_V  0x00000001U
+#define PCNT_THR_THRES0_EN_U1_S  14
+/** PCNT_THR_thresholds_EN_U1:R/W；位位置：[15]；默认值：0；这是第一单元的thres1比较器的启用位。
+ */
+#define PCNT_THR_THRES1_EN_U1    (BIT(15))
+#define PCNT_THR_THRES1_EN_U1_M  (PCNT_THR_THRES1_EN_U1_V << PCNT_THR_THRES1_EN_U1_S)
+#define PCNT_THR_THRES1_EN_U1_V  0x00000001U
+#define PCNT_THR_THRES1_EN_U1_S  15
+/** PCNT_CH0_NEG_MODE_U1:R/W；比特位置：[17:16]；默认值：0；该寄存器设置通道0的信号输入检测到负边缘时的行为。
+ *
+ *  1： 增加计数器；2： 减小计数器；0，3:对计数器无影响
+ */
+#define PCNT_CH0_NEG_MODE_U1    0x00000003U
+#define PCNT_CH0_NEG_MODE_U1_M  (PCNT_CH0_NEG_MODE_U1_V << PCNT_CH0_NEG_MODE_U1_S)
+#define PCNT_CH0_NEG_MODE_U1_V  0x00000003U
+#define PCNT_CH0_NEG_MODE_U1_S  16
+/** PCNT_CH0_POS_MODE_U1:R/W；比特位置：[19:18]；默认值：0；该寄存器设置通道0的信号输入检测到正边缘时的行为。
+ *
+ *  1： 增加计数器；2： 减小计数器；0，3:对计数器无影响
+ */
+#define PCNT_CH0_POS_MODE_U1    0x00000003U
+#define PCNT_CH0_POS_MODE_U1_M  (PCNT_CH0_POS_MODE_U1_V << PCNT_CH0_POS_MODE_U1_S)
+#define PCNT_CH0_POS_MODE_U1_V  0x00000003U
+#define PCNT_CH0_POS_MODE_U1_S  18
+/** PCNT_CH0_HCTRL_MODE_U1:R/W；比特位置：[21:20]；默认值：0；该寄存器配置当控制信号为高时如何修改CH1_POS_MODE/CH1_NEG_MODE设置。
+ *
+ *  0：无修改；1： 反转行为（增加->减少，减少->增加）；2、3：禁止计数器修改
+ */
+#define PCNT_CH0_HCTRL_MODE_U1    0x00000003U
+#define PCNT_CH0_HCTRL_MODE_U1_M  (PCNT_CH0_HCTRL_MODE_U1_V << PCNT_CH0_HCTRL_MODE_U1_S)
+#define PCNT_CH0_HCTRL_MODE_U1_V  0x00000003U
+#define PCNT_CH0_HCTRL_MODE_U1_S  20
+/** PCNT_CH0_LCTRL_MODE_U1:R/W；比特位置：[23:22]；默认值：0；该寄存器配置控制信号为低时如何修改CH1_POS_MODE/CH1_NEG_MODE设置。
+ *
+ *  0：无修改；1： 反转行为（增加->减少，减少->增加）；2、3：禁止计数器修改
+ */
+#define PCNT_CH0_LCTRL_MODE_U1    0x00000003U
+#define PCNT_CH0_LCTRL_MODE_U1_M  (PCNT_CH0_LCTRL_MODE_U1_V << PCNT_CH0_LCTRL_MODE_U1_S)
+#define PCNT_CH0_LCTRL_MODE_U1_V  0x00000003U
+#define PCNT_CH0_LCTRL_MODE_U1_S  22
+/** PCNT_CH1_NEG_MODE_U1:R/W；位位置：[25:24]；默认值：0；该寄存器设置通道1的信号输入检测到负边缘时的行为。
+ *
+ *  1： 增加计数器；2： 递减计数器；0，3:对计数器无影响
+ */
+#define PCNT_CH1_NEG_MODE_U1    0x00000003U
+#define PCNT_CH1_NEG_MODE_U1_M  (PCNT_CH1_NEG_MODE_U1_V << PCNT_CH1_NEG_MODE_U1_S)
+#define PCNT_CH1_NEG_MODE_U1_V  0x00000003U
+#define PCNT_CH1_NEG_MODE_U1_S  24
+/** PCNT_CH1_POS_MODE_U1:R/W；位位置：[27:26]；默认值：0；该寄存器设置通道1的信号输入检测到正边缘时的行为。
+ *
+ *  1： 增加计数器；2： 递减计数器；0，3:对计数器无影响
+ */
+#define PCNT_CH1_POS_MODE_U1    0x00000003U
+#define PCNT_CH1_POS_MODE_U1_M  (PCNT_CH1_POS_MODE_U1_V << PCNT_CH1_POS_MODE_U1_S)
+#define PCNT_CH1_POS_MODE_U1_V  0x00000003U
+#define PCNT_CH1_POS_MODE_U1_S  26
+/** PCNT_CH1_HCTRL_MODE_U1:R/W；位位置：[29:28]；默认值：0；该寄存器配置当控制信号为高时如何修改CH1_POS_MODE/CH1_NEG_MODE设置。
+ *
+ *  0：无修改；1： 反转行为（增加->减少，减少->增加）；2、3：禁止计数器修改
+ */
+#define PCNT_CH1_HCTRL_MODE_U1    0x00000003U
+#define PCNT_CH1_HCTRL_MODE_U1_M  (PCNT_CH1_HCTRL_MODE_U1_V << PCNT_CH1_HCTRL_MODE_U1_S)
+#define PCNT_CH1_HCTRL_MODE_U1_V  0x00000003U
+#define PCNT_CH1_HCTRL_MODE_U1_S  28
+/** PCNT_CH1_LCTRL_MODE_U1:R/W；比特位置：[31:30]；默认值：0；该寄存器配置控制信号为低时如何修改CH1_POS_MODE/CH1_NEG_MODE设置。
+ *
+ *  0：无修改；1： 反转行为（增加->减少，减少->增加）；2、3：禁止计数器修改
+ */
+#define PCNT_CH1_LCTRL_MODE_U1    0x00000003U
+#define PCNT_CH1_LCTRL_MODE_U1_M  (PCNT_CH1_LCTRL_MODE_U1_V << PCNT_CH1_LCTRL_MODE_U1_S)
+#define PCNT_CH1_LCTRL_MODE_U1_V  0x00000003U
+#define PCNT_CH1_LCTRL_MODE_U1_S  30
+
+/** PCNT_U1_CONF1_REG寄存器第一单元的配置寄存器1
+ */
+#define PCNT_U1_CONF1_REG (DR_REG_PCNT_BASE + 0x10)
+/** PCNT_CNT_threshold_U1:R/W；比特位置：[15:0]；默认值：0；该寄存器用于配置第一单元的thres0值。
+ */
+#define PCNT_CNT_THRES0_U1    0x0000FFFFU
+#define PCNT_CNT_THRES0_U1_M  (PCNT_CNT_THRES0_U1_V << PCNT_CNT_THRES0_U1_S)
+#define PCNT_CNT_THRES0_U1_V  0x0000FFFFU
+#define PCNT_CNT_THRES0_U1_S  0
+/** PCNT_CNT_threshold_U1:R/W；比特位置：[31:16]；默认值：0；该寄存器用于配置第一单元的thres1值。
+ */
+#define PCNT_CNT_THRES1_U1    0x0000FFFFU
+#define PCNT_CNT_THRES1_U1_M  (PCNT_CNT_THRES1_U1_V << PCNT_CNT_THRES1_U1_S)
+#define PCNT_CNT_THRES1_U1_V  0x0000FFFFU
+#define PCNT_CNT_THRES1_U1_S  16
+
+/** PCNT_U1_CONF2_REG寄存器第一单元的配置寄存器2
+ */
+#define PCNT_U1_CONF2_REG (DR_REG_PCNT_BASE + 0x14)
+/** PCNT_CNT_H_LIM_U1:R/W；比特位置：[15:0]；默认值：0；该寄存器用于配置第一单元的thr_h_lim值。
+ */
+#define PCNT_CNT_H_LIM_U1    0x0000FFFFU
+#define PCNT_CNT_H_LIM_U1_M  (PCNT_CNT_H_LIM_U1_V << PCNT_CNT_H_LIM_U1_S)
+#define PCNT_CNT_H_LIM_U1_V  0x0000FFFFU
+#define PCNT_CNT_H_LIM_U1_S  0
+/** PCNT_CNT_L_LIM_U1:R/W；比特位置：[31:16]；默认值：0；该寄存器用于配置第一单元的thr_l_lim值。
+ */
+#define PCNT_CNT_L_LIM_U1    0x0000FFFFU
+#define PCNT_CNT_L_LIM_U1_M  (PCNT_CNT_L_LIM_U1_V << PCNT_CNT_L_LIM_U1_S)
+#define PCNT_CNT_L_LIM_U1_V  0x0000FFFFU
+#define PCNT_CNT_L_LIM_U1_S  16
+
+/** PCNT_U2_CONF0_REG寄存器第二单元的配置寄存器0
+ */
+#define PCNT_U2_CONF0_REG (DR_REG_PCNT_BASE + 0x18)
+/** PCNT_FILTER_threes_2:R/W；位位置：[9:0]；默认值：16；这将设置滤波器的最大阈值（APB_CLK周期）。
+ *
+ *  启用滤波器时，宽度小于此值的任何脉冲都将被忽略。
+ */
+#define PCNT_FILTER_THRES_U2    0x000003FFU
+#define PCNT_FILTER_THRES_U2_M  (PCNT_FILTER_THRES_U2_V << PCNT_FILTER_THRES_U2_S)
+#define PCNT_FILTER_THRES_U2_V  0x000003FFU
+#define PCNT_FILTER_THRES_U2_S  0
+/** PCNT_FILTER_EN_U2:R/W；位位置：[10]；默认值：1；这是第二单元输入滤波器的启用位。
+ */
+#define PCNT_FILTER_EN_U2    (BIT(10))
+#define PCNT_FILTER_EN_U2_M  (PCNT_FILTER_EN_U2_V << PCNT_FILTER_EN_U2_S)
+#define PCNT_FILTER_EN_U2_V  0x00000001U
+#define PCNT_FILTER_EN_U2_S  10
+/** PCNT_THR_ZERO_EN_U2:R/W；位位置：[11]；默认值：1；这是第二单元零比较器的启用位。
+ */
+#define PCNT_THR_ZERO_EN_U2    (BIT(11))
+#define PCNT_THR_ZERO_EN_U2_M  (PCNT_THR_ZERO_EN_U2_V << PCNT_THR_ZERO_EN_U2_S)
+#define PCNT_THR_ZERO_EN_U2_V  0x00000001U
+#define PCNT_THR_ZERO_EN_U2_S  11
+/** PCNT_THR_H_LIM_EN_U2:R/W；位位置：[12]；默认值：1；这是第二单元thr_h_lim比较器的启用位。
+ */
+#define PCNT_THR_H_LIM_EN_U2    (BIT(12))
+#define PCNT_THR_H_LIM_EN_U2_M  (PCNT_THR_H_LIM_EN_U2_V << PCNT_THR_H_LIM_EN_U2_S)
+#define PCNT_THR_H_LIM_EN_U2_V  0x00000001U
+#define PCNT_THR_H_LIM_EN_U2_S  12
+/** PCNT_THR_L_LIM_EN_U2:R/W；位位置：[13]；默认值：1；这是第二单元thr_l_lim比较器的启用位。
+ */
+#define PCNT_THR_L_LIM_EN_U2    (BIT(13))
+#define PCNT_THR_L_LIM_EN_U2_M  (PCNT_THR_L_LIM_EN_U2_V << PCNT_THR_L_LIM_EN_U2_S)
+#define PCNT_THR_L_LIM_EN_U2_V  0x00000001U
+#define PCNT_THR_L_LIM_EN_U2_S  13
+/** PCNT_THR_THRES0_EN_U2:R/W；位位置：[14]；默认值：0；这是第二单元的thres0比较器的启用位。
+ */
+#define PCNT_THR_THRES0_EN_U2    (BIT(14))
+#define PCNT_THR_THRES0_EN_U2_M  (PCNT_THR_THRES0_EN_U2_V << PCNT_THR_THRES0_EN_U2_S)
+#define PCNT_THR_THRES0_EN_U2_V  0x00000001U
+#define PCNT_THR_THRES0_EN_U2_S  14
+/** PCNT_THR_thresholds_EN_U2:R/W；位位置：[15]；默认值：0；这是第二单元的thres1比较器的启用位。
+ */
+#define PCNT_THR_THRES1_EN_U2    (BIT(15))
+#define PCNT_THR_THRES1_EN_U2_M  (PCNT_THR_THRES1_EN_U2_V << PCNT_THR_THRES1_EN_U2_S)
+#define PCNT_THR_THRES1_EN_U2_V  0x00000001U
+#define PCNT_THR_THRES1_EN_U2_S  15
+/** PCNT_CH0_NEG_MODE_U2:R/W；比特位置：[17:16]；默认值：0；该寄存器设置通道0的信号输入检测到负边缘时的行为。
+ *
+ *  1： 增加计数器；2： 减小计数器；0，3:对计数器无影响
+ */
+#define PCNT_CH0_NEG_MODE_U2    0x00000003U
+#define PCNT_CH0_NEG_MODE_U2_M  (PCNT_CH0_NEG_MODE_U2_V << PCNT_CH0_NEG_MODE_U2_S)
+#define PCNT_CH0_NEG_MODE_U2_V  0x00000003U
+#define PCNT_CH0_NEG_MODE_U2_S  16
+/** PCNT_CH0_POS_MODE_U2:R/W；比特位置：[19:18]；默认值：0；该寄存器设置通道0的信号输入检测到正边缘时的行为。
+ *
+ *  1： 增加计数器；2： 减小计数器；0，3:对计数器无影响
+ */
+#define PCNT_CH0_POS_MODE_U2    0x00000003U
+#define PCNT_CH0_POS_MODE_U2_M  (PCNT_CH0_POS_MODE_U2_V << PCNT_CH0_POS_MODE_U2_S)
+#define PCNT_CH0_POS_MODE_U2_V  0x00000003U
+#define PCNT_CH0_POS_MODE_U2_S  18
+/** PCNT_CH0_HCTRL_MODE_U2:R/W；比特位置：[21:20]；默认值：0；该寄存器配置当控制信号为高时如何修改CH2_POS_MODE/CH2_NEG_MODE设置。
+ *
+ *  0：无修改；1： 反转行为（增加->减少，减少->增加）；2、3：禁止计数器修改
+ */
+#define PCNT_CH0_HCTRL_MODE_U2    0x00000003U
+#define PCNT_CH0_HCTRL_MODE_U2_M  (PCNT_CH0_HCTRL_MODE_U2_V << PCNT_CH0_HCTRL_MODE_U2_S)
+#define PCNT_CH0_HCTRL_MODE_U2_V  0x00000003U
+#define PCNT_CH0_HCTRL_MODE_U2_S  20
+/** PCNT_CH0_LCTRL_MODE_U2:R/W；比特位置：[23:22]；默认值：0；该寄存器配置控制信号低时如何修改CH2_POS_MODE/CH2_NEG_MODE设置。
+ *
+ *  0：无修改；1： 反转行为（增加->减少，减少->增加）；2、3：禁止计数器修改
+ */
+#define PCNT_CH0_LCTRL_MODE_U2    0x00000003U
+#define PCNT_CH0_LCTRL_MODE_U2_M  (PCNT_CH0_LCTRL_MODE_U2_V << PCNT_CH0_LCTRL_MODE_U2_S)
+#define PCNT_CH0_LCTRL_MODE_U2_V  0x00000003U
+#define PCNT_CH0_LCTRL_MODE_U2_S  22
+/** PCNT_CH1_NEG_MODE_U2:R/W；位位置：[25:24]；默认值：0；该寄存器设置通道1的信号输入检测到负边缘时的行为。
+ *
+ *  1： 增加计数器；2： 递减计数器；0，3:对计数器无影响
+ */
+#define PCNT_CH1_NEG_MODE_U2    0x00000003U
+#define PCNT_CH1_NEG_MODE_U2_M  (PCNT_CH1_NEG_MODE_U2_V << PCNT_CH1_NEG_MODE_U2_S)
+#define PCNT_CH1_NEG_MODE_U2_V  0x00000003U
+#define PCNT_CH1_NEG_MODE_U2_S  24
+/** PCNT_CH1_POS_MODE_U2:R/W；位位置：[27:26]；默认值：0；该寄存器设置通道1的信号输入检测到正边缘时的行为。
+ *
+ *  1： 增加计数器；2： 递减计数器；0，3:对计数器无影响
+ */
+#define PCNT_CH1_POS_MODE_U2    0x00000003U
+#define PCNT_CH1_POS_MODE_U2_M  (PCNT_CH1_POS_MODE_U2_V << PCNT_CH1_POS_MODE_U2_S)
+#define PCNT_CH1_POS_MODE_U2_V  0x00000003U
+#define PCNT_CH1_POS_MODE_U2_S  26
+/** PCNT_CH1_HCTRL_MODE_U2:R/W；位位置：[29:28]；默认值：0；该寄存器配置当控制信号为高时如何修改CH2_POS_MODE/CH2_NEG_MODE设置。
+ *
+ *  0：无修改；1： 反转行为（增加->减少，减少->增加）；2、3：禁止计数器修改
+ */
+#define PCNT_CH1_HCTRL_MODE_U2    0x00000003U
+#define PCNT_CH1_HCTRL_MODE_U2_M  (PCNT_CH1_HCTRL_MODE_U2_V << PCNT_CH1_HCTRL_MODE_U2_S)
+#define PCNT_CH1_HCTRL_MODE_U2_V  0x00000003U
+#define PCNT_CH1_HCTRL_MODE_U2_S  28
+/** PCNT_CH1_LCTRL_MODE_U2:R/W；比特位置：[31:30]；默认值：0；该寄存器配置控制信号低时如何修改CH2_POS_MODE/CH2_NEG_MODE设置。
+ *
+ *  0：无修改；1： 反转行为（增加->减少，减少->增加）；2、3：禁止计数器修改
+ */
+#define PCNT_CH1_LCTRL_MODE_U2    0x00000003U
+#define PCNT_CH1_LCTRL_MODE_U2_M  (PCNT_CH1_LCTRL_MODE_U2_V << PCNT_CH1_LCTRL_MODE_U2_S)
+#define PCNT_CH1_LCTRL_MODE_U2_V  0x00000003U
+#define PCNT_CH1_LCTRL_MODE_U2_S  30
+
+/** PCNT_U2_CONF1_REG寄存器第二单元的配置寄存器1
+ */
+#define PCNT_U2_CONF1_REG (DR_REG_PCNT_BASE + 0x1c)
+/** PCNT_CNT_THRES0_U2:R/W；比特位置：[15:0]；默认值：0；该寄存器用于配置第二单元的thres0值。
+ */
+#define PCNT_CNT_THRES0_U2    0x0000FFFFU
+#define PCNT_CNT_THRES0_U2_M  (PCNT_CNT_THRES0_U2_V << PCNT_CNT_THRES0_U2_S)
+#define PCNT_CNT_THRES0_U2_V  0x0000FFFFU
+#define PCNT_CNT_THRES0_U2_S  0
+/** PCNT_CNT_threshold_U2:R/W；比特位置：[31:16]；默认值：0；该寄存器用于配置第二单元的thres1值。
+ */
+#define PCNT_CNT_THRES1_U2    0x0000FFFFU
+#define PCNT_CNT_THRES1_U2_M  (PCNT_CNT_THRES1_U2_V << PCNT_CNT_THRES1_U2_S)
+#define PCNT_CNT_THRES1_U2_V  0x0000FFFFU
+#define PCNT_CNT_THRES1_U2_S  16
+
+/** PCNT_U2_CONF2_REG寄存器第二单元的配置寄存器2
+ */
+#define PCNT_U2_CONF2_REG (DR_REG_PCNT_BASE + 0x20)
+/** PCNT_CNT_H_LIM_U2:R/W；比特位置：[15:0]；默认值：0；该寄存器用于配置第二单元的thr_h_lim值。
+ */
+#define PCNT_CNT_H_LIM_U2    0x0000FFFFU
+#define PCNT_CNT_H_LIM_U2_M  (PCNT_CNT_H_LIM_U2_V << PCNT_CNT_H_LIM_U2_S)
+#define PCNT_CNT_H_LIM_U2_V  0x0000FFFFU
+#define PCNT_CNT_H_LIM_U2_S  0
+/** PCNT_CNT_L_LIM_U2:R/W；比特位置：[31:16]；默认值：0；该寄存器用于配置第二单元的thr_l_lim值。
+ */
+#define PCNT_CNT_L_LIM_U2    0x0000FFFFU
+#define PCNT_CNT_L_LIM_U2_M  (PCNT_CNT_L_LIM_U2_V << PCNT_CNT_L_LIM_U2_S)
+#define PCNT_CNT_L_LIM_U2_V  0x0000FFFFU
+#define PCNT_CNT_L_LIM_U2_S  16
+
+/** PCNT_U3_CONF0_REG寄存器第三单元的配置寄存器0
+ */
+#define PCNT_U3_CONF0_REG (DR_REG_PCNT_BASE + 0x24)
+/** PCNT_FILTER_threes_3:R/W；位位置：[9:0]；默认值：16；这将设置滤波器的最大阈值（APB_CLK周期）。
+ *
+ *  启用滤波器时，宽度小于此值的任何脉冲都将被忽略。
+ */
+#define PCNT_FILTER_THRES_U3    0x000003FFU
+#define PCNT_FILTER_THRES_U3_M  (PCNT_FILTER_THRES_U3_V << PCNT_FILTER_THRES_U3_S)
+#define PCNT_FILTER_THRES_U3_V  0x000003FFU
+#define PCNT_FILTER_THRES_U3_S  0
+/** PCNT_FILTER_EN_U3:R/W；位位置：[10]；默认值：1；这是第三单元输入滤波器的启用位。
+ */
+#define PCNT_FILTER_EN_U3    (BIT(10))
+#define PCNT_FILTER_EN_U3_M  (PCNT_FILTER_EN_U3_V << PCNT_FILTER_EN_U3_S)
+#define PCNT_FILTER_EN_U3_V  0x00000001U
+#define PCNT_FILTER_EN_U3_S  10
+/** PCNT_THR_ZERO_EN_U3:R/W；位位置：[11]；默认值：1；这是第三单元零比较器的启用位。
+ */
+#define PCNT_THR_ZERO_EN_U3    (BIT(11))
+#define PCNT_THR_ZERO_EN_U3_M  (PCNT_THR_ZERO_EN_U3_V << PCNT_THR_ZERO_EN_U3_S)
+#define PCNT_THR_ZERO_EN_U3_V  0x00000001U
+#define PCNT_THR_ZERO_EN_U3_S  11
+/** PCNT_THR_H_LIM_EN_U3:R/W；位位置：[12]；默认值：1；这是第三单元thr_h_lim比较器的启用位。
+ */
+#define PCNT_THR_H_LIM_EN_U3    (BIT(12))
+#define PCNT_THR_H_LIM_EN_U3_M  (PCNT_THR_H_LIM_EN_U3_V << PCNT_THR_H_LIM_EN_U3_S)
+#define PCNT_THR_H_LIM_EN_U3_V  0x00000001U
+#define PCNT_THR_H_LIM_EN_U3_S  12
+/** PCNT_THR_L_LIM_EN_U3:R/W；位位置：[13]；默认值：1；这是第三单元thr_l_lim比较器的启用位。
+ */
+#define PCNT_THR_L_LIM_EN_U3    (BIT(13))
+#define PCNT_THR_L_LIM_EN_U3_M  (PCNT_THR_L_LIM_EN_U3_V << PCNT_THR_L_LIM_EN_U3_S)
+#define PCNT_THR_L_LIM_EN_U3_V  0x00000001U
+#define PCNT_THR_L_LIM_EN_U3_S  13
+/** PCNT_THR_THRES0_EN_U3:R/W；位位置：[14]；默认值：0；这是第三单元的thres0比较器的启用位。
+ */
+#define PCNT_THR_THRES0_EN_U3    (BIT(14))
+#define PCNT_THR_THRES0_EN_U3_M  (PCNT_THR_THRES0_EN_U3_V << PCNT_THR_THRES0_EN_U3_S)
+#define PCNT_THR_THRES0_EN_U3_V  0x00000001U
+#define PCNT_THR_THRES0_EN_U3_S  14
+/** PCNT_THR_thresholds_EN_U3:R/W；位位置：[15]；默认值：0；这是第三单元的thres1比较器的启用位。
+ */
+#define PCNT_THR_THRES1_EN_U3    (BIT(15))
+#define PCNT_THR_THRES1_EN_U3_M  (PCNT_THR_THRES1_EN_U3_V << PCNT_THR_THRES1_EN_U3_S)
+#define PCNT_THR_THRES1_EN_U3_V  0x00000001U
+#define PCNT_THR_THRES1_EN_U3_S  15
+/** PCNT_CH0_NEG_MODE_U3:R/W；比特位置：[17:16]；默认值：0；该寄存器设置通道0的信号输入检测到负边缘时的行为。
+ *
+ *  1： 增加计数器；2： 减小计数器；0，3:对计数器无影响
+ */
+#define PCNT_CH0_NEG_MODE_U3    0x00000003U
+#define PCNT_CH0_NEG_MODE_U3_M  (PCNT_CH0_NEG_MODE_U3_V << PCNT_CH0_NEG_MODE_U3_S)
+#define PCNT_CH0_NEG_MODE_U3_V  0x00000003U
+#define PCNT_CH0_NEG_MODE_U3_S  16
+/** PCNT_CH0_POS_MODE_U3:R/W；比特位置：[19:18]；默认值：0；该寄存器设置通道0的信号输入检测到正边缘时的行为。
+ *
+ *  1： 增加计数器；2： 减小计数器；0，3:对计数器无影响
+ */
+#define PCNT_CH0_POS_MODE_U3    0x00000003U
+#define PCNT_CH0_POS_MODE_U3_M  (PCNT_CH0_POS_MODE_U3_V << PCNT_CH0_POS_MODE_U3_S)
+#define PCNT_CH0_POS_MODE_U3_V  0x00000003U
+#define PCNT_CH0_POS_MODE_U3_S  18
+/** PCNT_CH0_HCTRL_MODE_U3:R/W；比特位置：[21:20]；默认值：0；该寄存器配置当控制信号为高时如何修改CH3_POS_MODE/CH3_NEG_MODE设置。
+ *
+ *  0：无修改；1： 反转行为（增加->减少，减少->增加）；2、3：禁止计数器修改
+ */
+#define PCNT_CH0_HCTRL_MODE_U3    0x00000003U
+#define PCNT_CH0_HCTRL_MODE_U3_M  (PCNT_CH0_HCTRL_MODE_U3_V << PCNT_CH0_HCTRL_MODE_U3_S)
+#define PCNT_CH0_HCTRL_MODE_U3_V  0x00000003U
+#define PCNT_CH0_HCTRL_MODE_U3_S  20
+/** PCNT_CH0_LCTRL_MODE_U3:R/W；比特位置：[23:22]；默认值：0；该寄存器配置控制信号为低时如何修改CH3_POS_MODE/CH3_NEG_MODE设置。
+ *
+ *  0：无修改；1： 反转行为（增加->减少，减少->增加）；2、3：禁止计数器修改
+ */
+#define PCNT_CH0_LCTRL_MODE_U3    0x00000003U
+#define PCNT_CH0_LCTRL_MODE_U3_M  (PCNT_CH0_LCTRL_MODE_U3_V << PCNT_CH0_LCTRL_MODE_U3_S)
+#define PCNT_CH0_LCTRL_MODE_U3_V  0x00000003U
+#define PCNT_CH0_LCTRL_MODE_U3_S  22
+/** PCNT_CH1_NEG_MODE_U3:R/W；位位置：[25:24]；默认值：0；该寄存器设置通道1的信号输入检测到负边缘时的行为。
+ *
+ *  1： 增加计数器；2： 递减计数器；0，3:对计数器无影响
+ */
+#define PCNT_CH1_NEG_MODE_U3    0x00000003U
+#define PCNT_CH1_NEG_MODE_U3_M  (PCNT_CH1_NEG_MODE_U3_V << PCNT_CH1_NEG_MODE_U3_S)
+#define PCNT_CH1_NEG_MODE_U3_V  0x00000003U
+#define PCNT_CH1_NEG_MODE_U3_S  24
+/** PCNT_CH1_POS_MODE_U3:R/W；位位置：[27:26]；默认值：0；该寄存器设置通道1的信号输入检测到正边缘时的行为。
+ *
+ *  1： 增加计数器；2： 递减计数器；0，3:对计数器无影响
+ */
+#define PCNT_CH1_POS_MODE_U3    0x00000003U
+#define PCNT_CH1_POS_MODE_U3_M  (PCNT_CH1_POS_MODE_U3_V << PCNT_CH1_POS_MODE_U3_S)
+#define PCNT_CH1_POS_MODE_U3_V  0x00000003U
+#define PCNT_CH1_POS_MODE_U3_S  26
+/** PCNT_CH1_HCTRL_MODE_U3:R/W；位位置：[29:28]；默认值：0；该寄存器配置当控制信号为高时如何修改CH3_POS_MODE/CH3_NEG_MODE设置。
+ *
+ *  0：无修改；1： 反转行为（增加->减少，减少->增加）；2、3：禁止计数器修改
+ */
+#define PCNT_CH1_HCTRL_MODE_U3    0x00000003U
+#define PCNT_CH1_HCTRL_MODE_U3_M  (PCNT_CH1_HCTRL_MODE_U3_V << PCNT_CH1_HCTRL_MODE_U3_S)
+#define PCNT_CH1_HCTRL_MODE_U3_V  0x00000003U
+#define PCNT_CH1_HCTRL_MODE_U3_S  28
+/** PCNT_CH1_LCTRL_MODE_U3:R/W；比特位置：[31:30]；默认值：0；该寄存器配置控制信号为低时如何修改CH3_POS_MODE/CH3_NEG_MODE设置。
+ *
+ *  0：无修改；1： 反转行为（增加->减少，减少->增加）；2、3：禁止计数器修改
+ */
+#define PCNT_CH1_LCTRL_MODE_U3    0x00000003U
+#define PCNT_CH1_LCTRL_MODE_U3_M  (PCNT_CH1_LCTRL_MODE_U3_V << PCNT_CH1_LCTRL_MODE_U3_S)
+#define PCNT_CH1_LCTRL_MODE_U3_V  0x00000003U
+#define PCNT_CH1_LCTRL_MODE_U3_S  30
+
+/** PCNT_U3_CONF1_REG寄存器第三单元的配置寄存器1
+ */
+#define PCNT_U3_CONF1_REG (DR_REG_PCNT_BASE + 0x28)
+/** PCNT_CNT_THRES0_U3:R/W；比特位置：[15:0]；默认值：0；该寄存器用于配置第三单元的thres0值。
+ */
+#define PCNT_CNT_THRES0_U3    0x0000FFFFU
+#define PCNT_CNT_THRES0_U3_M  (PCNT_CNT_THRES0_U3_V << PCNT_CNT_THRES0_U3_S)
+#define PCNT_CNT_THRES0_U3_V  0x0000FFFFU
+#define PCNT_CNT_THRES0_U3_S  0
+/** PCNT_CNT_threshold1_U3:R/W；比特位置：[31:16]；默认值：0；该寄存器用于配置第三单元的thres1值。
+ */
+#define PCNT_CNT_THRES1_U3    0x0000FFFFU
+#define PCNT_CNT_THRES1_U3_M  (PCNT_CNT_THRES1_U3_V << PCNT_CNT_THRES1_U3_S)
+#define PCNT_CNT_THRES1_U3_V  0x0000FFFFU
+#define PCNT_CNT_THRES1_U3_S  16
+
+/** PCNT_U3_CONF2_REG寄存器第三单元的配置寄存器2
+ */
+#define PCNT_U3_CONF2_REG (DR_REG_PCNT_BASE + 0x2c)
+/** PCNT_CNT_H_LIM_U3:R/W；比特位置：[15:0]；默认值：0；该寄存器用于配置第三单元的thr_h_lim值。
+ */
+#define PCNT_CNT_H_LIM_U3    0x0000FFFFU
+#define PCNT_CNT_H_LIM_U3_M  (PCNT_CNT_H_LIM_U3_V << PCNT_CNT_H_LIM_U3_S)
+#define PCNT_CNT_H_LIM_U3_V  0x0000FFFFU
+#define PCNT_CNT_H_LIM_U3_S  0
+/** PCNT_CNT_L_LIM_U3:R/W；比特位置：[31:16]；默认值：0；该寄存器用于配置第三单元的thr_l_lim值。
+ */
+#define PCNT_CNT_L_LIM_U3    0x0000FFFFU
+#define PCNT_CNT_L_LIM_U3_M  (PCNT_CNT_L_LIM_U3_V << PCNT_CNT_L_LIM_U3_S)
+#define PCNT_CNT_L_LIM_U3_V  0x0000FFFFU
+#define PCNT_CNT_L_LIM_U3_S  16
+
+/** PCNT_U0_CNT_REG寄存器单元0的计数器值
+ */
+#define PCNT_U0_CNT_REG (DR_REG_PCNT_BASE + 0x30)
+/** PCNT_PULSE_CNT_U0:RO；比特位置：[15:0]；默认值：0；该寄存器存储单元0的当前脉冲计数值。
+ */
+#define PCNT_PULSE_CNT_U0    0x0000FFFFU
+#define PCNT_PULSE_CNT_U0_M  (PCNT_PULSE_CNT_U0_V << PCNT_PULSE_CNT_U0_S)
+#define PCNT_PULSE_CNT_U0_V  0x0000FFFFU
+#define PCNT_PULSE_CNT_U0_S  0
+
+/** PCNT_U1_CNT_REG寄存器第一单元的计数器值
+ */
+#define PCNT_U1_CNT_REG (DR_REG_PCNT_BASE + 0x34)
+/** PCNT_PULSE_CNT_U1:RO；比特位置：[15:0]；默认值：0；该寄存器存储第一单元的当前脉冲计数值。
+ */
+#define PCNT_PULSE_CNT_U1    0x0000FFFFU
+#define PCNT_PULSE_CNT_U1_M  (PCNT_PULSE_CNT_U1_V << PCNT_PULSE_CNT_U1_S)
+#define PCNT_PULSE_CNT_U1_V  0x0000FFFFU
+#define PCNT_PULSE_CNT_U1_S  0
+
+/** PCNT_U2_CNT_REG寄存器第二单元的计数器值
+ */
+#define PCNT_U2_CNT_REG (DR_REG_PCNT_BASE + 0x38)
+/** PCNT_PULSE_CNT_U2:RO；比特位置：[15:0]；默认值：0；该寄存器存储第二单元的当前脉冲计数值。
+ */
+#define PCNT_PULSE_CNT_U2    0x0000FFFFU
+#define PCNT_PULSE_CNT_U2_M  (PCNT_PULSE_CNT_U2_V << PCNT_PULSE_CNT_U2_S)
+#define PCNT_PULSE_CNT_U2_V  0x0000FFFFU
+#define PCNT_PULSE_CNT_U2_S  0
+
+/** 第三单元的PCNT_U3_CNT_REG寄存器计数器值
+ */
+#define PCNT_U3_CNT_REG (DR_REG_PCNT_BASE + 0x3c)
+/** PCNT_PULSE_CNT_U3:RO；比特位置：[15:0]；默认值：0；该寄存器存储第三单元的当前脉冲计数值。
+ */
+#define PCNT_PULSE_CNT_U3    0x0000FFFFU
+#define PCNT_PULSE_CNT_U3_M  (PCNT_PULSE_CNT_U3_V << PCNT_PULSE_CNT_U3_S)
+#define PCNT_PULSE_CNT_U3_V  0x0000FFFFU
+#define PCNT_PULSE_CNT_U3_S  0
+
+/** PCNT_INT_RAW_REG寄存器中断原始状态寄存器
+ */
+#define PCNT_INT_RAW_REG (DR_REG_PCNT_BASE + 0x40)
+/** PCNT_CNT_THR_EVENT_U0_INT_RAW:RO；位位置：[0]；默认值：0；PCNT_CNT_THR_EVENT_U0_INT中断的原始中断状态位。
+ */
+#define PCNT_CNT_THR_EVENT_U0_INT_RAW    (BIT(0))
+#define PCNT_CNT_THR_EVENT_U0_INT_RAW_M  (PCNT_CNT_THR_EVENT_U0_INT_RAW_V << PCNT_CNT_THR_EVENT_U0_INT_RAW_S)
+#define PCNT_CNT_THR_EVENT_U0_INT_RAW_V  0x00000001U
+#define PCNT_CNT_THR_EVENT_U0_INT_RAW_S  0
+/** PCNT_CNT_THR_EVENT_U1_INT_RAW:RO；位位置：[1]；默认值：0；PCNT_CNT_THR_EVENT_U1_INT中断的原始中断状态位。
+ */
+#define PCNT_CNT_THR_EVENT_U1_INT_RAW    (BIT(1))
+#define PCNT_CNT_THR_EVENT_U1_INT_RAW_M  (PCNT_CNT_THR_EVENT_U1_INT_RAW_V << PCNT_CNT_THR_EVENT_U1_INT_RAW_S)
+#define PCNT_CNT_THR_EVENT_U1_INT_RAW_V  0x00000001U
+#define PCNT_CNT_THR_EVENT_U1_INT_RAW_S  1
+/** PCNT_CNT_THR_EVENT_U2_INT_RAW:RO；位位置：[2]；默认值：0；PCNT_CNT_THR_EVENT_U2_INT中断的原始中断状态位。
+ */
+#define PCNT_CNT_THR_EVENT_U2_INT_RAW    (BIT(2))
+#define PCNT_CNT_THR_EVENT_U2_INT_RAW_M  (PCNT_CNT_THR_EVENT_U2_INT_RAW_V << PCNT_CNT_THR_EVENT_U2_INT_RAW_S)
+#define PCNT_CNT_THR_EVENT_U2_INT_RAW_V  0x00000001U
+#define PCNT_CNT_THR_EVENT_U2_INT_RAW_S  2
+/** PCNT_CNT_THR_EVENT_U3_INT_RAW:RO；位位置：[3]；默认值：0；PCNT_CNT_THR_EVENT_U3_INT中断的原始中断状态位。
+ */
+#define PCNT_CNT_THR_EVENT_U3_INT_RAW    (BIT(3))
+#define PCNT_CNT_THR_EVENT_U3_INT_RAW_M  (PCNT_CNT_THR_EVENT_U3_INT_RAW_V << PCNT_CNT_THR_EVENT_U3_INT_RAW_S)
+#define PCNT_CNT_THR_EVENT_U3_INT_RAW_V  0x00000001U
+#define PCNT_CNT_THR_EVENT_U3_INT_RAW_S  3
+
+/** PCNT_INT_ST_REG寄存器中断状态寄存器
+ */
+#define PCNT_INT_ST_REG (DR_REG_PCNT_BASE + 0x44)
+/** PCNT_CNT_THR_EVENT_U0_INT_ST:RO；位位置：[0]；默认值：0；PCNT_CNT_THR_EVENT_U0_INT中断的屏蔽中断状态位。
+ */
+#define PCNT_CNT_THR_EVENT_U0_INT_ST    (BIT(0))
+#define PCNT_CNT_THR_EVENT_U0_INT_ST_M  (PCNT_CNT_THR_EVENT_U0_INT_ST_V << PCNT_CNT_THR_EVENT_U0_INT_ST_S)
+#define PCNT_CNT_THR_EVENT_U0_INT_ST_V  0x00000001U
+#define PCNT_CNT_THR_EVENT_U0_INT_ST_S  0
+/** PCNT_CNT_THR_EVENT_U1_INT_ST:RO；位位置：[1]；默认值：0；PCNT_CNT_THR_EVENT_U1_INT中断的屏蔽中断状态位。
+ */
+#define PCNT_CNT_THR_EVENT_U1_INT_ST    (BIT(1))
+#define PCNT_CNT_THR_EVENT_U1_INT_ST_M  (PCNT_CNT_THR_EVENT_U1_INT_ST_V << PCNT_CNT_THR_EVENT_U1_INT_ST_S)
+#define PCNT_CNT_THR_EVENT_U1_INT_ST_V  0x00000001U
+#define PCNT_CNT_THR_EVENT_U1_INT_ST_S  1
+/** PCNT_CNT_THR_EVENT_U2_INT_ST:RO；位位置：[2]；默认值：0；PCNT_CNT_THR_EVENT_U2_INT中断的屏蔽中断状态位。
+ */
+#define PCNT_CNT_THR_EVENT_U2_INT_ST    (BIT(2))
+#define PCNT_CNT_THR_EVENT_U2_INT_ST_M  (PCNT_CNT_THR_EVENT_U2_INT_ST_V << PCNT_CNT_THR_EVENT_U2_INT_ST_S)
+#define PCNT_CNT_THR_EVENT_U2_INT_ST_V  0x00000001U
+#define PCNT_CNT_THR_EVENT_U2_INT_ST_S  2
+/** PCNT_CNT_THR_EVENT_U3_INT_ST:RO；位位置：[3]；默认值：0；PCNT_CNT_THR_EVENT_U3_INT中断的屏蔽中断状态位。
+ */
+#define PCNT_CNT_THR_EVENT_U3_INT_ST    (BIT(3))
+#define PCNT_CNT_THR_EVENT_U3_INT_ST_M  (PCNT_CNT_THR_EVENT_U3_INT_ST_V << PCNT_CNT_THR_EVENT_U3_INT_ST_S)
+#define PCNT_CNT_THR_EVENT_U3_INT_ST_V  0x00000001U
+#define PCNT_CNT_THR_EVENT_U3_INT_ST_S  3
+
+/** PCNT_INT_ENA_REG寄存器中断启用寄存器
+ */
+#define PCNT_INT_ENA_REG (DR_REG_PCNT_BASE + 0x48)
+/** PCNT_CNT_THR_EVENT_U0_INT_ENA:R/W；位位置：[0]；默认值：0；PCNT_CNT_THR_EVENT_U0_INT中断的中断启用位。
+ */
+#define PCNT_CNT_THR_EVENT_U0_INT_ENA    (BIT(0))
+#define PCNT_CNT_THR_EVENT_U0_INT_ENA_M  (PCNT_CNT_THR_EVENT_U0_INT_ENA_V << PCNT_CNT_THR_EVENT_U0_INT_ENA_S)
+#define PCNT_CNT_THR_EVENT_U0_INT_ENA_V  0x00000001U
+#define PCNT_CNT_THR_EVENT_U0_INT_ENA_S  0
+/** PCNT_CNT_THR_EVENT_U1_INT_ENA:R/W；位位置：[1]；默认值：0；PCNT_CNT_THR_EVENT_U1_INT中断的中断启用位。
+ */
+#define PCNT_CNT_THR_EVENT_U1_INT_ENA    (BIT(1))
+#define PCNT_CNT_THR_EVENT_U1_INT_ENA_M  (PCNT_CNT_THR_EVENT_U1_INT_ENA_V << PCNT_CNT_THR_EVENT_U1_INT_ENA_S)
+#define PCNT_CNT_THR_EVENT_U1_INT_ENA_V  0x00000001U
+#define PCNT_CNT_THR_EVENT_U1_INT_ENA_S  1
+/** PCNT_CNT_THR_EVENT_U2_INT_ENA:R/W；位位置：[2]；默认值：0；PCNT_CNT_THR_EVENT_U2_INT中断的中断启用位。
+ */
+#define PCNT_CNT_THR_EVENT_U2_INT_ENA    (BIT(2))
+#define PCNT_CNT_THR_EVENT_U2_INT_ENA_M  (PCNT_CNT_THR_EVENT_U2_INT_ENA_V << PCNT_CNT_THR_EVENT_U2_INT_ENA_S)
+#define PCNT_CNT_THR_EVENT_U2_INT_ENA_V  0x00000001U
+#define PCNT_CNT_THR_EVENT_U2_INT_ENA_S  2
+/** PCNT_CNT_THR_EVENT_U3_INT_ENA:R/W；位位置：[3]；默认值：0；PCNT_CNT_THR_EVENT_U3_INT中断的中断启用位。
+ */
+#define PCNT_CNT_THR_EVENT_U3_INT_ENA    (BIT(3))
+#define PCNT_CNT_THR_EVENT_U3_INT_ENA_M  (PCNT_CNT_THR_EVENT_U3_INT_ENA_V << PCNT_CNT_THR_EVENT_U3_INT_ENA_S)
+#define PCNT_CNT_THR_EVENT_U3_INT_ENA_V  0x00000001U
+#define PCNT_CNT_THR_EVENT_U3_INT_ENA_S  3
+
+/** PCNT_INT_CLR_REG寄存器中断清除寄存器
+ */
+#define PCNT_INT_CLR_REG (DR_REG_PCNT_BASE + 0x4c)
+/** PCNT_CNT_THR_EVENT_U0_INT_CLR:WO；位位置：[0]；默认值：0；设置此位以清除PCNT_CNT_THR_EVENT_U0_INT中断。
+ */
+#define PCNT_CNT_THR_EVENT_U0_INT_CLR    (BIT(0))
+#define PCNT_CNT_THR_EVENT_U0_INT_CLR_M  (PCNT_CNT_THR_EVENT_U0_INT_CLR_V << PCNT_CNT_THR_EVENT_U0_INT_CLR_S)
+#define PCNT_CNT_THR_EVENT_U0_INT_CLR_V  0x00000001U
+#define PCNT_CNT_THR_EVENT_U0_INT_CLR_S  0
+/** PCNT_CNT_THR_EVENT_U1_INT_CLR:WO；位位置：[1]；默认值：0；设置此位以清除PCNT_CNT_THR_EVENT_U1_INT中断。
+ */
+#define PCNT_CNT_THR_EVENT_U1_INT_CLR    (BIT(1))
+#define PCNT_CNT_THR_EVENT_U1_INT_CLR_M  (PCNT_CNT_THR_EVENT_U1_INT_CLR_V << PCNT_CNT_THR_EVENT_U1_INT_CLR_S)
+#define PCNT_CNT_THR_EVENT_U1_INT_CLR_V  0x00000001U
+#define PCNT_CNT_THR_EVENT_U1_INT_CLR_S  1
+/** PCNT_CNT_THR_EVENT_U2_INT_CLR:WO；位位置：[2]；默认值：0；设置此位以清除PCNT_CNT_THR_EVENT_U2_INT中断。
+ */
+#define PCNT_CNT_THR_EVENT_U2_INT_CLR    (BIT(2))
+#define PCNT_CNT_THR_EVENT_U2_INT_CLR_M  (PCNT_CNT_THR_EVENT_U2_INT_CLR_V << PCNT_CNT_THR_EVENT_U2_INT_CLR_S)
+#define PCNT_CNT_THR_EVENT_U2_INT_CLR_V  0x00000001U
+#define PCNT_CNT_THR_EVENT_U2_INT_CLR_S  2
+/** PCNT_CNT_THR_EVENT_U3_INT_CLR:WO；位位置：[3]；默认值：0；设置此位以清除PCNT_CNT_THR_EVENT_U3_INT中断。
+ */
+#define PCNT_CNT_THR_EVENT_U3_INT_CLR    (BIT(3))
+#define PCNT_CNT_THR_EVENT_U3_INT_CLR_M  (PCNT_CNT_THR_EVENT_U3_INT_CLR_V << PCNT_CNT_THR_EVENT_U3_INT_CLR_S)
+#define PCNT_CNT_THR_EVENT_U3_INT_CLR_V  0x00000001U
+#define PCNT_CNT_THR_EVENT_U3_INT_CLR_S  3
+
+/** PCNT_U0_STATUS_REG寄存器PNCT UNIT0状态寄存器
+ */
+#define PCNT_U0_STATUS_REG (DR_REG_PCNT_BASE + 0x50)
+/** PCNT_CNT_THR_ZERO_MODE_U0:RO；位位置：[1:0]；默认值：0；对应于0的PCNT_U0的脉冲计数器状态：脉冲计数器从正减少到0。1：脉冲计数器由负增加到0。2：脉冲计数器为负。3： 脉冲计数器为正。
+ */
+#define PCNT_CNT_THR_ZERO_MODE_U0    0x00000003U
+#define PCNT_CNT_THR_ZERO_MODE_U0_M  (PCNT_CNT_THR_ZERO_MODE_U0_V << PCNT_CNT_THR_ZERO_MODE_U0_S)
+#define PCNT_CNT_THR_ZERO_MODE_U0_V  0x00000003U
+#define PCNT_CNT_THR_ZERO_MODE_U0_S  0
+/** PCNT_CNT_THR_THRES1_LAT_U0:RO；位位置：[2]；默认值：0；阈值事件中断有效时，PCNT_U0的thres1事件的锁存值。1： 电流脉冲计数器等于thres1，thres1事件有效。0:其他
+ */
+#define PCNT_CNT_THR_THRES1_LAT_U0    (BIT(2))
+#define PCNT_CNT_THR_THRES1_LAT_U0_M  (PCNT_CNT_THR_THRES1_LAT_U0_V << PCNT_CNT_THR_THRES1_LAT_U0_S)
+#define PCNT_CNT_THR_THRES1_LAT_U0_V  0x00000001U
+#define PCNT_CNT_THR_THRES1_LAT_U0_S  2
+/** PCNT_CNT_THR_THRES0_LAT_U0:RO；位位置：[3]；默认值：0；当阈值事件中断有效时，PCNT_U0的thres0事件的锁存值。1： 当前脉冲计数器等于thres0，thres0事件有效。0:其他
+ */
+#define PCNT_CNT_THR_THRES0_LAT_U0    (BIT(3))
+#define PCNT_CNT_THR_THRES0_LAT_U0_M  (PCNT_CNT_THR_THRES0_LAT_U0_V << PCNT_CNT_THR_THRES0_LAT_U0_S)
+#define PCNT_CNT_THR_THRES0_LAT_U0_V  0x00000001U
+#define PCNT_CNT_THR_THRES0_LAT_U0_S  3
+/** PCNT_CNT_THR_L_LIM_LAT_U0:RO；位位置：[4]；默认值：0；阈值事件中断有效时，PCNT_U0的下限事件的锁存值。1： 电流脉冲计数器等于thrl_lim，下限事件有效。0:其他
+ */
+#define PCNT_CNT_THR_L_LIM_LAT_U0    (BIT(4))
+#define PCNT_CNT_THR_L_LIM_LAT_U0_M  (PCNT_CNT_THR_L_LIM_LAT_U0_V << PCNT_CNT_THR_L_LIM_LAT_U0_S)
+#define PCNT_CNT_THR_L_LIM_LAT_U0_V  0x00000001U
+#define PCNT_CNT_THR_L_LIM_LAT_U0_S  4
+/** PCNT_CNT_THR_H_LIM_LAT_U0:RO；位位置：[5]；默认值：0；阈值事件中断有效时，PCNT_U0的上限事件的锁存值。1： 当前脉冲计数器等于thr_。0:其他
+ */
+#define PCNT_CNT_THR_H_LIM_LAT_U0    (BIT(5))
+#define PCNT_CNT_THR_H_LIM_LAT_U0_M  (PCNT_CNT_THR_H_LIM_LAT_U0_V << PCNT_CNT_THR_H_LIM_LAT_U0_S)
+#define PCNT_CNT_THR_H_LIM_LAT_U0_V  0x00000001U
+#define PCNT_CNT_THR_H_LIM_LAT_U0_S  5
+/** PCNT_CNT_THR_ZERO_LAT_U0:RO；位位置：[6]；默认值：0；阈值事件中断有效时，PCNT_U0的零阈值事件的锁存值。1： 电流脉冲计数器等于0并且零阈值事件是有效的。0:其他
+ */
+#define PCNT_CNT_THR_ZERO_LAT_U0    (BIT(6))
+#define PCNT_CNT_THR_ZERO_LAT_U0_M  (PCNT_CNT_THR_ZERO_LAT_U0_V << PCNT_CNT_THR_ZERO_LAT_U0_S)
+#define PCNT_CNT_THR_ZERO_LAT_U0_V  0x00000001U
+#define PCNT_CNT_THR_ZERO_LAT_U0_S  6
+
+/** PCNT_U1_STATUS_REG寄存器PNCT第一单元状态寄存器
+ */
+#define PCNT_U1_STATUS_REG (DR_REG_PCNT_BASE + 0x54)
+/** PCNT_CNT_THR_ZERO_MODE_U1:RO；位位置：[1:0]；默认值：0；对应于0.0的PCNT_U1的脉冲计数器状态：脉冲计数器从正变为0.1：脉冲计数器由负变为0.2：脉冲计数器为负。3： 脉冲计数器为正。
+ */
+#define PCNT_CNT_THR_ZERO_MODE_U1    0x00000003U
+#define PCNT_CNT_THR_ZERO_MODE_U1_M  (PCNT_CNT_THR_ZERO_MODE_U1_V << PCNT_CNT_THR_ZERO_MODE_U1_S)
+#define PCNT_CNT_THR_ZERO_MODE_U1_V  0x00000003U
+#define PCNT_CNT_THR_ZERO_MODE_U1_S  0
+/** PCNT_CNT_THR_THRES1_LAT_U1:RO；位位置：[2]；默认值：0；当阈值事件中断有效时，PCNT_U1的thres1事件的锁存值。1： 电流脉冲计数器等于thres1，thres1事件有效。0:其他
+ */
+#define PCNT_CNT_THR_THRES1_LAT_U1    (BIT(2))
+#define PCNT_CNT_THR_THRES1_LAT_U1_M  (PCNT_CNT_THR_THRES1_LAT_U1_V << PCNT_CNT_THR_THRES1_LAT_U1_S)
+#define PCNT_CNT_THR_THRES1_LAT_U1_V  0x00000001U
+#define PCNT_CNT_THR_THRES1_LAT_U1_S  2
+/** PCNT_CNT_THR_THRES0_LAT_U1:RO；位位置：[3]；默认值：0；当阈值事件中断有效时，PCNT_U1的thres0事件的锁存值。1： 当前脉冲计数器等于thres0，thres0事件有效。0:其他
+ */
+#define PCNT_CNT_THR_THRES0_LAT_U1    (BIT(3))
+#define PCNT_CNT_THR_THRES0_LAT_U1_M  (PCNT_CNT_THR_THRES0_LAT_U1_V << PCNT_CNT_THR_THRES0_LAT_U1_S)
+#define PCNT_CNT_THR_THRES0_LAT_U1_V  0x00000001U
+#define PCNT_CNT_THR_THRES0_LAT_U1_S  3
+/** PCNT_CNT_THR_L_LIM_LAT_U1:RO；位位置：[4]；默认值：0；阈值事件中断有效时，PCNT_U1的下限事件的锁存值。1： 电流脉冲计数器等于thrl_lim，下限事件有效。0:其他
+ */
+#define PCNT_CNT_THR_L_LIM_LAT_U1    (BIT(4))
+#define PCNT_CNT_THR_L_LIM_LAT_U1_M  (PCNT_CNT_THR_L_LIM_LAT_U1_V << PCNT_CNT_THR_L_LIM_LAT_U1_S)
+#define PCNT_CNT_THR_L_LIM_LAT_U1_V  0x00000001U
+#define PCNT_CNT_THR_L_LIM_LAT_U1_S  4
+/** PCNT_CNT_THR_H_LIM_LAT_U1:RO；位位置：[5]；默认值：0；当阈值事件中断有效时，PCNT_U1的上限事件的锁存值。1： 当前脉冲计数器等于thr_。0:其他
+ */
+#define PCNT_CNT_THR_H_LIM_LAT_U1    (BIT(5))
+#define PCNT_CNT_THR_H_LIM_LAT_U1_M  (PCNT_CNT_THR_H_LIM_LAT_U1_V << PCNT_CNT_THR_H_LIM_LAT_U1_S)
+#define PCNT_CNT_THR_H_LIM_LAT_U1_V  0x00000001U
+#define PCNT_CNT_THR_H_LIM_LAT_U1_S  5
+/** PCNT_CNT_THR_ZERO_LAT_U1:RO；位位置：[6]；默认值：0；阈值事件中断有效时，PCNT_U1的零阈值事件的锁存值。1： 电流脉冲计数器等于0并且零阈值事件是有效的。0:其他
+ */
+#define PCNT_CNT_THR_ZERO_LAT_U1    (BIT(6))
+#define PCNT_CNT_THR_ZERO_LAT_U1_M  (PCNT_CNT_THR_ZERO_LAT_U1_V << PCNT_CNT_THR_ZERO_LAT_U1_S)
+#define PCNT_CNT_THR_ZERO_LAT_U1_V  0x00000001U
+#define PCNT_CNT_THR_ZERO_LAT_U1_S  6
+
+/** PCNT_U2_STATUS_REG寄存器PNCT第二单元状态寄存器
+ */
+#define PCNT_U2_STATUS_REG (DR_REG_PCNT_BASE + 0x58)
+/** PCNT_CNT_THR_ZERO_MODE_U2:RO；位位置：[1:0]；默认值：0；对应于0.0的PCNT_U2的脉冲计数器状态：脉冲计数器从正变为0.1：脉冲计数器由负变为0.2：脉冲计数器为负。3： 脉冲计数器为正。
+ */
+#define PCNT_CNT_THR_ZERO_MODE_U2    0x00000003U
+#define PCNT_CNT_THR_ZERO_MODE_U2_M  (PCNT_CNT_THR_ZERO_MODE_U2_V << PCNT_CNT_THR_ZERO_MODE_U2_S)
+#define PCNT_CNT_THR_ZERO_MODE_U2_V  0x00000003U
+#define PCNT_CNT_THR_ZERO_MODE_U2_S  0
+/** PCNT_CNT_THR_THRES1_LAT_U2:RO；位位置：[2]；默认值：0；阈值事件中断有效时，PCNT_U2的thres1事件的锁存值。1： 电流脉冲计数器等于thres1，thres1事件有效。0:其他
+ */
+#define PCNT_CNT_THR_THRES1_LAT_U2    (BIT(2))
+#define PCNT_CNT_THR_THRES1_LAT_U2_M  (PCNT_CNT_THR_THRES1_LAT_U2_V << PCNT_CNT_THR_THRES1_LAT_U2_S)
+#define PCNT_CNT_THR_THRES1_LAT_U2_V  0x00000001U
+#define PCNT_CNT_THR_THRES1_LAT_U2_S  2
+/** PCNT_CNT_THR_THRES0_LAT_U2:RO；位位置：[3]；默认值：0；当阈值事件中断有效时，PCNT_U2的thres0事件的锁存值。1： 当前脉冲计数器等于thres0，thres0事件有效。0:其他
+ */
+#define PCNT_CNT_THR_THRES0_LAT_U2    (BIT(3))
+#define PCNT_CNT_THR_THRES0_LAT_U2_M  (PCNT_CNT_THR_THRES0_LAT_U2_V << PCNT_CNT_THR_THRES0_LAT_U2_S)
+#define PCNT_CNT_THR_THRES0_LAT_U2_V  0x00000001U
+#define PCNT_CNT_THR_THRES0_LAT_U2_S  3
+/** PCNT_CNT_THR_L_LIM_LAT_U2:RO；位位置：[4]；默认值：0；阈值事件中断有效时，PCNT_U2的下限事件的锁存值。1： 电流脉冲计数器等于thrl_lim，下限事件有效。0:其他
+ */
+#define PCNT_CNT_THR_L_LIM_LAT_U2    (BIT(4))
+#define PCNT_CNT_THR_L_LIM_LAT_U2_M  (PCNT_CNT_THR_L_LIM_LAT_U2_V << PCNT_CNT_THR_L_LIM_LAT_U2_S)
+#define PCNT_CNT_THR_L_LIM_LAT_U2_V  0x00000001U
+#define PCNT_CNT_THR_L_LIM_LAT_U2_S  4
+/** PCNT_CNT_THR_H_LIM_LAT_U2:RO；位位置：[5]；默认值：0；阈值事件中断有效时，PCNT_U2的上限事件的锁存值。1： 当前脉冲计数器等于thr_。0:其他
+ */
+#define PCNT_CNT_THR_H_LIM_LAT_U2    (BIT(5))
+#define PCNT_CNT_THR_H_LIM_LAT_U2_M  (PCNT_CNT_THR_H_LIM_LAT_U2_V << PCNT_CNT_THR_H_LIM_LAT_U2_S)
+#define PCNT_CNT_THR_H_LIM_LAT_U2_V  0x00000001U
+#define PCNT_CNT_THR_H_LIM_LAT_U2_S  5
+/** PCNT_CNT_THR_ZERO_LAT_U2:RO；位位置：[6]；默认值：0；阈值事件中断有效时PCNT_U2的零阈值事件的锁存值。1： 电流脉冲计数器等于0并且零阈值事件是有效的。0:其他
+ */
+#define PCNT_CNT_THR_ZERO_LAT_U2    (BIT(6))
+#define PCNT_CNT_THR_ZERO_LAT_U2_M  (PCNT_CNT_THR_ZERO_LAT_U2_V << PCNT_CNT_THR_ZERO_LAT_U2_S)
+#define PCNT_CNT_THR_ZERO_LAT_U2_V  0x00000001U
+#define PCNT_CNT_THR_ZERO_LAT_U2_S  6
+
+/** PCNT_U3_STATUS_REG寄存器PNCT第三单元状态寄存器
+ */
+#define PCNT_U3_STATUS_REG (DR_REG_PCNT_BASE + 0x5c)
+/** PCNT_CNT_THR_ZERO_MODE_U3:RO；位位置：[1:0]；默认值：0；对应于0.0的PCNT_U3的脉冲计数器状态：脉冲计数器从正变为0.1：脉冲计数器由负变为0.2：脉冲计数器为负。3： 脉冲计数器为正。
+ */
+#define PCNT_CNT_THR_ZERO_MODE_U3    0x00000003U
+#define PCNT_CNT_THR_ZERO_MODE_U3_M  (PCNT_CNT_THR_ZERO_MODE_U3_V << PCNT_CNT_THR_ZERO_MODE_U3_S)
+#define PCNT_CNT_THR_ZERO_MODE_U3_V  0x00000003U
+#define PCNT_CNT_THR_ZERO_MODE_U3_S  0
+/** PCNT_CNT_THR_THRES1_LAT_U3:RO；位位置：[2]；默认值：0；阈值事件中断有效时，PCNT_U3的thres1事件的锁存值。1： 电流脉冲计数器等于thres1，thres1事件有效。0:其他
+ */
+#define PCNT_CNT_THR_THRES1_LAT_U3    (BIT(2))
+#define PCNT_CNT_THR_THRES1_LAT_U3_M  (PCNT_CNT_THR_THRES1_LAT_U3_V << PCNT_CNT_THR_THRES1_LAT_U3_S)
+#define PCNT_CNT_THR_THRES1_LAT_U3_V  0x00000001U
+#define PCNT_CNT_THR_THRES1_LAT_U3_S  2
+/** PCNT_CNT_THR_THRES0_LAT_U3:RO；位位置：[3]；默认值：0；当阈值事件中断有效时，PCNT_U3的thres0事件的锁存值。1： 当前脉冲计数器等于thres0，thres0事件有效。0:其他
+ */
+#define PCNT_CNT_THR_THRES0_LAT_U3    (BIT(3))
+#define PCNT_CNT_THR_THRES0_LAT_U3_M  (PCNT_CNT_THR_THRES0_LAT_U3_V << PCNT_CNT_THR_THRES0_LAT_U3_S)
+#define PCNT_CNT_THR_THRES0_LAT_U3_V  0x00000001U
+#define PCNT_CNT_THR_THRES0_LAT_U3_S  3
+/** PCNT_CNT_THR_L_LIM_LAT_U3:RO；位位置：[4]；默认值：0；阈值事件中断有效时，PCNT_U3的下限事件的锁存值。1： 电流脉冲计数器等于thrl_lim，下限事件有效。0:其他
+ */
+#define PCNT_CNT_THR_L_LIM_LAT_U3    (BIT(4))
+#define PCNT_CNT_THR_L_LIM_LAT_U3_M  (PCNT_CNT_THR_L_LIM_LAT_U3_V << PCNT_CNT_THR_L_LIM_LAT_U3_S)
+#define PCNT_CNT_THR_L_LIM_LAT_U3_V  0x00000001U
+#define PCNT_CNT_THR_L_LIM_LAT_U3_S  4
+/** PCNT_CNT_THR_H_LIM_LAT_U3:RO；位位置：[5]；默认值：0；阈值事件中断有效时，PCNT_U3的上限事件的锁存值。1： 当前脉冲计数器等于thr_。0:其他
+ */
+#define PCNT_CNT_THR_H_LIM_LAT_U3    (BIT(5))
+#define PCNT_CNT_THR_H_LIM_LAT_U3_M  (PCNT_CNT_THR_H_LIM_LAT_U3_V << PCNT_CNT_THR_H_LIM_LAT_U3_S)
+#define PCNT_CNT_THR_H_LIM_LAT_U3_V  0x00000001U
+#define PCNT_CNT_THR_H_LIM_LAT_U3_S  5
+/** PCNT_CNT_THR_ZERO_LAT_U3:RO；位位置：[6]；默认值：0；阈值事件中断有效时，PCNT_U3的零阈值事件的锁存值。1： 电流脉冲计数器等于0并且零阈值事件是有效的。0:其他
+ */
+#define PCNT_CNT_THR_ZERO_LAT_U3    (BIT(6))
+#define PCNT_CNT_THR_ZERO_LAT_U3_M  (PCNT_CNT_THR_ZERO_LAT_U3_V << PCNT_CNT_THR_ZERO_LAT_U3_S)
+#define PCNT_CNT_THR_ZERO_LAT_U3_V  0x00000001U
+#define PCNT_CNT_THR_ZERO_LAT_U3_S  6
+
+/** PCNT_CTRL_REG寄存器所有计数器的控制寄存器
+ */
+#define PCNT_CTRL_REG (DR_REG_PCNT_BASE + 0x60)
+/** PCNT_PULSE_CNT_RST_U0:R/W；位位置：[0]；默认值：1；设置此位以清除单元0的计数器。
+ */
+#define PCNT_PULSE_CNT_RST_U0    (BIT(0))
+#define PCNT_PULSE_CNT_RST_U0_M  (PCNT_PULSE_CNT_RST_U0_V << PCNT_PULSE_CNT_RST_U0_S)
+#define PCNT_PULSE_CNT_RST_U0_V  0x00000001U
+#define PCNT_PULSE_CNT_RST_U0_S  0
+/** PCNT_CNT_PAUSE_U0:R/W；位位置：[1]；默认值：0；设置此位以冻结单元0的计数器。
+ */
+#define PCNT_CNT_PAUSE_U0    (BIT(1))
+#define PCNT_CNT_PAUSE_U0_M  (PCNT_CNT_PAUSE_U0_V << PCNT_CNT_PAUSE_U0_S)
+#define PCNT_CNT_PAUSE_U0_V  0x00000001U
+#define PCNT_CNT_PAUSE_U0_S  1
+/** PCNT_PULSE_CNT_RST_U1:R/W；位位置：[2]；默认值：1；设置此位以清除第一单元的计数器。
+ */
+#define PCNT_PULSE_CNT_RST_U1    (BIT(2))
+#define PCNT_PULSE_CNT_RST_U1_M  (PCNT_PULSE_CNT_RST_U1_V << PCNT_PULSE_CNT_RST_U1_S)
+#define PCNT_PULSE_CNT_RST_U1_V  0x00000001U
+#define PCNT_PULSE_CNT_RST_U1_S  2
+/** PCNT_CNT_PAUSE_U1:R/W；位位置：[3]；默认值：0；设置此位以冻结第一单元的计数器。
+ */
+#define PCNT_CNT_PAUSE_U1    (BIT(3))
+#define PCNT_CNT_PAUSE_U1_M  (PCNT_CNT_PAUSE_U1_V << PCNT_CNT_PAUSE_U1_S)
+#define PCNT_CNT_PAUSE_U1_V  0x00000001U
+#define PCNT_CNT_PAUSE_U1_S  3
+/** PCNT_PULSE_CNT_RST_U2:R/W；位位置：[4]；默认值：1；设置此位以清除第二单元的计数器。
+ */
+#define PCNT_PULSE_CNT_RST_U2    (BIT(4))
+#define PCNT_PULSE_CNT_RST_U2_M  (PCNT_PULSE_CNT_RST_U2_V << PCNT_PULSE_CNT_RST_U2_S)
+#define PCNT_PULSE_CNT_RST_U2_V  0x00000001U
+#define PCNT_PULSE_CNT_RST_U2_S  4
+/** PCNT_CNT_PAUSE_U2:R/W；位位置：[5]；默认值：0；设置此位以冻结第二单元的计数器。
+ */
+#define PCNT_CNT_PAUSE_U2    (BIT(5))
+#define PCNT_CNT_PAUSE_U2_M  (PCNT_CNT_PAUSE_U2_V << PCNT_CNT_PAUSE_U2_S)
+#define PCNT_CNT_PAUSE_U2_V  0x00000001U
+#define PCNT_CNT_PAUSE_U2_S  5
+/** PCNT_PULSE_CNT_RST_U3:R/W；位位置：[6]；默认值：1；设置此位以清除第三单元的计数器。
+ */
+#define PCNT_PULSE_CNT_RST_U3    (BIT(6))
+#define PCNT_PULSE_CNT_RST_U3_M  (PCNT_PULSE_CNT_RST_U3_V << PCNT_PULSE_CNT_RST_U3_S)
+#define PCNT_PULSE_CNT_RST_U3_V  0x00000001U
+#define PCNT_PULSE_CNT_RST_U3_S  6
+/** PCNT_CNT_PAUSE_U3:R/W；位位置：[7]；默认值：0；设置此位以冻结第三单元的计数器。
+ */
+#define PCNT_CNT_PAUSE_U3    (BIT(7))
+#define PCNT_CNT_PAUSE_U3_M  (PCNT_CNT_PAUSE_U3_V << PCNT_CNT_PAUSE_U3_S)
+#define PCNT_CNT_PAUSE_U3_V  0x00000001U
+#define PCNT_CNT_PAUSE_U3_S  7
+/** PCNT_CLK_EN:R/W；位位置：[16]；默认值：0；PCNT模块的寄存器时钟门启用信号。1： 寄存器可以由应用程序读取和写入。0：应用程序无法读取或写入寄存器
+ */
+#define PCNT_CLK_EN    (BIT(16))
+#define PCNT_CLK_EN_M  (PCNT_CLK_EN_V << PCNT_CLK_EN_S)
+#define PCNT_CLK_EN_V  0x00000001U
+#define PCNT_CLK_EN_S  16
+
+/** PCNT_DATE_REG寄存器PCNT版本控制寄存器
+ */
+#define PCNT_DATE_REG (DR_REG_PCNT_BASE + 0xfc)
+/** PCNT_DATE:R/W；位位置：[31:0]；默认值：41989881；这是PCNT版本控制寄存器。
+ */
+#define PCNT_DATE    0xFFFFFFFFU
+#define PCNT_DATE_M  (PCNT_DATE_V << PCNT_DATE_S)
+#define PCNT_DATE_V  0xFFFFFFFFU
+#define PCNT_DATE_S  0
+
+#ifdef __cplusplus
+}
+#endif
+
