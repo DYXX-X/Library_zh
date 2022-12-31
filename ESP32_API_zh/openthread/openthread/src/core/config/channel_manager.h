@@ -1,0 +1,108 @@
+/*
+ *  版权所有（c）2019，The OpenThread作者。保留所有权利。
+ *
+ *  在满足以下条件的情况下，允许以源代码和二进制形式重新分发和使用，无论是否进行修改：1.重新分发源代码必须保留上述版权声明、本条件列表和以下免责声明。2.二进制形式的再发行必须在随发行提供的文档和/或其他材料中复制上述版权声明、本条件列表和以下免责声明。3.未经事先书面许可，不得使用版权持有人的姓名或其贡献者的姓名为本软件衍生的产品背书或推广。
+ *
+ *  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ */
+
+/**
+ * @file 此文件包括Channel Manager的编译时配置。
+ *
+ */
+
+#ifndef CONFIG_CHANNEL_MANAGER_H_
+#define CONFIG_CHANNEL_MANAGER_H_
+
+/**
+ * @def OPENTHREAD_CONFIG_CHANNEL_MANAGER_ENABLE
+ *
+ * 定义为1以启用Channel Manager支持。
+ *
+ */
+#ifndef OPENTHREAD_CONFIG_CHANNEL_MANAGER_ENABLE
+#define OPENTHREAD_CONFIG_CHANNEL_MANAGER_ENABLE 0
+#endif
+
+/**
+ * @def OPENTHREAD_CONFIG_CHANNEL_MANAGER_MINIMUM_DELAY
+ *
+ * Channel Manager模块用于执行频道更改的最小延迟（以秒为单位）。
+ *
+ * 最小延迟最好比线程网络内所有休眠终端设备使用的最大数据轮询间隔长。
+ *
+ * 仅在启用了Channel Manager功能时适用（即设置了“OPENTHREAD_CONFIG_Channel_Manager_ENABLE”）。
+ *
+ */
+#ifndef OPENTHREAD_CONFIG_CHANNEL_MANAGER_MINIMUM_DELAY
+#define OPENTHREAD_CONFIG_CHANNEL_MANAGER_MINIMUM_DELAY 120
+#endif
+
+/**
+ * @def OPENTHREAD_CONFIG_CHANNEL_MANAGER_MINIMUM_MONITOR_SAMPLE_COUNT
+ *
+ * 在信道管理器模块可以使用采集的数据（自动）选择更好的信道之前，每个信道的最小RSSI采样数（通过信道监测功能）。
+ *
+ * 仅当通道管理器和通道监控功能均已启用时适用（即，设置了“OPENTHREAD_CONFIG_Channel_Manager_ENABLE”和“OPENTHRAD_CONFIG_CHANNAL_MONITOR_ENABLE”）。
+ *
+ */
+#ifndef OPENTHREAD_CONFIG_CHANNEL_MANAGER_MINIMUM_MONITOR_SAMPLE_COUNT
+#define OPENTHREAD_CONFIG_CHANNEL_MANAGER_MINIMUM_MONITOR_SAMPLE_COUNT 500
+#endif
+
+/**
+ * @def OPENTHREAD_CONFIG_CHANNEL_MANAGER_THRESHOLD_TO_SKIP_FAVORED
+ *
+ * 此阈值指定两个频道之间的最小占用率差异，以便频道管理器选择不受欢迎的频道而不是最受欢迎的一个频道。当（自动）根据“频道监视器”功能收集的频道质量数据选择频道时，使用此选项。
+ *
+ * 差异基于“ChannelMonitor:：GetChannelOccupancy（）”定义，该定义提供了指示信道忙（即RSSI值高于阈值）的RSSI样本的平均百分比（在时间窗口内）。值0映射到0%，0xffff映射到100%。
+ *
+ * 仅在启用了Channel Manager功能时适用（即设置了“OPENTHREAD_CONFIG_Channel_Manager_ENABLE”）。
+ *
+ */
+#ifndef OPENTHREAD_CONFIG_CHANNEL_MANAGER_THRESHOLD_TO_SKIP_FAVORED
+#define OPENTHREAD_CONFIG_CHANNEL_MANAGER_THRESHOLD_TO_SKIP_FAVORED (0xffff * 7 / 100)
+#endif
+
+/**
+ * @def OPENTHREAD_CONFIG_CHANNEL_MANAGER_THRESHOLD_TO_CHANGE_CHANNEL
+ *
+ * 此阈值指定当前频道和频道管理器允许频道更改到新频道所需的新选择频道之间的最小占用率差异。
+ *
+ * 差异基于“ChannelMonitor:：GetChannelOccupancy（）”定义，该定义提供了指示信道忙（即RSSI值高于阈值）的RSSI样本的平均百分比（在时间窗口内）。值0映射到0%速率，0xffff映射到100%。
+ *
+ * 仅在启用了Channel Manager功能时适用（即设置了“OPENTHREAD_CONFIG_Channel_Manager_ENABLE”）。
+ *
+ */
+#ifndef OPENTHREAD_CONFIG_CHANNEL_MANAGER_THRESHOLD_TO_CHANGE_CHANNEL
+#define OPENTHREAD_CONFIG_CHANNEL_MANAGER_THRESHOLD_TO_CHANGE_CHANNEL (0xffff * 10 / 100)
+#endif
+
+/**
+ * @def OPENTHREAD_CONFIG_CHANNEL_MANAGER_DEFAULT_AUTO_SELECT_INTERVAL
+ *
+ * Channel Manager用于自动频道选择功能的默认时间间隔（以秒为单位）。
+ *
+ * 仅在启用了Channel Manager功能时适用（即设置了“OPENTHREAD_CONFIG_Channel_Manager_ENABLE”）。
+ *
+ */
+#ifndef OPENTHREAD_CONFIG_CHANNEL_MANAGER_DEFAULT_AUTO_SELECT_INTERVAL
+#define OPENTHREAD_CONFIG_CHANNEL_MANAGER_DEFAULT_AUTO_SELECT_INTERVAL (3 * 60 * 60)
+#endif
+
+/**
+ * @def OPENTHREAD_CONFIG_CHANNEL_MANAGER_CCA_FAILURE_THRESHOLD
+ *
+ * 在channel Manager开始频道选择尝试之前，当前频道上的默认最小CCA故障率阈值。
+ *
+ * 值0映射到0%，0xffff映射到100%。
+ *
+ * 仅在启用了Channel Manager功能时适用（即设置了“OPENTHREAD_CONFIG_Channel_Manager_ENABLE”）。
+ *
+ */
+#ifndef OPENTHREAD_CONFIG_CHANNEL_MANAGER_CCA_FAILURE_THRESHOLD
+#define OPENTHREAD_CONFIG_CHANNEL_MANAGER_CCA_FAILURE_THRESHOLD (0xffff * 14 / 100)
+#endif
+
+#endif // CONFIG_CHANNEL_MANAGER_H_
+

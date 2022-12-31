@@ -1,0 +1,212 @@
+/*
+ *  版权所有（c）2016，OpenThread作者。保留所有权利。
+ *
+ *  在满足以下条件的情况下，允许以源代码和二进制形式重新分发和使用，无论是否进行修改：1.重新分发源代码必须保留上述版权声明、本条件列表和以下免责声明。2.二进制形式的再发行必须在随发行提供的文档和/或其他材料中复制上述版权声明、本条件列表和以下免责声明。3.未经事先书面许可，不得使用版权持有人的姓名或其贡献者的姓名为本软件衍生的产品背书或推广。
+ *
+ *  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ */
+
+/**
+ * @file 此文件包含OpenThread的cc2538编译时配置常量。
+ */
+
+#ifndef OPENTHREAD_CORE_CC2538_CONFIG_H_
+#define OPENTHREAD_CORE_CC2538_CONFIG_H_
+
+/**
+ * @def OPENTHREAD_CONFIG_PLATFORM_INFO
+ *
+ * 要插入OpenThread版本字符串的平台特定字符串。
+ *
+ */
+#define OPENTHREAD_CONFIG_PLATFORM_INFO "CC2538"
+
+/**
+ * @def OPENTHREAD_CONFIG_MAC_SOFTWARE_ACK_TIMEOUT_ENABLE
+ *
+ * 如果要启用软件ACK超时逻辑，请定义为1。
+ *
+ */
+#define OPENTHREAD_CONFIG_MAC_SOFTWARE_ACK_TIMEOUT_ENABLE 1
+
+/**
+ * @def OPENTHREAD_CONFIG_MAC_SOFTWARE_RETRANSMIT_ENABLE
+ *
+ * 如果要启用软件重传逻辑，请定义为1。
+ *
+ */
+#define OPENTHREAD_CONFIG_MAC_SOFTWARE_RETRANSMIT_ENABLE 1
+
+/**
+ * @def OPENTHREAD_CONFIG_MAC_SOFTWARE_CSMA_BACKOFF_ENABLE
+ *
+ * 如果要启用软件CSMA-CA回退逻辑，请定义为1。
+ *
+ */
+#define OPENTHREAD_CONFIG_MAC_SOFTWARE_CSMA_BACKOFF_ENABLE 1
+
+/**
+ * @def OPENTHREAD_CONFIG_MAC_SOFTWARE_TX_SECURITY_ENABLE
+ *
+ * 如果要启用软件传输安全逻辑，请定义为1。
+ *
+ */
+#define OPENTHREAD_CONFIG_MAC_SOFTWARE_TX_SECURITY_ENABLE 0
+
+/**
+ * @def OPENTHREAD_CONFIG_MAC_SOFTWARE_ENERGY_SCAN_ENABLE
+ *
+ * 如果要启用软件能量扫描逻辑，请定义为1。
+ *
+ */
+#define OPENTHREAD_CONFIG_MAC_SOFTWARE_ENERGY_SCAN_ENABLE 1
+
+/**
+ * @def OPENTHREAD_CONFIG_NCP_HDLC_ENABLE
+ *
+ * 定义为1以启用NCP HDLC支持。
+ *
+ */
+#define OPENTHREAD_CONFIG_NCP_HDLC_ENABLE 1
+
+/**
+ * @def OPENTHREAD_CONFIG_CC2538_USE_RADIO_RX_INTERRUPT
+ *
+ * 启用对使用中断驱动无线电接收的支持。这允许在CPU忙于处理某些其他代码时接收单个帧。
+ *
+ * 要禁用中断并仅依赖轮询，请将其设置为0。
+ *
+ */
+#ifndef OPENTHREAD_CONFIG_CC2538_USE_RADIO_RX_INTERRUPT
+#define OPENTHREAD_CONFIG_CC2538_USE_RADIO_RX_INTERRUPT 1
+#endif
+
+/**
+ * @def OPENTHREAD_CONFIG_CC2538_WITH_CC2592
+ *
+ * 启用对CC2592范围扩展器前端的支持。
+ *
+ * 这是CC2538-CC2592 EM和其他外围设备的一个特点，它将裸CC2538的射程扩展到超过一公里的视距。根据应用说明130，CC2592需要连接到CC2538上的RF端口（“使用CC2592前端与CC2538”，TI文件SWRA447）。
+ *
+ * 如果您有这样一个板，请将其更改为1。
+ *
+ */
+#ifndef OPENTHREAD_CONFIG_CC2538_WITH_CC2592
+#define OPENTHREAD_CONFIG_CC2538_WITH_CC2592 0
+#endif
+
+/**
+ * @def OPENTHREAD_CONFIG_CC2592_PA_EN_PIN
+ *
+ * 定义连接到CC2592 PA_EN引脚的引脚（端口C上）。
+ *
+ * CC2538无线电模块上的3个可观察信道之一将被配置为接收来自无线电模块自身的“PA掉电”信号，将其反相，并在该GPIO引脚上发射。由于硬件限制，它可能只能连接到GPIO端口C上的引脚。
+ *
+ * 默认值（PC3）符合AN130中的TI建议。
+ *
+ */
+#ifndef OPENTHREAD_CONFIG_CC2592_PA_EN_PIN
+#define OPENTHREAD_CONFIG_CC2592_PA_EN_PIN 3
+#endif
+
+/**
+ * @def OPENTHREAD_CONFIG_CC2592_LNA_EN_PIN
+ *
+ * 定义连接到CC2592 LNA_EN引脚的引脚（端口C上）。
+ *
+ * CC2538无线电模块上的3个可观察信道之一将被配置为接收来自无线电模块自身的“LNA掉电”信号，将其反相，并在该GPIO引脚上发射。由于硬件限制，它可能只能连接到GPIO端口C上的引脚。
+ *
+ * 默认值（PC2）符合AN130中的TI建议。
+ *
+ */
+#ifndef OPENTHREAD_CONFIG_CC2592_LNA_EN_PIN
+#define OPENTHREAD_CONFIG_CC2592_LNA_EN_PIN 2
+#endif
+
+/**
+ * @def OPENTHREAD_CONFIG_CC2592_USE_HGM
+ *
+ * 启用高增益模式信号的控制。
+ *
+ * 通过CC2592上的“HGM”引脚启用高增益模式，该引脚可以连接到任何用于软件控制的自由GPIO引脚，或者可以连接到VDD或0V以将其硬连接到给定状态。
+ *
+ * 如果您已将此引脚连接到电源轨，或使用非标准的控制方式，请将其设置为0。
+ *
+ */
+#ifndef OPENTHREAD_CONFIG_CC2592_USE_HGM
+#define OPENTHREAD_CONFIG_CC2592_USE_HGM 1
+#endif
+
+/**
+ * @def OPENTHREAD_CONFIG_CC2538_RECEIVE_SENSITIVITY
+ *
+ * 设置CC2538接收灵敏度。
+ *
+ * 裸CC2538的接收灵敏度为-88dBm。CC2592将其更改为-85或-81，这取决于HGM引脚是高还是低。如果“OPENTHREAD_CONFIG_CC2592_USE_HGM”为0，则设置接收灵敏度。
+ *
+ */
+#ifndef OPENTHREAD_CONFIG_CC2538_RECEIVE_SENSITIVITY
+#define OPENTHREAD_CONFIG_CC2538_RECEIVE_SENSITIVITY -88
+#endif
+
+/**
+ * @def OPENTHREAD_CONFIG_CC2538_RSSI_OFFSET
+ *
+ * 设置CC2538 RSSI偏移。这将校准从CC2538无线电模块接收的RSSI读数，以给出dBm的读数。
+ *
+ * 对于标准CC2538（无前端），RSSI偏移量为73。
+ *
+ * 对于高增益模式下的CC2592硬接线，应使用85的偏移；或者对于低增益模式，81。如果“OPENTHREAD_COONFIG_CC2592_USE_HGM”为0，则这将相应地校准RSSI值。
+ */
+#ifndef OPENTHREAD_CONFIG_CC2538_RSSI_OFFSET
+#define OPENTHREAD_CONFIG_CC2538_RSSI_OFFSET 73
+#endif
+
+/**
+ * @def OPENTHREAD_CONFIG_CC2592_HGM_PORT
+ *
+ * 定义HGM引脚连接的GPIO端口。它可以连接到任何可用的GPIO引脚。
+ *
+ * 默认值（GPIO端口D）符合TI建议。
+ *
+ */
+#ifndef OPENTHREAD_CONFIG_CC2592_HGM_PORT
+#define OPENTHREAD_CONFIG_CC2592_HGM_PORT GPIO_D_BASE
+#endif
+
+/**
+ * @def OPENTHREAD_CONFIG_CC2592_HGM_PIN
+ *
+ * 定义HGM引脚连接到的GPIO端口上的引脚。它可以连接到任何可用的GPIO引脚。
+ *
+ * 默认值（PD2）符合TI建议。
+ *
+ */
+#ifndef OPENTHREAD_CONFIG_CC2592_HGM_PIN
+#define OPENTHREAD_CONFIG_CC2592_HGM_PIN 2
+#endif
+
+/**
+ * @def OPENTHREAD_CONFIG_CC2592_HGM_DEFAULT_STATE
+ *
+ * 定义CC2592的HGM引脚的默认状态。
+ *
+ * 默认设置为打开高增益模式。
+ *
+ */
+#ifndef OPENTHREAD_CONFIG_CC2592_HGM_DEFAULT_STATE
+#define OPENTHREAD_CONFIG_CC2592_HGM_DEFAULT_STATE true
+#endif
+
+/**
+ * @def OPENTHREAD_CONFIG_PLATFORM_FLASH_API_ENABLE
+ *
+ * 定义为1以启用otPlatFlash*API以支持非易失性存储。
+ *
+ * 当定义为1时，平台必须实现otPlatFlash*API，而不是otPlatSettings*API。
+ *
+ */
+#define OPENTHREAD_CONFIG_PLATFORM_FLASH_API_ENABLE 1
+
+#endif // OPENTHREAD_CORE_CC2538_CONFIG_H_
+

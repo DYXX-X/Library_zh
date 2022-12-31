@@ -1,0 +1,59 @@
+/*
+                            ____ __ ___ \\/__ __ __ | | _/_ \\/|'_ \/_ ` | __ | | __//\ | | _）|（_ | | | _ \ ___//\ \.__/\ __，_ | \ __ | | | | __ | XML解析器
+
+   版权所有（c）1997-2000 Thai Open Source Software Center Ltd版权所有（c）2016-2021 Sebastian Pipping<sebastian@pipping.org>版权所有（c）2017 Rhodori James<rhodri@wildebeest.org.uk>根据MIT许可证获得许可：
+
+   特此免费授予获得本软件和相关文档文件（“软件”）副本的任何人无限制地处理软件的权利，包括但不限于使用、复制、修改、合并、发布、分发、再许可和/或销售软件副本的权利，并允许向其提供软件的人这样做，符合以下条件：
+
+   上述版权声明和本许可声明应包含在软件的所有副本或主要部分中。
+
+   THE  SOFTWARE  IS  PROVIDED  "AS  IS",  WITHOUT  WARRANTY  OF  ANY  KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+*/
+
+/* 确保编译时间常数一致*/
+#include "expat_external.h"
+
+#ifdef XML_UNICODE
+#  ifndef XML_UNICODE_WCHAR_T
+#    error xmlwf requires a 16-bit Unicode-compatible wchar_t
+#  endif
+#  define _PREPEND_BIG_L(x) L##x
+#  define T(x) _PREPEND_BIG_L(x)
+#  define ftprintf fwprintf
+#  define tfopen _wfopen
+#  define fputts fputws
+#  define puttc putwc
+#  define tcscmp wcscmp
+#  define tcscpy wcscpy
+#  define tcscat wcscat
+#  define tcschr wcschr
+#  define tcsrchr wcsrchr
+#  define tcslen wcslen
+#  define tperror _wperror
+#  define topen _wopen
+#  define tmain wmain
+#  define tremove _wremove
+#  define tchar wchar_t
+#  define tcstof wcstof
+#  define tcstoull wcstoull
+#else /* 不是XML_UNICODE*/
+#  define T(x) x
+#  define ftprintf fprintf
+#  define tfopen fopen
+#  define fputts fputs
+#  define puttc putc
+#  define tcscmp strcmp
+#  define tcscpy strcpy
+#  define tcscat strcat
+#  define tcschr strchr
+#  define tcsrchr strrchr
+#  define tcslen strlen
+#  define tperror perror
+#  define topen open
+#  define tmain main
+#  define tremove remove
+#  define tchar char
+#  define tcstof strtof
+#  define tcstoull strtoull
+#endif /* 不是XML_UNICODE*/
+

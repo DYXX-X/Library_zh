@@ -1,0 +1,61 @@
+/*
+ * SPDX文件版权文本：2015-2021浓缩咖啡系统（上海）有限公司
+ *
+ * SPDX许可证标识符：Apache-2.0
+ */
+
+#pragma once
+
+/**
+ * @file 寄存器2c_dig_reg.h
+ * @brief 通过设置rtc_dbias_Wak和dig_dbias_Wak或通过模拟自校准，为数字寄存器定义以获得rtc电压和数字电压。
+ *
+ */
+
+#define I2C_DIG_REG 0x6D
+#define I2C_DIG_REG_HOSTID 1
+
+#define I2C_DIG_REG_EXT_RTC_DREG    4
+#define I2C_DIG_REG_EXT_RTC_DREG_MSB    4
+#define I2C_DIG_REG_EXT_RTC_DREG_LSB    0
+
+#define I2C_DIG_REG_ENX_RTC_DREG    4
+#define I2C_DIG_REG_ENX_RTC_DREG_MSB    7
+#define I2C_DIG_REG_ENX_RTC_DREG_LSB    7
+
+#define I2C_DIG_REG_EXT_RTC_DREG_SLEEP    5
+#define I2C_DIG_REG_EXT_RTC_DREG_SLEEP_MSB    4
+#define I2C_DIG_REG_EXT_RTC_DREG_SLEEP_LSB    0
+
+#define I2C_DIG_REG_ENX_RTC_DREG_SLEEP    5
+#define I2C_DIG_REG_ENX_RTC_DREG_SLEEP_MSB    7
+#define I2C_DIG_REG_ENX_RTC_DREG_SLEEP_LSB    7
+
+#define I2C_DIG_REG_EXT_DIG_DREG    6
+#define I2C_DIG_REG_EXT_DIG_DREG_MSB    4
+#define I2C_DIG_REG_EXT_DIG_DREG_LSB    0
+
+#define I2C_DIG_REG_ENX_DIG_DREG    6
+#define I2C_DIG_REG_ENX_DIG_DREG_MSB    7
+#define I2C_DIG_REG_ENX_DIG_DREG_LSB    7
+
+#define I2C_DIG_REG_EXT_DIG_DREG_SLEEP    7
+#define I2C_DIG_REG_EXT_DIG_DREG_SLEEP_MSB    4
+#define I2C_DIG_REG_EXT_DIG_DREG_SLEEP_LSB    0
+
+#define I2C_DIG_REG_ENX_DIG_DREG_SLEEP    7
+#define I2C_DIG_REG_ENX_DIG_DREG_SLEEP_MSB    7
+#define I2C_DIG_REG_ENX_DIG_DREG_SLEEP_LSB    7
+
+#define I2C_DIG_REG_OR_EN_CONT_CAL 9
+#define I2C_DIG_REG_OR_EN_CONT_CAL_MSB 7
+#define I2C_DIG_REG_OR_EN_CONT_CAL_LSB 7
+
+#define I2C_DIG_REG_XPD_RTC_REG 13
+#define I2C_DIG_REG_XPD_RTC_REG_MSB 2
+#define I2C_DIG_REG_XPD_RTC_REG_LSB 2
+
+#define I2C_DIG_REG_XPD_DIG_REG 13
+#define I2C_DIG_REG_XPD_DIG_REG_MSB 3
+#define I2C_DIG_REG_XPD_DIG_REG_LSB 3
+

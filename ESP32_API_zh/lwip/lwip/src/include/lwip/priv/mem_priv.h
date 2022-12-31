@@ -1,0 +1,60 @@
+/**
+ * @file lwIP内部内存实现（不在应用程序代码中使用）
+ */
+
+/*
+ * 版权所有（c）2018瑞典计算机科学研究所。保留所有权利。
+ *
+ * 在满足以下条件的情况下，允许以源代码和二进制形式重新分发和使用，无论是否进行修改：
+ *
+ * 1.源代码的重新分发必须保留上述版权声明、本条件列表和以下免责声明。2.二进制形式的再发行必须在随发行提供的文档和/或其他材料中复制上述版权声明、本条件列表和以下免责声明。3.未经事先书面许可，不得使用作者的姓名为本软件衍生的产品背书或推广。
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE AUTHOR ``AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ *
+ * 此文件是lwIP TCP/IP堆栈的一部分。
+ *
+ * 作者：Simon Goldschmidt<goldsimon@gmx.de>
+ *
+ */
+
+#ifndef LWIP_HDR_MEM_PRIV_H
+#define LWIP_HDR_MEM_PRIV_H
+
+#include "lwip/opt.h"
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "lwip/mem.h"
+
+#if MEM_OVERFLOW_CHECK || MEMP_OVERFLOW_CHECK
+/* 如果MEM_OVERFLOW_CHECK或MEMP_OVERFLOW_CCHECK已打开，我们会在每个元素的开头和结尾保留一些字节，将它们初始化为0xcd，稍后再检查它们。如果MEM（P）_OVERFLOW_CHECK大于等于2，则在每次调用MEM（P）_malloc或MEM（n）_free时，检查每个池/堆中的每个元素！这很慢，但也很有帮助。可以在lwipopt中重写MEM_SANITY_REGION_BEFORE和MEM_SANITY_REGION_AFTER。h更改保留用于检查的金额。*/
+#ifndef MEM_SANITY_REGION_BEFORE
+#define MEM_SANITY_REGION_BEFORE  16
+#endif /* MEM_SANITY_REGION_BEFORE*/
+#if MEM_SANITY_REGION_BEFORE > 0
+#define MEM_SANITY_REGION_BEFORE_ALIGNED    LWIP_MEM_ALIGN_SIZE(MEM_SANITY_REGION_BEFORE)
+#else
+#define MEM_SANITY_REGION_BEFORE_ALIGNED    0
+#endif /* MEM_SANITY_REGION_BEFORE*/
+#ifndef MEM_SANITY_REGION_AFTER
+#define MEM_SANITY_REGION_AFTER   16
+#endif /* MEM_SANITY_REGION_AFTER*/
+#if MEM_SANITY_REGION_AFTER > 0
+#define MEM_SANITY_REGION_AFTER_ALIGNED     LWIP_MEM_ALIGN_SIZE(MEM_SANITY_REGION_AFTER)
+#else
+#define MEM_SANITY_REGION_AFTER_ALIGNED     0
+#endif /* MEM_SANITY_REGION_AFTER*/
+
+void mem_overflow_init_raw(void *p, size_t size);
+void mem_overflow_check_raw(void *p, size_t size, const char *descr1, const char *descr2);
+
+#endif /* MEM_OVERFLOW_CHECK || MEMP_OVERFLOW_CHECK */
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* LWIP_HDR_MEMP_PRIV_H */
+

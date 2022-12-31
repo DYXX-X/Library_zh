@@ -1,0 +1,46 @@
+/* 常数。h-TinyCrypt接口到常量*/
+
+/*
+ *  英特尔公司版权所有（C）2017，保留所有权利。
+ *
+ *  在满足以下条件的情况下，允许以源代码和二进制形式重新分发和使用，无论是否进行修改：
+ *
+ *    -源代码的重新分发必须保留上述版权声明、本条件列表和以下免责声明。
+ *
+ *    -二进制形式的再发行必须在随发行提供的文档和/或其他材料中复制上述版权声明、本条件列表和以下免责声明。
+ *
+ *    -未经事先书面许可，不得使用“英特尔公司”的名称或其贡献者的名称来支持或推广源自此软件的产品。
+ *
+ *  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ */
+
+/**
+ * @file
+ * @brief --常量接口。
+ *
+ */
+
+#ifndef __BLE_MESH_TC_CONSTANTS_H__
+#define __BLE_MESH_TC_CONSTANTS_H__
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include <stdbool.h>
+
+#ifndef NULL
+#define NULL ((void *)0)
+#endif
+
+#define TC_CRYPTO_SUCCESS 1
+#define TC_CRYPTO_FAIL 0
+
+#define TC_ZERO_BYTE 0x00
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /* __BLE_MESH_TC_CONSTANTS_H__ */
+

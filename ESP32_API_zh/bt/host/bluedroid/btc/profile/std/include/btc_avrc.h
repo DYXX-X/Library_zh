@@ -1,0 +1,179 @@
+/*
+ * 版权所有（C）2012 Android开源项目
+ *
+ * 根据Apache许可证2.0版（“许可证”）获得许可；除非符合许可证，否则不得使用此文件。您可以在以下地址获取许可证副本：
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * 除非适用法律要求或书面同意，否则根据许可证分发的软件是按“原样”分发的，无任何明示或暗示的担保或条件。有关许可证下权限和限制的具体语言，请参阅许可证。
+ */
+
+#ifndef __BTC_AVRC_H__
+#define __BTC_AVRC_H__
+
+#include <stdint.h>
+#include <stdbool.h>
+#include "common/bt_defs.h"
+#include "stack/bt_types.h"
+#include "bta/bta_av_api.h"
+#include "btc/btc_task.h"
+#include "esp_avrc_api.h"
+
+#if (BTC_AV_INCLUDED == TRUE)
+#ifndef BTC_AVRC_TGT_INCLUDED
+#define BTC_AVRC_TGT_INCLUDED      FALSE
+#endif
+
+typedef enum {
+    BTC_AVRC_CT_API_INIT_EVT = 0,
+    BTC_AVRC_CT_API_DEINIT_EVT,
+    BTC_AVRC_CTRL_API_SND_PTCMD_EVT,
+    BTC_AVRC_STATUS_API_SND_META_EVT,
+    BTC_AVRC_STATUS_API_SND_PLAY_STATUS_EVT,
+    BTC_AVRC_STATUS_API_SND_GET_RN_CAPS_EVT,
+    BTC_AVRC_NOTIFY_API_SND_REG_NOTIFY_EVT,
+    BTC_AVRC_CTRL_API_SND_SET_PLAYER_SETTING_EVT,
+    BTC_AVRC_CTRL_API_SND_SET_ABSOLUTE_VOLUME_EVT
+} btc_avrc_act_t;
+
+typedef struct {
+    uint8_t tl; /* 事务处理标签*/
+    uint8_t key_code;
+    uint8_t key_state;
+} pt_cmd_t;
+
+typedef struct {
+    uint8_t tl;
+    uint8_t attr_mask;
+} md_cmd_t;
+
+typedef struct {
+    uint8_t tl;
+    uint8_t event_id;
+    uint32_t event_parameter;
+} rn_cmd_t;
+
+typedef struct {
+    uint8_t tl;
+    uint8_t attr_id;
+    uint8_t value_id;
+} ps_cmd_t;
+
+typedef struct {
+    uint8_t tl;
+} get_caps_cmd_t;
+
+#define BTC_AVRC_MIN_VOLUME 0x00
+#define BTC_AVRC_MAX_VOLUME 0x7f
+
+typedef struct {
+    uint8_t tl;
+    uint8_t volume;
+} set_abs_vol_cmd_t;
+
+/* btc_avrc_args_t*/
+typedef union {
+    pt_cmd_t pt_cmd;
+    md_cmd_t md_cmd;
+    rn_cmd_t rn_cmd;
+    ps_cmd_t ps_cmd;
+    get_caps_cmd_t get_caps_cmd;
+    set_abs_vol_cmd_t set_abs_vol_cmd;
+} btc_avrc_args_t;
+
+/* btc_avrc_tg_act_t*/
+typedef enum {
+    BTC_AVRC_TG_API_INIT_EVT = 0,
+    BTC_AVRC_TG_API_DEINIT_EVT,
+    BTC_AVRC_TG_API_SET_RN_SUPPORTED_EVT,
+    BTC_AVRC_TG_API_SET_PSTH_SUPPORTED_CMD_EVT,
+    BTC_AVRC_TG_API_SEND_RN_RSP_EVT,
+} btc_avrc_tg_act_t;
+
+/*****************************************************************************
+**  常量和宏
+******************************************************************************/
+/* 对于AVRC 1.4，需要对此进行更改*/
+#define BTC_RC_CT_INIT_MAGIC            0x20181128
+#define BTC_RC_TG_INIT_MAGIC            0x20181129
+
+#define MAX_RC_NOTIFICATIONS            (13)  // 参考ESP_AVRC_RN_MAX_EVT
+
+
+#define CHECK_ESP_RC_CONNECTED       do { \
+        BTC_TRACE_DEBUG("## %s ##", __FUNCTION__); \
+        if (btc_rc_cb.rc_connected == FALSE) { \
+            BTC_TRACE_WARNING("Function %s() called when RC is not connected", __FUNCTION__); \
+        return ESP_ERR_INVALID_STATE; \
+        } \
+    } while (0)
+
+/*****************************************************************************
+**  本地类型定义
+******************************************************************************/
+typedef struct {
+    BOOLEAN registered;
+    UINT8 label;
+} btc_rc_reg_ntf_t;
+
+typedef struct {
+    BOOLEAN                     rc_connected;
+    UINT8                       rc_handle;
+    tBTA_AV_FEAT                rc_features;
+    UINT16                      rc_ct_features;
+    UINT16                      rc_tg_features;
+    BD_ADDR                     rc_addr;
+    btc_rc_reg_ntf_t            rc_ntf[MAX_RC_NOTIFICATIONS];
+} btc_rc_cb_t;
+
+/*****************************************************************************
+**  静态变量
+******************************************************************************/
+#if AVRC_DYNAMIC_MEMORY == TRUE
+extern btc_rc_cb_t *btc_rc_cb_ptr;
+#define btc_rc_cb (*btc_rc_cb_ptr)
+#endif ///AVRC_DYNAMIC_MEMORY == FALSE
+
+typedef struct {
+    esp_avrc_rn_event_ids_t event_id;
+    esp_avrc_rn_rsp_t rsp;
+    esp_avrc_rn_param_t param;
+} rn_rsp_t;
+
+/* btc_avrc_tg_args_t*/
+typedef union {
+    rn_rsp_t rn_rsp;         /* BTC_AVRC_TG_API_SEND_RN_RSP_EVT */
+    uint16_t set_rn_evt;     /* BTC_AVRC_TG_API_SET_RN_SUPPORTED_EVT */
+    uint16_t *set_psth_cmd;   /* BTC_AVRC_TG_API_SET_PSTH_SUPPORTED_CMD_EVT */
+} btc_avrc_tg_args_t;
+
+void btc_rc_handler(tBTA_AV_EVT event, tBTA_AV *p_data);
+
+BOOLEAN btc_rc_get_connected_peer(BD_ADDR peer_addr);
+
+/*******************************************************************************
+**  BTC AVRC API
+********************************************************************************/
+void btc_avrc_ct_call_handler(btc_msg_t *msg);
+void btc_avrc_tg_call_handler(btc_msg_t *msg);
+void btc_avrc_tg_arg_deep_copy(btc_msg_t *msg, void *p_dest, void *p_src);
+
+bool btc_avrc_tg_init_p(void);
+bool btc_avrc_ct_init_p(void);
+bool btc_avrc_tg_connected_p(void);
+bool btc_avrc_ct_connected_p(void);
+
+const uint16_t *btc_avrc_tg_get_supported_command(void);
+const uint16_t *btc_avrc_tg_get_allowed_command(void);
+bool btc_avrc_tg_check_supported_command(const uint16_t *cmd_set);
+
+uint16_t btc_avrc_tg_get_rn_allowed_evt(void);
+uint16_t btc_avrc_tg_get_rn_supported_evt(void);
+bool btc_avrc_tg_check_rn_supported_evt(uint16_t evt_set);
+bool btc_avrc_tg_rn_evt_supported(uint8_t event_id);
+bool btc_avrc_ct_rn_evt_supported(uint8_t event_id);
+
+#endif  ///BTC_AV_INCLUDED == TRUE
+
+#endif /* __BTC_AVRC_H__ */
+
